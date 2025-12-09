@@ -1,0 +1,175 @@
+---
+const currentYear = new Date().getFullYear();
+import SocialLinks from "./SocialLinks.astro";
+---
+
+<footer
+    class="bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800 pt-16 pb-8 mt-auto transition-colors duration-300"
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"
+        >
+            <!-- Brand -->
+            <div class="space-y-6">
+                <img
+                    src="https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp"
+                    alt="Nicolas Cardenas Logo"
+                    class="h-12 w-auto dark:invert-0"
+                />
+                <p
+                    class="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed transition-colors"
+                >
+                    Ayudo a negocios a escalar su presencia digital con
+                    arquitecturas web sólidas y estrategias SEO efectivas.
+                </p>
+                <SocialLinks />
+            </div>
+
+            <!-- Services -->
+            <div>
+                <h3
+                    class="text-neutral-900 dark:text-white font-bold mb-6 transition-colors"
+                >
+                    Servicios
+                </h3>
+                <ul class="space-y-4">
+                    <li>
+                        <a
+                            href="/servicios#web"
+                            class="text-neutral-600 dark:text-neutral-400 hover:text-gold dark:hover:text-gold transition-colors text-sm"
+                            >Desarrollo Web a Medida</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/servicios#seo"
+                            class="text-neutral-600 dark:text-neutral-400 hover:text-gold dark:hover:text-gold transition-colors text-sm"
+                            >Auditoría SEO Técnica</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/servicios#ecommerce"
+                            class="text-neutral-600 dark:text-neutral-400 hover:text-gold dark:hover:text-gold transition-colors text-sm"
+                            >E-commerce & Tiendas</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/servicios#consulting"
+                            class="text-neutral-600 dark:text-neutral-400 hover:text-gold dark:hover:text-gold transition-colors text-sm"
+                            >Consultoría Digital</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3
+                    class="text-neutral-900 dark:text-white font-bold mb-6 transition-colors"
+                >
+                    Enlaces Rápidos
+                </h3>
+                <ul class="space-y-4">
+                    <li>
+                        <a
+                            href="/"
+                            class="text-neutral-600 dark:text-neutral-400 hover:text-gold dark:hover:text-gold transition-colors text-sm"
+                            >Inicio</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/blog"
+                            class="text-neutral-600 dark:text-neutral-400 hover:text-gold dark:hover:text-gold transition-colors text-sm"
+                            >Blog</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/certificados"
+                            class="text-neutral-600 dark:text-neutral-400 hover:text-gold dark:hover:text-gold transition-colors text-sm"
+                            >Certificados</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/quien-soy"
+                            class="text-neutral-600 dark:text-neutral-400 hover:text-gold dark:hover:text-gold transition-colors text-sm"
+                            >Quién Soy</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/contacto"
+                            class="text-neutral-600 dark:text-neutral-400 hover:text-gold dark:hover:text-gold transition-colors text-sm"
+                            >Contacto</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3
+                    class="text-neutral-900 dark:text-white font-bold mb-6 transition-colors"
+                >
+                    Contacto
+                </h3>
+                <ul class="space-y-4">
+                    <li
+                        class="flex items-start gap-3 text-neutral-600 dark:text-neutral-400 text-sm transition-colors"
+                    >
+                        <span class="text-gold mt-1">📍</span>
+                        <span
+                            >Medellín, Colombia<br />Disponible para todo el
+                            mundo</span
+                        >
+                    </li>
+                    <li
+                        class="flex items-center gap-3 text-neutral-600 dark:text-neutral-400 text-sm transition-colors"
+                    >
+                        <span class="text-gold">📧</span>
+                        <a
+                            href="mailto:hola@cardenasnicolas.com"
+                            class="hover:text-gold dark:hover:text-gold transition-colors"
+                            >hola@cardenasnicolas.com</a
+                        >
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div
+            class="border-t border-neutral-200 dark:border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 transition-colors"
+        >
+            <div
+                class="text-neutral-500 dark:text-neutral-500 text-sm transition-colors"
+            >
+                &copy; {currentYear} Nicolas Cardenas. Todos los derechos reservados.
+            </div>
+            <nav
+                class="flex gap-6 text-sm text-neutral-500 dark:text-neutral-500 transition-colors"
+            >
+                <a
+                    href="/politica-de-privacidad"
+                    class="hover:text-gold dark:hover:text-gold transition-colors"
+                    >Privacidad</a
+                >
+                <a
+                    href="/politica-de-cookies"
+                    class="hover:text-gold dark:hover:text-gold transition-colors"
+                    >Cookies</a
+                >
+                <a
+                    href="/terminos-y-condiciones"
+                    class="hover:text-gold dark:hover:text-gold transition-colors"
+                    >Términos</a
+                >
+            </nav>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,182 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProfileCard from "../components/ProfileCard.astro";
+---
+
+<Layout title="Contacto | Nicolas Cardenas - Hablemos de tu Proyecto">
+    <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 py-8">
+        <!-- Sidebar -->
+        <div class="hidden lg:block">
+            <ProfileCard />
+        </div>
+
+        <!-- Main Content -->
+        <div class="space-y-12 min-w-0">
+            <section
+                class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 md:p-12 relative overflow-hidden transition-colors duration-300"
+            >
+                <!-- Background decoration -->
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-gold/5 dark:bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none transition-colors"
+                >
+                </div>
+
+                <div class="relative z-10 max-w-2xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h1
+                            class="text-4xl font-bold mb-4 text-neutral-900 dark:text-white transition-colors"
+                        >
+                            Contacta Conmigo
+                        </h1>
+                        <p
+                            class="text-xl text-neutral-600 dark:text-neutral-400 transition-colors"
+                        >
+                            ¿Listo para mejorar tu posicionamiento web? Cuéntame
+                            sobre tu proyecto.
+                        </p>
+                    </div>
+
+                    <div
+                        class="bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 p-8 rounded-xl relative overflow-hidden transition-colors"
+                    >
+                        <form
+                            id="contact-form"
+                            action="https://formspree.io/f/YOUR_FORM_ID"
+                            method="POST"
+                            class="space-y-6"
+                        >
+                            <div class="text-left">
+                                <label
+                                    for="name"
+                                    class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2 transition-colors"
+                                    >Nombre</label
+                                >
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    class="w-full px-4 py-3 bg-white dark:bg-black border border-neutral-300 dark:border-white/10 rounded-lg text-neutral-900 dark:text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
+                                    placeholder="Tu nombre"
+                                    required
+                                />
+                            </div>
+                            <div class="text-left">
+                                <label
+                                    for="email"
+                                    class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2 transition-colors"
+                                    >Email</label
+                                >
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="w-full px-4 py-3 bg-white dark:bg-black border border-neutral-300 dark:border-white/10 rounded-lg text-neutral-900 dark:text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
+                                    placeholder="tu@email.com"
+                                    required
+                                />
+                            </div>
+                            <div class="text-left">
+                                <label
+                                    for="message"
+                                    class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2 transition-colors"
+                                    >Mensaje</label
+                                >
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="4"
+                                    class="w-full px-4 py-3 bg-white dark:bg-black border border-neutral-300 dark:border-white/10 rounded-lg text-neutral-900 dark:text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
+                                    placeholder="¿En qué puedo ayudarte?"
+                                    required></textarea>
+                            </div>
+                            <button
+                                type="submit"
+                                id="submit-btn"
+                                class="w-full bg-gold hover:bg-gold-400 text-black font-bold py-3 px-6 rounded-lg transition-colors shadow-lg shadow-gold/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                Enviar Mensaje
+                            </button>
+                            <p
+                                id="form-status"
+                                class="text-center text-sm mt-4 hidden"
+                            >
+                            </p>
+                        </form>
+                    </div>
+
+                    <div class="mt-12 text-center">
+                        <p
+                            class="text-neutral-600 dark:text-neutral-400 mb-4 transition-colors"
+                        >
+                            O si prefieres, escríbeme directamente:
+                        </p>
+                        <a
+                            href="mailto:contacto@cardenasnicolas.com"
+                            class="text-gold hover:text-neutral-900 dark:hover:text-white font-medium text-lg transition-colors"
+                        >
+                            contacto@cardenasnicolas.com
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script is:inline>
+        const form = document.getElementById("contact-form");
+        const submitBtn = document.getElementById("submit-btn");
+        const status = document.getElementById("form-status");
+
+        if (form) {
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const data = new FormData(form);
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = "Enviando...";
+                status.classList.add("hidden");
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: data,
+                        headers: {
+                            Accept: "application/json",
+                        },
+                    });
+
+                    if (response.ok) {
+                        status.textContent =
+                            "¡Gracias! Tu mensaje ha sido enviado correctamente.";
+                        status.className =
+                            "text-center text-sm mt-4 text-green-600 dark:text-green-400";
+                        status.classList.remove("hidden");
+                        form.reset();
+                    } else {
+                        const data = await response.json();
+                        if (Object.hasOwn(data, "errors")) {
+                            status.textContent = data["errors"]
+                                .map((error) => error["message"])
+                                .join(", ");
+                        } else {
+                            status.textContent =
+                                "Oops! Hubo un problema al enviar tu formulario";
+                        }
+                        status.className =
+                            "text-center text-sm mt-4 text-red-600 dark:text-red-400";
+                        status.classList.remove("hidden");
+                    }
+                } catch (error) {
+                    status.textContent =
+                        "Oops! Hubo un problema al enviar tu formulario";
+                    status.className =
+                        "text-center text-sm mt-4 text-red-600 dark:text-red-400";
+                    status.classList.remove("hidden");
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Enviar Mensaje";
+                }
+            });
+        }
+    </script>
+</Layout>

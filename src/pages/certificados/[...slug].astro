@@ -1,0 +1,388 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ProfileCard from "../../components/ProfileCard.astro";
+
+export async function getStaticPaths() {
+    const certificates = await getCollection("certificados");
+    return certificates.map((cert) => ({
+        params: { slug: cert.id },
+        props: { cert, allCertificates: certificates },
+    }));
+}
+
+const { cert, allCertificates } = Astro.props;
+
+// Get related certificates (exclude current, take 3 random or first 3)
+const relatedCertificates = allCertificates
+    .filter((c) => c.id !== cert.id)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 3);
+
+// Helper to determine if we have enhanced content
+const hasEnhancedContent =
+    (cert.data.keyTakeaways && cert.data.keyTakeaways.length > 0) ||
+    cert.data.practiceSummary ||
+    (cert.data.practiceBullets && cert.data.practiceBullets.length > 0);
+---
+
+<Layout title={`${cert.data.title} - Certificado`}>
+    <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 py-8">
+        <!-- Sidebar (Profile) -->
+        <div class="hidden lg:block">
+            <ProfileCard />
+        </div>
+
+        <!-- Main Content (Rounded Card Wrapper) -->
+        <div class="space-y-12 min-w-0">
+            <section
+                class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 md:p-12 relative overflow-hidden transition-colors duration-300"
+            >
+                <!-- Background decoration -->
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-gold/5 dark:bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none transition-colors"
+                >
+                </div>
+
+                <div class="relative z-10">
+                    {/* Breadcrumbs */}
+                    <nav
+                        class="flex items-center text-sm text-neutral-500 dark:text-neutral-500 mb-8 font-medium transition-colors"
+                    >
+                        <a href="/" class="hover:text-gold transition-colors"
+                            >Inicio</a
+                        >
+                        <span class="mx-2">›</span>
+                        <a
+                            href="/certificados"
+                            class="hover:text-gold transition-colors"
+                            >Certificados</a
+                        >
+                        <span class="mx-2">›</span>
+                        <span
+                            class="text-neutral-900 dark:text-neutral-300 truncate max-w-[200px] sm:max-w-none transition-colors"
+                            >{cert.data.title}</span
+                        >
+                    </nav>
+
+                    {/* Hero Section */}
+                    <header class="mb-16">
+                        <div
+                            class="flex flex-col-reverse xl:flex-row gap-8 items-start xl:items-center"
+                        >
+                            <div class="flex-1">
+                                {/* Decorative H1 */}
+                                <div class="relative inline-block mb-6">
+                                    <h1
+                                        class="relative z-10 text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white leading-tight transition-colors"
+                                    >
+                                        {cert.data.customH1 || cert.data.title}
+                                    </h1>
+                                </div>
+
+                                <p
+                                    class="text-lg text-neutral-600 dark:text-neutral-300 mb-8 max-w-2xl leading-relaxed transition-colors"
+                                >
+                                    {
+                                        cert.data.shortDescription ||
+                                            cert.data.description
+                                    }
+                                </p>
+
+                                {/* Metadata Pills */}
+                                <div class="flex flex-wrap gap-4 mb-8">
+                                    {
+                                        cert.data.issuedBy && (
+                                            <span class="px-4 py-2 rounded-full border border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-300 text-sm flex items-center gap-2 transition-colors">
+                                                🏫 {cert.data.issuedBy}
+                                            </span>
+                                        )
+                                    }
+                                    {
+                                        cert.data.durationHours && (
+                                            <span class="px-4 py-2 rounded-full border border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-300 text-sm flex items-center gap-2 transition-colors">
+                                                ⏱ {cert.data.durationHours}
+                                            </span>
+                                        )
+                                    }
+                                    <span
+                                        class="px-4 py-2 rounded-full border border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-300 text-sm flex items-center gap-2 transition-colors"
+                                    >
+                                        📅 {
+                                            cert.data.issueDate ||
+                                                cert.data.pubDate.toLocaleDateString(
+                                                    "es-CO",
+                                                )
+                                        }
+                                    </span>
+                                </div>
+
+                                {/* CTA */}
+                                {
+                                    cert.data.certificateUrl && (
+                                        <a
+                                            href={cert.data.certificateUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="inline-block bg-gold text-white dark:text-neutral-900 px-8 py-3 rounded-lg font-bold hover:bg-gold-500 hover:scale-105 transition-all shadow-lg shadow-gold/10"
+                                        >
+                                            Comprobar Certificado
+                                        </a>
+                                    )
+                                }
+                            </div>
+
+                            {/* Certificate Image */}
+                            <div class="w-full xl:w-[350px] flex-shrink-0">
+                                <div
+                                    class="bg-white p-2 rounded-lg shadow-xl shadow-black/10 dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] transform hover:rotate-2 transition-all duration-500 border border-neutral-200 dark:border-transparent"
+                                >
+                                    {
+                                        cert.data.heroImage ? (
+                                            <img
+                                                src={cert.data.heroImage}
+                                                alt={`Certificado ${cert.data.title}`}
+                                                class="w-full h-auto rounded border border-neutral-200 dark:border-neutral-200"
+                                            />
+                                        ) : (
+                                            <div class="aspect-[4/3] bg-neutral-100 flex items-center justify-center text-neutral-400 rounded">
+                                                <span class="text-6xl">🎓</span>
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    {/* Taxonomy Section */}
+                    {
+                        ((cert.data.certificateCategories &&
+                            cert.data.certificateCategories.length > 0) ||
+                            (cert.data.certificateTags &&
+                                cert.data.certificateTags.length > 0)) && (
+                            <section class="mb-16 bg-neutral-50 dark:bg-black/40 p-8 rounded-2xl border border-neutral-200 dark:border-white/5 transition-colors">
+                                <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-6 flex items-center gap-2 transition-colors">
+                                    <span class="text-gold">🏷️</span>{" "}
+                                    Tecnologías y Categorías
+                                </h3>
+                                <div class="flex flex-col gap-6">
+                                    {cert.data.certificateCategories &&
+                                        cert.data.certificateCategories.length >
+                                            0 && (
+                                            <div>
+                                                <span class="text-neutral-500 text-sm font-bold uppercase tracking-wider mb-3 block">
+                                                    Categorías
+                                                </span>
+                                                <div class="flex flex-wrap gap-3">
+                                                    {cert.data.certificateCategories.map(
+                                                        (cat) => (
+                                                            <span class="px-4 py-2 rounded-full border border-gold/30 bg-gold/10 text-gold text-sm font-medium">
+                                                                {cat}
+                                                            </span>
+                                                        ),
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )}
+
+                                    {cert.data.certificateTags &&
+                                        cert.data.certificateTags.length >
+                                            0 && (
+                                            <div>
+                                                <span class="text-neutral-500 text-sm font-bold uppercase tracking-wider mb-3 block">
+                                                    Etiquetas
+                                                </span>
+                                                <div class="flex flex-wrap gap-3">
+                                                    {cert.data.certificateTags.map(
+                                                        (tag) => (
+                                                            <span class="px-4 py-2 rounded-full border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 text-sm hover:border-gold dark:hover:border-neutral-600 transition-colors">
+                                                                {tag}
+                                                            </span>
+                                                        ),
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )}
+                                </div>
+                            </section>
+                        )
+                    }
+
+                    {/* Key Takeaways Section */}
+                    {
+                        cert.data.keyTakeaways &&
+                            cert.data.keyTakeaways.length > 0 && (
+                                <section class="mb-20">
+                                    <h2 class="text-3xl font-bold text-neutral-900 dark:text-white mb-10 text-center transition-colors">
+                                        <span class="text-gold">[</span> Lo más
+                                        relevante{" "}
+                                        <span class="text-gold">]</span>
+                                    </h2>
+
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        {cert.data.keyTakeaways.map(
+                                            (point, index) => (
+                                                <div class="bg-white dark:bg-[#2C2C2C] p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-gold/50 transition-colors shadow-lg group relative overflow-hidden">
+                                                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                    <div class="w-16 h-16 mb-4 bg-neutral-100 dark:bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg border border-neutral-100 dark:border-transparent">
+                                                        <img
+                                                            src={
+                                                                index === 0
+                                                                    ? "https://cardenasnicolas.com/wp-content/uploads/2025/08/Bullet-certificados.webp"
+                                                                    : index ===
+                                                                        1
+                                                                      ? "https://cardenasnicolas.com/wp-content/uploads/2025/08/Bullet-2-certificados.webp"
+                                                                      : "https://cardenasnicolas.com/wp-content/uploads/2025/08/Bullet-3-certificados.webp"
+                                                            }
+                                                            alt="Icono"
+                                                            class="w-10 h-10 object-contain"
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        class="prose prose-neutral dark:prose-invert prose-sm text-neutral-600 dark:text-neutral-300 transition-colors"
+                                                        set:html={point}
+                                                    />
+                                                </div>
+                                            ),
+                                        )}
+                                    </div>
+                                </section>
+                            )
+                    }
+
+                    {/* Practice Section */}
+                    {
+                        (cert.data.practiceSummary ||
+                            (cert.data.practiceBullets &&
+                                cert.data.practiceBullets.length > 0)) && (
+                            <section class="mb-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                                <div class="order-2 md:order-1">
+                                    <h2 class="text-2xl font-bold text-neutral-900 dark:text-white mb-6 flex items-center gap-3 transition-colors">
+                                        Cómo puse en práctica lo aprendido
+                                        <span class="h-px flex-grow bg-neutral-200 dark:bg-neutral-800 ml-4 transition-colors" />
+                                    </h2>
+
+                                    {cert.data.practiceSummary && (
+                                        <p class="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-lg transition-colors">
+                                            {cert.data.practiceSummary}
+                                        </p>
+                                    )}
+
+                                    {cert.data.practiceBullets && (
+                                        <ul class="space-y-6">
+                                            {cert.data.practiceBullets.map(
+                                                (bullet) => (
+                                                    <li class="flex gap-4 group">
+                                                        <div class="flex-shrink-0 mt-1 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md border border-neutral-100 group-hover:scale-110 transition-transform">
+                                                            <img
+                                                                src="https://cardenasnicolas.com/wp-content/uploads/2025/08/Bullet-4-certificados.webp"
+                                                                alt="Rocket"
+                                                                class="w-8 h-8"
+                                                            />
+                                                        </div>
+                                                        <div
+                                                            class="prose prose-neutral dark:prose-invert prose-sm text-neutral-600 dark:text-neutral-300 pt-1 leading-relaxed transition-colors"
+                                                            set:html={bullet}
+                                                        />
+                                                    </li>
+                                                ),
+                                            )}
+                                        </ul>
+                                    )}
+                                </div>
+
+                                <div class="order-1 md:order-2 flex justify-center">
+                                    <div class="relative w-64 h-64 md:w-80 md:h-80 bg-white rounded-full flex items-center justify-center p-8 shadow-2xl">
+                                        <img
+                                            src="https://cardenasnicolas.com/wp-content/uploads/2025/08/Como-puse-en-practica-lo-aprendido-mi-certificado.webp"
+                                            alt="Cómo puse en práctica lo aprendido"
+                                            class="w-full h-full object-contain drop-shadow-lg"
+                                        />
+                                    </div>
+                                </div>
+                            </section>
+                        )
+                    }
+
+                    {/* Related Certificates */}
+                    <section>
+                        <div
+                            class="flex justify-between items-end mb-8 border-b border-neutral-200 dark:border-white/10 pb-4 transition-colors"
+                        >
+                            <h2
+                                class="text-2xl font-bold text-neutral-900 dark:text-white transition-colors"
+                            >
+                                Conoce otros certificados
+                            </h2>
+                            <a
+                                href="/certificados"
+                                class="text-gold text-sm hover:underline hidden sm:block"
+                                >Ver todos los certificados →</a
+                            >
+                        </div>
+
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                        >
+                            {
+                                relatedCertificates.map((related) => (
+                                    <article class="bg-white dark:bg-[#2C2C2C] rounded-xl overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-800 group hover:border-gold dark:hover:border-neutral-600 transition-all flex flex-col h-full">
+                                        <a
+                                            href={`/certificados/${related.id}`}
+                                            class="block aspect-video bg-neutral-100 dark:bg-neutral-900 relative overflow-hidden"
+                                        >
+                                            {related.data.heroImage ? (
+                                                <img
+                                                    src={related.data.heroImage}
+                                                    class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                                                    alt={related.data.title}
+                                                />
+                                            ) : (
+                                                <div class="w-full h-full flex items-center justify-center text-4xl">
+                                                    🎓
+                                                </div>
+                                            )}
+                                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                                <span class="text-white font-medium px-4 py-2 border border-white rounded-full text-sm">
+                                                    Ver detalles
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <div class="p-5 flex flex-col flex-grow">
+                                            <h3 class="text-neutral-900 dark:text-white font-bold text-lg mb-2 line-clamp-2 min-h-[3.5rem] transition-colors">
+                                                <a
+                                                    href={`/certificados/${related.id}`}
+                                                    class="hover:text-gold transition-colors"
+                                                >
+                                                    {related.data.title}
+                                                </a>
+                                            </h3>
+                                            <div class="mt-auto pt-4">
+                                                <a
+                                                    href={`/certificados/${related.id}`}
+                                                    class="block w-full text-center py-2 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-gold hover:text-neutral-900 transition-colors text-sm font-medium"
+                                                >
+                                                    Ver certificado
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                ))
+                            }
+                        </div>
+                    </section>
+
+                    {/* Fallback for generic content */}
+                    {
+                        !hasEnhancedContent && (
+                            <div class="prose prose-neutral dark:prose-invert max-w-none mt-12 bg-white dark:bg-[#2C2C2C] p-8 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xl transition-colors">
+                                <Fragment set:html={cert.data.content} />
+                            </div>
+                        )
+                    }
+                </div>
+            </section>
+        </div>
+    </div>
+</Layout>

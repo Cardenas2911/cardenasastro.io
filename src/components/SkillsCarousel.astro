@@ -1,0 +1,140 @@
+---
+import { getCollection } from "astro:content";
+
+// Fetch all certificates
+const certificates = await getCollection("certificados");
+
+// Extract unique tags
+const allTags = certificates.flatMap((cert) => cert.data.certificateTags || []);
+const uniqueTags = [...new Set(allTags)].sort();
+
+// Shuffle helper
+function shuffle(array: string[]) {
+    let currentIndex = array.length,
+        randomIndex;
+    while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex],
+            array[currentIndex],
+        ];
+    }
+    return array;
+}
+
+// Create 3 sets
+const row1Tags = [...uniqueTags, ...uniqueTags, ...uniqueTags];
+const row2Tags = [...uniqueTags.reverse(), ...uniqueTags, ...uniqueTags];
+const row3Tags = [
+    ...uniqueTags.sort(() => Math.random() - 0.5),
+    ...uniqueTags,
+    ...uniqueTags,
+];
+---
+
+<div class="relative group w-full max-w-full">
+    <!-- Main Container with Gradient Masks -->
+    <div
+        class="w-full overflow-hidden bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl py-8 relative flex flex-col gap-4 transition-colors duration-300"
+    >
+        <div
+            class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white dark:from-neutral-900 to-transparent z-10 pointer-events-none transition-colors duration-300"
+        >
+        </div>
+        <div
+            class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white dark:from-neutral-900 to-transparent z-10 pointer-events-none transition-colors duration-300"
+        >
+        </div>
+
+        <!-- Row 1: Left -->
+        <div
+            class="carousel-track flex items-center gap-4 whitespace-nowrap w-max"
+            data-direction="left"
+            data-speed="0.3"
+        >
+            {
+                row1Tags.map((tag) => (
+                    <div class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-neutral-100 dark:bg-[#1A1A1A] border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 text-sm font-medium hover:border-gold hover:text-gold dark:hover:text-gold transition-colors shadow-sm select-none">
+                        {tag}
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- Row 2: Right -->
+        <div
+            class="carousel-track flex items-center gap-4 whitespace-nowrap w-max"
+            data-direction="right"
+            data-speed="0.3"
+        >
+            {
+                row2Tags.map((tag) => (
+                    <div class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-neutral-100 dark:bg-[#1A1A1A] border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 text-sm font-medium hover:border-gold hover:text-gold dark:hover:text-gold transition-colors shadow-sm select-none">
+                        {tag}
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- Row 3: Left -->
+        <div
+            class="carousel-track flex items-center gap-4 whitespace-nowrap w-max"
+            data-direction="left"
+            data-speed="0.4"
+        >
+            {
+                row3Tags.map((tag) => (
+                    <div class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-neutral-100 dark:bg-[#1A1A1A] border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 text-sm font-medium hover:border-gold hover:text-gold dark:hover:text-gold transition-colors shadow-sm select-none">
+                        {tag}
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    const container = document.querySelector(".group");
+    const tracks = document.querySelectorAll(".carousel-track");
+
+    let isHovered = false;
+
+    // Animation loop per track
+    tracks.forEach((track) => {
+        const direction = track.getAttribute("data-direction") || "left";
+        const speed = parseFloat(track.getAttribute("data-speed") || "0.5");
+
+        let scrollPos = 0;
+
+        function animate() {
+            if (!isHovered) {
+                scrollPos += speed;
+            }
+
+            const trackWidth = track.scrollWidth;
+            const singleSetWidth = trackWidth / 3;
+
+            if (scrollPos >= singleSetWidth) {
+                scrollPos = 0; // Reset
+            }
+
+            if (direction === "left") {
+                (track as HTMLElement).style.transform =
+                    `translateX(-${scrollPos}px)`;
+            } else {
+                (track as HTMLElement).style.transform =
+                    `translateX(${-singleSetWidth + scrollPos}px)`;
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    });
+
+    if (container) {
+        container.addEventListener("mouseenter", () => (isHovered = true));
+        container.addEventListener("mouseleave", () => (isHovered = false));
+    }
+</script>

@@ -1,0 +1,479 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const certificates = (await getCollection("certificados")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+// Extract unique filter options
+const allCategories = [
+    ...new Set(
+        certificates.flatMap((cert) => cert.data.certificateCategories || []),
+    ),
+].sort();
+const allTags = [
+    ...new Set(certificates.flatMap((cert) => cert.data.certificateTags || [])),
+].sort();
+---
+
+<Layout title="Certificados - Nicolas Cardenas">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section
+            class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 md:p-12 mb-12 relative overflow-hidden text-center transition-colors duration-300"
+        >
+            <div
+                class="absolute top-0 right-0 w-64 h-64 bg-gold/5 dark:bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none transition-colors"
+            >
+            </div>
+            <div class="relative z-10">
+                <h1
+                    class="text-4xl font-bold text-neutral-900 dark:text-white mb-4 transition-colors"
+                >
+                    Certificados
+                </h1>
+                <p
+                    class="text-xl text-neutral-600 dark:text-neutral-400 transition-colors"
+                >
+                    Validación de mis habilidades y conocimientos en el mundo
+                    digital.
+                </p>
+            </div>
+        </section>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar Filters -->
+            <aside class="w-full lg:w-1/4 space-y-8">
+                <div
+                    class="bg-neutral-50 dark:bg-neutral-900/50 p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 sticky top-4 transition-colors"
+                >
+                    <div class="flex justify-between items-center mb-6">
+                        <h2
+                            class="text-xl font-bold text-neutral-900 dark:text-white transition-colors"
+                        >
+                            Filtros
+                        </h2>
+                        <button
+                            id="clear-filters"
+                            class="text-xs text-gold hover:underline hidden"
+                        >
+                            Limpiar todo
+                        </button>
+                    </div>
+
+                    <!-- Categories Filter -->
+                    {
+                        allCategories.length > 0 && (
+                            <div class="mb-8">
+                                <h3 class="text-neutral-900 dark:text-white font-medium mb-4 transition-colors">
+                                    Categorías
+                                </h3>
+                                <div class="space-y-2">
+                                    {allCategories.map((cat) => (
+                                        <label class="flex items-center gap-2 cursor-pointer group">
+                                            <input
+                                                type="checkbox"
+                                                value={cat}
+                                                class="filter-category form-checkbox text-gold rounded bg-white dark:bg-neutral-800 border-neutral-300 dark:border-neutral-700 focus:ring-gold/50 transition-colors"
+                                            />
+                                            <span class="text-neutral-600 dark:text-neutral-400 group-hover:text-gold transition-colors text-sm">
+                                                {cat}
+                                            </span>
+                                        </label>
+                                    ))}
+                                </div>
+                            </div>
+                        )
+                    }
+
+                    <!-- Tags Filter -->
+                    {
+                        allTags.length > 0 && (
+                            <div>
+                                <h3 class="text-neutral-900 dark:text-white font-medium mb-4 transition-colors">
+                                    Etiquetas
+                                </h3>
+                                <div
+                                    class="flex flex-wrap gap-2"
+                                    id="tags-container"
+                                >
+                                    {allTags.map((tag) => (
+                                        <button
+                                            data-value={tag}
+                                            class="filter-tag px-3 py-1 text-xs rounded-full bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-300 dark:border-neutral-700 hover:border-gold hover:text-gold transition-all"
+                                        >
+                                            {tag}
+                                        </button>
+                                    ))}
+                                </div>
+                                <div id="tags-pagination" />
+                            </div>
+                        )
+                    }
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="w-full lg:w-3/4">
+                <!-- Grid -->
+                <div
+                    id="certificates-grid"
+                    class="grid grid-cols-1 md:grid-cols-2 gap-6 min-h-[400px]"
+                >
+                    {
+                        certificates.map((cert) => (
+                            <article
+                                class="certificate-item bg-white dark:bg-neutral-900 rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 hover:border-gold dark:hover:border-gold transition-all duration-300 flex flex-col h-full"
+                                data-categories={JSON.stringify(
+                                    cert.data.certificateCategories || [],
+                                )}
+                                data-tags={JSON.stringify(
+                                    cert.data.certificateTags || [],
+                                )}
+                            >
+                                <a
+                                    href={`/certificados/${cert.id}`}
+                                    class="block aspect-video overflow-hidden bg-neutral-100 dark:bg-neutral-800"
+                                >
+                                    {cert.data.heroImage ? (
+                                        <img
+                                            src={cert.data.heroImage}
+                                            alt={cert.data.title}
+                                            class="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                                        />
+                                    ) : (
+                                        <div class="w-full h-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-neutral-400 dark:text-neutral-600 transition-colors">
+                                            <span class="text-4xl">🎓</span>
+                                        </div>
+                                    )}
+                                </a>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <div class="flex items-center gap-2 mb-3 text-xs">
+                                        <time
+                                            datetime={cert.data.pubDate.toISOString()}
+                                            class="text-neutral-500 dark:text-neutral-500 transition-colors"
+                                        >
+                                            {cert.data.pubDate.toLocaleDateString(
+                                                "es-CO",
+                                                {
+                                                    year: "numeric",
+                                                    month: "short",
+                                                    day: "numeric",
+                                                },
+                                            )}
+                                        </time>
+                                    </div>
+                                    <h2 class="text-xl font-bold text-neutral-900 dark:text-white mb-2 line-clamp-2 transition-colors">
+                                        <a
+                                            href={`/certificados/${cert.id}`}
+                                            class="hover:text-gold dark:hover:text-gold transition-colors"
+                                        >
+                                            {cert.data.title}
+                                        </a>
+                                    </h2>
+                                    <p class="text-neutral-600 dark:text-neutral-400 text-sm mb-4 line-clamp-3 flex-grow transition-colors">
+                                        {cert.data.shortDescription ||
+                                            cert.data.description}
+                                    </p>
+                                </div>
+                            </article>
+                        ))
+                    }
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="hidden text-center py-20">
+                    <p
+                        class="text-neutral-600 dark:text-neutral-400 text-lg transition-colors"
+                    >
+                        No se encontraron certificados con los filtros
+                        seleccionados.
+                    </p>
+                    <button
+                        id="reset-filters-btn"
+                        class="mt-4 text-gold hover:underline"
+                        >Limpiar filtros</button
+                    >
+                </div>
+
+                <!-- Pagination -->
+                <nav
+                    id="pagination"
+                    class="flex justify-center items-center space-x-2 mt-12 hidden"
+                >
+                    <!-- Populated by JS -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    document.addEventListener("astro:page-load", initFilters);
+    document.addEventListener("DOMContentLoaded", initFilters);
+
+    function initFilters() {
+        const ITEMS_PER_PAGE = 9;
+        const grid = document.getElementById("certificates-grid");
+        const items = Array.from(
+            document.querySelectorAll(".certificate-item"),
+        ) as HTMLElement[];
+        const emptyState = document.getElementById("empty-state");
+        const paginationContainer = document.getElementById("pagination");
+        const clearBtn = document.getElementById("clear-filters");
+        const resetBtn = document.getElementById("reset-filters-btn");
+
+        if (!grid || items.length === 0) return;
+
+        let activeCategories = new Set<string>();
+        let activeTags = new Set<string>();
+        let currentPage = 1;
+        let visibleItems = items;
+
+        // --- Tag Pagination Logic ---
+        const TAGS_PER_PAGE = 15;
+        let currentTagPage = 1;
+        const tagItems = Array.from(
+            document.querySelectorAll(".filter-tag"),
+        ) as HTMLElement[];
+        const tagsPaginationContainer =
+            document.getElementById("tags-pagination");
+
+        function renderTags() {
+            const totalTagPages = Math.ceil(tagItems.length / TAGS_PER_PAGE);
+
+            // Hide all tags
+            tagItems.forEach((tag) => tag.classList.add("hidden"));
+
+            // Show current page tags
+            const start = (currentTagPage - 1) * TAGS_PER_PAGE;
+            const end = start + TAGS_PER_PAGE;
+            tagItems
+                .slice(start, end)
+                .forEach((tag) => tag.classList.remove("hidden"));
+
+            // Render Tag Controls
+            if (tagsPaginationContainer) {
+                tagsPaginationContainer.innerHTML = "";
+                if (totalTagPages > 1) {
+                    const controlsDiv = document.createElement("div");
+                    controlsDiv.className =
+                        "flex justify-between items-center text-xs mt-2 text-neutral-500";
+
+                    const prevBtn = document.createElement("button");
+                    prevBtn.textContent = "←"; // Prev
+                    prevBtn.className = `hover:text-gold ${currentTagPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`;
+                    prevBtn.disabled = currentTagPage === 1;
+                    prevBtn.onclick = () => {
+                        if (currentTagPage > 1) {
+                            currentTagPage--;
+                            renderTags();
+                        }
+                    };
+
+                    const indicator = document.createElement("span");
+                    indicator.textContent = `${currentTagPage} / ${totalTagPages}`;
+
+                    const nextBtn = document.createElement("button");
+                    nextBtn.textContent = "→"; // Next
+                    nextBtn.className = `hover:text-gold ${currentTagPage === totalTagPages ? "opacity-50 cursor-not-allowed" : ""}`;
+                    nextBtn.disabled = currentTagPage === totalTagPages;
+                    nextBtn.onclick = () => {
+                        if (currentTagPage < totalTagPages) {
+                            currentTagPage++;
+                            renderTags();
+                        }
+                    };
+
+                    controlsDiv.appendChild(prevBtn);
+                    controlsDiv.appendChild(indicator);
+                    controlsDiv.appendChild(nextBtn);
+                    tagsPaginationContainer.appendChild(controlsDiv);
+                }
+            }
+        }
+
+        // Initial render for tags
+        renderTags();
+
+        // --- Filter Logic ---
+        function filterItems() {
+            visibleItems = items.filter((item) => {
+                const itemCats = JSON.parse(item.dataset.categories || "[]");
+                const itemTags = JSON.parse(item.dataset.tags || "[]");
+
+                const catMatch =
+                    activeCategories.size === 0 ||
+                    itemCats.some((cat: string) => activeCategories.has(cat));
+
+                const tagMatch =
+                    activeTags.size === 0 ||
+                    itemTags.some((tag: string) => activeTags.has(tag));
+
+                return catMatch && tagMatch;
+            });
+
+            // Toggle visibility of clear filters button
+            if (clearBtn) {
+                if (activeCategories.size > 0 || activeTags.size > 0) {
+                    clearBtn.classList.remove("hidden");
+                } else {
+                    clearBtn.classList.add("hidden");
+                }
+            }
+
+            // Update Empty State
+            if (visibleItems.length === 0) {
+                grid?.classList.add("hidden");
+                emptyState?.classList.remove("hidden");
+                paginationContainer?.classList.add("hidden");
+            } else {
+                grid?.classList.remove("hidden");
+                emptyState?.classList.add("hidden");
+                paginationContainer?.classList.remove("hidden");
+                currentPage = 1;
+                renderPage();
+            }
+        }
+
+        // --- Pagination Logic (Certificates) ---
+        function renderPage() {
+            const totalPages = Math.ceil(visibleItems.length / ITEMS_PER_PAGE);
+
+            // Hide all items first
+            items.forEach((item) => item.classList.add("hidden"));
+
+            // Calculate range for current page
+            const start = (currentPage - 1) * ITEMS_PER_PAGE;
+            const end = start + ITEMS_PER_PAGE;
+
+            // Show items for current page
+            visibleItems
+                .slice(start, end)
+                .forEach((item) => item.classList.remove("hidden"));
+
+            // Render Controls
+            if (paginationContainer) {
+                paginationContainer.innerHTML = "";
+                if (totalPages > 1) {
+                    // Prev Button
+                    const prevBtn = document.createElement("button");
+                    prevBtn.textContent = "←";
+                    prevBtn.className = `px-3 py-1 rounded border ${currentPage === 1 ? "border-neutral-200 dark:border-neutral-800 text-neutral-400 cursor-not-allowed" : "border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-white hover:border-gold hover:text-gold"}`;
+                    prevBtn.onclick = () => {
+                        if (currentPage > 1) {
+                            currentPage--;
+                            renderPage();
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                        }
+                    };
+                    paginationContainer.appendChild(prevBtn);
+
+                    // Page Numbers
+                    for (let i = 1; i <= totalPages; i++) {
+                        const pageBtn = document.createElement("button");
+                        pageBtn.textContent = i.toString();
+                        pageBtn.className = `px-3 py-1 rounded border ${currentPage === i ? "bg-gold border-gold text-black font-bold" : "border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-white hover:border-gold hover:text-gold"}`;
+                        pageBtn.onclick = () => {
+                            currentPage = i;
+                            renderPage();
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                        };
+                        paginationContainer.appendChild(pageBtn);
+                    }
+
+                    // Next Button
+                    const nextBtn = document.createElement("button");
+                    nextBtn.textContent = "→";
+                    nextBtn.className = `px-3 py-1 rounded border ${currentPage === totalPages ? "border-neutral-200 dark:border-neutral-800 text-neutral-400 cursor-not-allowed" : "border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-white hover:border-gold hover:text-gold"}`;
+                    nextBtn.onclick = () => {
+                        if (currentPage < totalPages) {
+                            currentPage++;
+                            renderPage();
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                        }
+                    };
+                    paginationContainer.appendChild(nextBtn);
+                }
+            }
+        }
+
+        // --- Event Listeners ---
+
+        // Categories
+        document.querySelectorAll(".filter-category").forEach((input) => {
+            input.addEventListener("change", (e) => {
+                const target = e.target as HTMLInputElement;
+                if (target.checked) activeCategories.add(target.value);
+                else activeCategories.delete(target.value);
+                filterItems();
+            });
+        });
+
+        // Tags
+        document.querySelectorAll(".filter-tag").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const val = btn.getAttribute("data-value");
+                if (!val) return;
+
+                if (activeTags.has(val)) {
+                    activeTags.delete(val);
+                    // Inactive state
+                    btn.classList.remove(
+                        "bg-gold",
+                        "text-black",
+                        "border-gold",
+                    );
+                    btn.classList.add(
+                        "bg-white",
+                        "dark:bg-neutral-800",
+                        "text-neutral-600",
+                        "dark:text-neutral-400",
+                        "border-neutral-300",
+                        "dark:border-neutral-700",
+                    );
+                } else {
+                    activeTags.add(val);
+                    // Active state (Gold)
+                    btn.classList.add("bg-gold", "text-black", "border-gold");
+                    btn.classList.remove(
+                        "bg-white",
+                        "dark:bg-neutral-800",
+                        "text-neutral-600",
+                        "dark:text-neutral-400",
+                        "border-neutral-300",
+                        "dark:border-neutral-700",
+                    );
+                }
+                filterItems();
+            });
+        });
+
+        // Clear buttons
+        const resetAction = () => {
+            activeCategories.clear();
+            activeTags.clear();
+            document
+                .querySelectorAll(".filter-category")
+                .forEach((el) => ((el as HTMLInputElement).checked = false));
+            document.querySelectorAll(".filter-tag").forEach((el) => {
+                el.classList.remove("bg-gold", "text-black", "border-gold");
+                el.classList.add(
+                    "bg-white",
+                    "dark:bg-neutral-800",
+                    "text-neutral-600",
+                    "dark:text-neutral-400",
+                    "border-neutral-300",
+                    "dark:border-neutral-700",
+                );
+            });
+            filterItems();
+        };
+
+        if (clearBtn) clearBtn.addEventListener("click", resetAction);
+        if (resetBtn) resetBtn.addEventListener("click", resetAction);
+
+        // Init
+        filterItems();
+    }
+</script>

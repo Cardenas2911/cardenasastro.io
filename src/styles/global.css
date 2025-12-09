@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-gold: #d9ad26;
+  --color-gold-500: #d9ad26;
+  --color-gold-400: #eec545;
+  --color-gold-600: #b89018;
+}

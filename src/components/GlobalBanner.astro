@@ -1,0 +1,119 @@
+---
+
+---
+
+<div
+    id="global-banner"
+    class="fixed bottom-8 left-0 w-full z-[60] flex justify-center pointer-events-none"
+>
+    <div
+        class="pointer-events-auto bg-gradient-to-r from-[#D9AD26] to-[#FACC15] shadow-[0_0_20px_rgba(217,173,38,0.4)] rounded-full py-3 px-6 flex items-center gap-4 max-w-[90vw] animate-slide-up transition-all duration-300 border border-white/20"
+    >
+        <!-- Icon/Badge -->
+        <div
+            class="hidden sm:flex items-center justify-center w-8 h-8 rounded-full bg-black/10 text-black text-xs backdrop-blur-sm flex-shrink-0"
+        >
+            <span class="relative flex h-3 w-3">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-30"
+                ></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-black"
+                ></span>
+            </span>
+        </div>
+
+        <!-- Content -->
+        <p
+            class="text-sm font-semibold text-black/80 flex flex-col sm:flex-row gap-1 sm:gap-3 items-center whitespace-nowrap"
+        >
+            <span>¿Tienes un proyecto en mente?</span>
+            <a
+                href="/cotizacion"
+                class="text-black font-bold flex items-center gap-1 transition-transform hover:scale-105 group border-b-2 border-black/20 hover:border-black"
+            >
+                Solicitar Cotización <span
+                    class="group-hover:translate-x-1 transition-transform"
+                    >→</span
+                >
+            </a>
+        </p>
+
+        <!-- Close Button -->
+        <button
+            id="close-banner-btn"
+            class="ml-2 text-black/50 hover:text-black transition-colors p-1.5 rounded-full hover:bg-black/5 flex-shrink-0"
+            aria-label="Cerrar aviso"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<script>
+    const banner = document.getElementById("global-banner");
+    const closeBtn = document.getElementById("close-banner-btn");
+    const bannerContent = banner?.firstElementChild as HTMLElement;
+
+    closeBtn?.addEventListener("click", () => {
+        if (bannerContent) {
+            // Add a class for the exit animation
+            bannerContent.classList.add("animate-banner-exit");
+
+            // Wait for animation to finish
+            setTimeout(() => {
+                if (banner) banner.style.display = "none";
+            }, 500);
+        }
+    });
+</script>
+
+<style>
+    @keyframes slideUp {
+        from {
+            transform: translateY(100%) scale(0.95);
+            opacity: 0;
+            filter: blur(10px);
+        }
+        to {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            filter: blur(0);
+        }
+    }
+
+    @keyframes slideDownExit {
+        0% {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            filter: blur(0);
+        }
+        40% {
+            transform: translateY(-10px) scale(1.02); /* Anticipation jump */
+        }
+        100% {
+            transform: translateY(50px) scale(0.9);
+            opacity: 0;
+            filter: blur(10px);
+        }
+    }
+
+    .animate-slide-up {
+        animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    .animate-banner-exit {
+        animation: slideDownExit 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+</style>

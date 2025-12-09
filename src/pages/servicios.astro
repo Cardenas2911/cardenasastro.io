@@ -1,0 +1,320 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProfileCard from "../components/ProfileCard.astro";
+
+const webServices = [
+    {
+        title: "Desarrollo WordPress a Medida",
+        description:
+            "Sitios web únicos diseñados desde cero. Sin plantillas pesadas ni código basura. Priorizo la velocidad, la seguridad y la escalabilidad de tu negocio.",
+        icon: "code",
+    },
+    {
+        title: "Arquitecturas Headless (Astro/Next.js)",
+        description:
+            "La vanguardia del desarrollo web. Desacoplo el frontend de tu WordPress para lograr tiempos de carga instantáneos y una seguridad impenetrable.",
+        icon: "rocket",
+    },
+    {
+        title: "E-commerce y Tiendas Online",
+        description:
+            "Desarrollo de tiendas WooCommerce optimizadas para la conversión. Pasarelas de pago, gestión de inventario y experiencia de usuario fluida.",
+        icon: "cart",
+    },
+];
+
+const seoServices = [
+    {
+        title: "Auditoría SEO Técnica",
+        description:
+            "Análisis exhaustivo de tu sitio. Detecto y soluciono problemas de indexación, rastreo, arquitectura web y Core Web Vitals que frenan tu crecimiento.",
+        icon: "search",
+    },
+    {
+        title: "SEO Local y Google Business",
+        description:
+            "Domina las búsquedas en tu ciudad. Optimización de fichas de Google Business Profile y estrategias para captar clientes cercanos a tu ubicación.",
+        icon: "map",
+    },
+    {
+        title: "Estrategia de Contenidos",
+        description:
+            "Investigación de palabras clave (Keyword Research) orientada a ventas. Planifico qué contenidos crear para atraer tráfico cualificado, no solo visitas.",
+        icon: "chart",
+    },
+];
+---
+
+<Layout title="Servicios de SEO y Desarrollo Web | Nicolas Cardenas">
+    <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 py-8">
+        <!-- Sidebar -->
+        <div class="hidden lg:block w-full">
+            <ProfileCard />
+        </div>
+
+        <!-- Main Content (Right Column) -->
+        <div class="space-y-12">
+            <section
+                class="py-12 text-center bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 relative overflow-hidden transition-colors duration-300"
+            >
+                <div class="relative z-10">
+                    <h1
+                        class="text-4xl font-bold mb-4 text-neutral-900 dark:text-white transition-colors"
+                    >
+                        Mis Servicios
+                    </h1>
+                    <p
+                        class="text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-12 transition-colors"
+                    >
+                        Especialización técnica dividida en dos pilares
+                        fundamentales.
+                    </p>
+
+                    <!-- Toggle Controls -->
+                    <div class="flex justify-center mb-16">
+                        <div
+                            class="bg-neutral-100 dark:bg-neutral-900 p-1 rounded-xl border border-neutral-200 dark:border-white/10 inline-flex relative transition-colors"
+                        >
+                            <div
+                                id="toggle-bg"
+                                class="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] bg-gold rounded-lg transition-all duration-300 ease-in-out shadow-sm"
+                            >
+                            </div>
+                            <button
+                                id="btn-web"
+                                class="relative z-10 px-8 py-3 rounded-lg text-neutral-900 font-bold transition-colors w-48"
+                                onclick="switchTab('web')"
+                            >
+                                Desarrollo Web
+                            </button>
+                            <button
+                                id="btn-seo"
+                                class="relative z-10 px-8 py-3 rounded-lg text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white font-medium transition-colors w-48"
+                                onclick="switchTab('seo')"
+                            >
+                                Posicionamiento SEO
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Categoría: Desarrollo Web -->
+                    <div
+                        id="web-services"
+                        class="service-panel transition-opacity duration-300"
+                    >
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {
+                                webServices.map((service) => (
+                                    <div class="bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 p-6 rounded-xl hover:border-gold/30 transition-all hover:-translate-y-1 text-left group">
+                                        <div class="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center mb-6 text-gold group-hover:scale-110 transition-transform">
+                                            {service.icon === "code" && (
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-6 w-6"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                                                    />
+                                                </svg>
+                                            )}
+                                            {service.icon === "rocket" && (
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-6 w-6"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                                                    />
+                                                </svg>
+                                            )}
+                                            {service.icon === "cart" && (
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-6 w-6"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                                                    />
+                                                </svg>
+                                            )}
+                                        </div>
+                                        <h3 class="text-lg font-bold text-neutral-900 dark:text-white mb-2 transition-colors">
+                                            {service.title}
+                                        </h3>
+                                        <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm transition-colors">
+                                            {service.description}
+                                        </p>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Categoría: SEO -->
+                    <div
+                        id="seo-services"
+                        class="service-panel hidden transition-opacity duration-300"
+                    >
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {
+                                seoServices.map((service) => (
+                                    <div class="bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 p-6 rounded-xl hover:border-gold/30 transition-all hover:-translate-y-1 text-left group">
+                                        <div class="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center mb-6 text-gold group-hover:scale-110 transition-transform">
+                                            {service.icon === "search" && (
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-6 w-6"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                                    />
+                                                </svg>
+                                            )}
+                                            {service.icon === "map" && (
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-6 w-6"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                                    />
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                                    />
+                                                </svg>
+                                            )}
+                                            {service.icon === "chart" && (
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-6 w-6"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                                                    />
+                                                </svg>
+                                            )}
+                                        </div>
+                                        <h3 class="text-lg font-bold text-neutral-900 dark:text-white mb-2 transition-colors">
+                                            {service.title}
+                                        </h3>
+                                        <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm transition-colors">
+                                            {service.description}
+                                        </p>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+                    <div class="mt-20">
+                        <a
+                            href="/contacto"
+                            class="inline-flex items-center justify-center px-8 py-4 text-base font-bold leading-6 text-black transition duration-150 ease-in-out bg-gold border border-transparent rounded-lg hover:bg-gold-400 shadow-lg shadow-gold/20"
+                        >
+                            Solicitar Presupuesto Personalizado
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script is:inline>
+        function switchTab(tab) {
+            const webPanel = document.getElementById("web-services");
+            const seoPanel = document.getElementById("seo-services");
+            const btnWeb = document.getElementById("btn-web");
+            const btnSeo = document.getElementById("btn-seo");
+            const toggleBg = document.getElementById("toggle-bg");
+
+            // We need to handle Light/Dark classes for text.
+            // Active: text-neutral-900 (always dark since bg is gold? No, wait)
+            // The active button is ON TOP of the GOLD background `toggle-bg`.
+            // Gold background usually works with black text.
+            // The inactive button is on neutral background. In dark mode text-neutral-400. In light mode text-neutral-500.
+
+            if (tab === "web") {
+                webPanel.classList.remove("hidden");
+                seoPanel.classList.add("hidden");
+
+                // BTN WEB ACTIVE (On Gold)
+                btnWeb.classList.remove(
+                    "text-neutral-500",
+                    "dark:text-neutral-400",
+                    "font-medium",
+                );
+                btnWeb.classList.add("text-neutral-900", "font-bold"); // Keep it black/dark even in dark mode because gold bg
+
+                // BTN SEO INACTIVE
+                btnSeo.classList.add(
+                    "text-neutral-500",
+                    "dark:text-neutral-400",
+                    "font-medium",
+                );
+                btnSeo.classList.remove("text-neutral-900", "font-bold");
+
+                toggleBg.style.transform = "translateX(0)";
+            } else {
+                webPanel.classList.add("hidden");
+                seoPanel.classList.remove("hidden");
+
+                // BTN WEB INACTIVE
+                btnWeb.classList.add(
+                    "text-neutral-500",
+                    "dark:text-neutral-400",
+                    "font-medium",
+                );
+                btnWeb.classList.remove("text-neutral-900", "font-bold");
+
+                // BTN SEO ACTIVE (On Gold)
+                btnSeo.classList.remove(
+                    "text-neutral-500",
+                    "dark:text-neutral-400",
+                    "font-medium",
+                );
+                btnSeo.classList.add("text-neutral-900", "font-bold");
+
+                toggleBg.style.transform = "translateX(100%)";
+            }
+        }
+    </script>
+</Layout>

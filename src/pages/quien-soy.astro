@@ -1,0 +1,103 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProfileCard from "../components/ProfileCard.astro";
+---
+
+<Layout title="Quién Soy | Nicolas Cardenas - Experto en SEO y WordPress">
+    <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 py-8">
+        <!-- Sidebar -->
+        <div class="hidden lg:block w-full">
+            <ProfileCard />
+        </div>
+
+        <!-- Main Content (Right Column) -->
+        <div class="space-y-12">
+            <section
+                class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 md:p-12 relative overflow-hidden transition-colors duration-300"
+            >
+                <div
+                    class="grid md:grid-cols-2 gap-12 items-center relative z-10"
+                >
+                    <div>
+                        <h1
+                            class="text-4xl md:text-5xl font-bold mb-6 text-neutral-900 dark:text-white transition-colors"
+                        >
+                            Hola, soy <span class="text-gold"
+                                >Nicolas Cardenas</span
+                            >
+                        </h1>
+                        <h2
+                            class="text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 mb-6 font-medium transition-colors"
+                        >
+                            Consultor SEO & Desarrollador WordPress
+                        </h2>
+                        <div
+                            class="prose prose-neutral dark:prose-invert prose-lg text-neutral-600 dark:text-neutral-400 transition-colors"
+                        >
+                            <p class="mb-4">
+                                Ayudo a negocios a construir una presencia
+                                digital sólida, rápida y visible. Mi
+                                especialidad es la intersección entre el <strong
+                                    >Desarrollo Web técnico</strong
+                                > y el <strong
+                                    >Posicionamiento en Buscadores (SEO)</strong
+                                >.
+                            </p>
+                            <p class="mb-4">
+                                No solo creo sitios web bonitos; creo
+                                herramientas de venta optimizadas. Con años de
+                                experiencia en el ecosistema <strong
+                                    >WordPress</strong
+                                >, sé cómo exprimir al máximo la plataforma, o
+                                como en este caso, llevarla al siguiente nivel
+                                con arquitecturas modernas como <strong
+                                    >Astro</strong
+                                >.
+                            </p>
+                            <p>
+                                Mi objetivo es simple: que tu web no solo
+                                exista, sino que trabaje para ti atrayendo
+                                tráfico cualificado y convirtiendo visitas en
+                                clientes.
+                            </p>
+                        </div>
+                        <div class="mt-8 flex gap-4">
+                            <a
+                                href="/contacto"
+                                class="bg-gold hover:bg-gold-400 text-black font-bold py-3 px-6 rounded-lg transition-colors shadow-lg shadow-gold/20"
+                            >
+                                Hablemos de tu proyecto
+                            </a>
+                            <a
+                                href="/servicios"
+                                class="border border-neutral-300 dark:border-white/20 hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-900 dark:text-white font-medium py-3 px-6 rounded-lg transition-colors"
+                            >
+                                Ver mis servicios
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div
+                            class="absolute inset-0 bg-gold/10 rounded-2xl blur-2xl"
+                        >
+                        </div>
+                        <div
+                            class="relative bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 rounded-2xl p-2 aspect-[4/5] flex items-center justify-center overflow-hidden shadow-2xl shadow-gold/10 transition-colors"
+                        >
+                            <img
+                                src="https://cardenasnicolas.com/wp-content/uploads/2025/05/nicolas-cardenas-seo-y-desarrollador-web-imagen.png.webp"
+                                alt="Nicolas Cardenas - Consultor SEO y Desarrollador Web"
+                                class="w-full h-full object-cover rounded-xl"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <!-- Background decoration -->
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-gold/5 dark:bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none transition-colors"
+                >
+                </div>
+            </section>
+        </div>
+    </div>
+</Layout>

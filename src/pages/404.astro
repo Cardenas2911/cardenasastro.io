@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404 - Página no encontrada | Nicolas Cardenas">
+    <section
+        class="min-h-[60vh] flex flex-col items-center justify-center text-center py-20"
+    >
+        <div class="text-9xl font-bold text-gold mb-4">404</div>
+        <h1
+            class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white mb-6 transition-colors"
+        >
+            ¡Ups! Te has perdido en el ciberespacio
+        </h1>
+        <p
+            class="text-xl text-neutral-600 dark:text-neutral-400 max-w-lg mx-auto mb-10 transition-colors"
+        >
+            La página que buscas no existe o ha sido movida. Pero no te
+            preocupes, siempre hay un camino de vuelta.
+        </p>
+        <a
+            href="/"
+            class="bg-gold hover:bg-gold-400 text-black font-bold py-3 px-8 rounded-lg transition-all hover:scale-105 shadow-lg shadow-gold/20"
+        >
+            Volver al Inicio
+        </a>
+    </section>
+</Layout>
