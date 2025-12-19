@@ -1,529 +1,559 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ProfileCard from "../components/ProfileCard.astro";
 ---
 
 <Layout
     title="Cotización | Nicolas Cardenas - Tu Proyecto Web"
     showGlobalBanner={false}
 >
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-32">
-        <section
-            class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 md:p-12 relative overflow-hidden transition-colors duration-300"
-        >
-            <div
-                class="absolute top-0 right-0 w-64 h-64 bg-gold/5 dark:bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"
-            >
-            </div>
-            <div class="relative z-10">
-                <div class="text-center mb-12">
-                    <h1
-                        class="text-4xl font-bold text-neutral-900 dark:text-white mb-4"
-                    >
-                        Calcula tu Cotización
-                    </h1>
-                    <p class="text-xl text-neutral-600 dark:text-neutral-400">
-                        Selecciona las opciones que mejor se adapten a tu
-                        proyecto para obtener un estimado instantáneo.
-                    </p>
-                </div>
-
-                <form id="quote-form" class="space-y-12">
-                    <!-- Service Type -->
-                    <div class="space-y-6">
-                        <label
-                            class="block text-2xl font-bold text-neutral-900 dark:text-white text-center mb-8"
-                        >
-                            ¿Qué tipo de sitio necesitas?
-                        </label>
-                        <div
-                            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
-                        >
-                            <label class="cursor-pointer relative group">
-                                <input
-                                    type="radio"
-                                    name="serviceType"
-                                    value="950"
-                                    data-label="Sitio Corporativo"
-                                    class="peer sr-only"
-                                    checked
-                                />
-                                <div
-                                    class="p-6 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border-2 border-transparent peer-checked:border-gold peer-checked:bg-white dark:peer-checked:bg-neutral-800/80 peer-checked:shadow-[0_0_20px_rgba(217,173,38,0.2)] hover:bg-neutral-200 dark:hover:bg-neutral-800/80 transition-all duration-300 text-center h-full flex flex-col items-center justify-center gap-4 relative overflow-hidden"
-                                >
-                                    <!-- Checkmark -->
-                                    <div
-                                        class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100 transition-opacity text-gold"
-                                    >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="h-6 w-6"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
-                                        >
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-
-                                    <span
-                                        class="text-4xl group-hover:scale-110 transition-transform duration-300"
-                                        >💻</span
-                                    >
-                                    <div>
-                                        <div
-                                            class="font-bold text-neutral-900 dark:text-white text-lg"
-                                        >
-                                            Corporativo
-                                        </div>
-                                        <div
-                                            class="text-sm text-gold font-mono mt-1 font-bold"
-                                        >
-                                            $950
-                                        </div>
-                                    </div>
-                                </div>
-                            </label>
-
-                            <label class="cursor-pointer relative group">
-                                <input
-                                    type="radio"
-                                    name="serviceType"
-                                    value="500"
-                                    data-label="Blog Personal / Profesional"
-                                    class="peer sr-only"
-                                />
-                                <div
-                                    class="p-6 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border-2 border-transparent peer-checked:border-gold peer-checked:bg-white dark:peer-checked:bg-neutral-800/80 peer-checked:shadow-[0_0_20px_rgba(217,173,38,0.2)] hover:bg-neutral-200 dark:hover:bg-neutral-800/80 transition-all duration-300 text-center h-full flex flex-col items-center justify-center gap-4 relative overflow-hidden"
-                                >
-                                    <!-- Checkmark -->
-                                    <div
-                                        class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100 transition-opacity text-gold"
-                                    >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="h-6 w-6"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
-                                        >
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-
-                                    <span
-                                        class="text-4xl group-hover:scale-110 transition-transform duration-300"
-                                        >📝</span
-                                    >
-                                    <div>
-                                        <div
-                                            class="font-bold text-neutral-900 dark:text-white text-lg"
-                                        >
-                                            Blog
-                                        </div>
-                                        <div
-                                            class="text-sm text-gold font-mono mt-1 font-bold"
-                                        >
-                                            $500
-                                        </div>
-                                    </div>
-                                </div>
-                            </label>
-
-                            <label class="cursor-pointer relative group">
-                                <input
-                                    type="radio"
-                                    name="serviceType"
-                                    value="1300"
-                                    data-label="E-commerce (Tienda Online)"
-                                    class="peer sr-only"
-                                />
-                                <div
-                                    class="p-6 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border-2 border-transparent peer-checked:border-gold peer-checked:bg-white dark:peer-checked:bg-neutral-800/80 peer-checked:shadow-[0_0_20px_rgba(217,173,38,0.2)] hover:bg-neutral-200 dark:hover:bg-neutral-800/80 transition-all duration-300 text-center h-full flex flex-col items-center justify-center gap-4 relative overflow-hidden"
-                                >
-                                    <!-- Checkmark -->
-                                    <div
-                                        class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100 transition-opacity text-gold"
-                                    >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="h-6 w-6"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
-                                        >
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-
-                                    <span
-                                        class="text-4xl group-hover:scale-110 transition-transform duration-300"
-                                        >🛒</span
-                                    >
-                                    <div>
-                                        <div
-                                            class="font-bold text-neutral-900 dark:text-white text-lg"
-                                        >
-                                            E-commerce
-                                        </div>
-                                        <div
-                                            class="text-sm text-gold font-mono mt-1 font-bold"
-                                        >
-                                            $1,300
-                                        </div>
-                                    </div>
-                                </div>
-                            </label>
-
-                            <label class="cursor-pointer relative group">
-                                <input
-                                    type="radio"
-                                    name="serviceType"
-                                    value="1800"
-                                    data-label="Academia Online / LMS"
-                                    class="peer sr-only"
-                                />
-                                <div
-                                    class="p-6 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border-2 border-transparent peer-checked:border-gold peer-checked:bg-white dark:peer-checked:bg-neutral-800/80 peer-checked:shadow-[0_0_20px_rgba(217,173,38,0.2)] hover:bg-neutral-200 dark:hover:bg-neutral-800/80 transition-all duration-300 text-center h-full flex flex-col items-center justify-center gap-4 relative overflow-hidden"
-                                >
-                                    <!-- Checkmark -->
-                                    <div
-                                        class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100 transition-opacity text-gold"
-                                    >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="h-6 w-6"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
-                                        >
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-
-                                    <span
-                                        class="text-4xl group-hover:scale-110 transition-transform duration-300"
-                                        >🎓</span
-                                    >
-                                    <div>
-                                        <div
-                                            class="font-bold text-neutral-900 dark:text-white text-lg"
-                                        >
-                                            Academia
-                                        </div>
-                                        <div
-                                            class="text-sm text-gold font-mono mt-1 font-bold"
-                                        >
-                                            $1,800
-                                        </div>
-                                    </div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Page Count Pills -->
-                    <div class="space-y-6">
-                        <label
-                            class="block text-2xl font-bold text-neutral-900 dark:text-white text-center mb-8"
-                        >
-                            Número estimado de páginas
-                        </label>
-                        <div
-                            class="flex flex-col md:flex-row justify-center gap-4"
-                        >
-                            <!-- Option 1 -->
-                            <label class="cursor-pointer">
-                                <input
-                                    type="radio"
-                                    name="pageCountPill"
-                                    value="0"
-                                    data-label="Menos de 10 páginas"
-                                    class="peer sr-only"
-                                    checked
-                                />
-                                <div
-                                    class="px-6 py-4 rounded-full bg-neutral-100 dark:bg-neutral-800 border-2 border-transparent peer-checked:border-gold peer-checked:bg-gold/10 peer-checked:text-gold text-neutral-600 dark:text-neutral-400 font-medium transition-all hover:bg-neutral-200 dark:hover:bg-neutral-700 text-center"
-                                >
-                                    Menos de 10
-                                    <span class="text-xs block opacity-60"
-                                        >Incluido</span
-                                    >
-                                </div>
-                            </label>
-
-                            <!-- Option 2 -->
-                            <label class="cursor-pointer">
-                                <input
-                                    type="radio"
-                                    name="pageCountPill"
-                                    value="50"
-                                    data-label="Entre 10 y 20 páginas"
-                                    class="peer sr-only"
-                                />
-                                <div
-                                    class="px-6 py-4 rounded-full bg-neutral-100 dark:bg-neutral-800 border-2 border-transparent peer-checked:border-gold peer-checked:bg-gold/10 peer-checked:text-gold text-neutral-600 dark:text-neutral-400 font-medium transition-all hover:bg-neutral-200 dark:hover:bg-neutral-700 text-center"
-                                >
-                                    Entre 10 y 20
-                                    <span class="text-xs block opacity-60"
-                                        >+$50 USD</span
-                                    >
-                                </div>
-                            </label>
-
-                            <!-- Option 3 -->
-                            <label class="cursor-pointer">
-                                <input
-                                    type="radio"
-                                    name="pageCountPill"
-                                    value="75"
-                                    data-label="Entre 20 y 30 páginas"
-                                    class="peer sr-only"
-                                />
-                                <div
-                                    class="px-6 py-4 rounded-full bg-neutral-100 dark:bg-neutral-800 border-2 border-transparent peer-checked:border-gold peer-checked:bg-gold/10 peer-checked:text-gold text-neutral-600 dark:text-neutral-400 font-medium transition-all hover:bg-neutral-200 dark:hover:bg-neutral-700 text-center"
-                                >
-                                    Entre 20 y 30
-                                    <span class="text-xs block opacity-60"
-                                        >+$75 USD</span
-                                    >
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div
-                        class="h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-800 to-transparent my-12"
-                    >
-                    </div>
-
-                    <!-- Extras -->
-                    <div class="space-y-8 max-w-2xl mx-auto">
-                        <h2
-                            class="text-2xl font-bold text-neutral-900 dark:text-white mb-6 text-center"
-                        >
-                            Potencia tu proyecto
-                        </h2>
-
-                        <!-- SEO -->
-                        <label
-                            class="flex items-center justify-between cursor-pointer group p-5 rounded-2xl bg-neutral-100/50 dark:bg-neutral-800/30 border border-transparent hover:border-gold/30 hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-all"
-                        >
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-xl group-hover:text-gold transition-colors"
-                                >
-                                    🔍
-                                </div>
-                                <span class="flex flex-col">
-                                    <span
-                                        class="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-gold transition-colors"
-                                        >Optimización SEO</span
-                                    >
-                                    <span
-                                        class="text-sm text-neutral-600 dark:text-neutral-400"
-                                        >Mejora tu visibilidad en buscadores</span
-                                    >
-                                </span>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <span class="text-gold font-mono font-bold"
-                                    >+$200</span
-                                >
-                                <div class="relative flex items-center">
-                                    <input
-                                        type="checkbox"
-                                        name="extraSeo"
-                                        value="200"
-                                        class="sr-only peer"
-                                    />
-                                    <div
-                                        class="w-14 h-7 bg-neutral-300 dark:bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-gold peer-checked:shadow-[0_0_10px_rgba(217,173,38,0.4)]"
-                                    >
-                                    </div>
-                                </div>
-                            </div>
-                        </label>
-
-                        <!-- Positioning -->
-                        <label
-                            class="flex items-center justify-between cursor-pointer group p-5 rounded-2xl bg-neutral-100/50 dark:bg-neutral-800/30 border border-transparent hover:border-gold/30 hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-all"
-                        >
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-xl group-hover:text-gold transition-colors"
-                                >
-                                    🚀
-                                </div>
-                                <span class="flex flex-col">
-                                    <span
-                                        class="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-gold transition-colors"
-                                        >Posicionamiento Web</span
-                                    >
-                                    <span
-                                        class="text-sm text-neutral-600 dark:text-neutral-400"
-                                        >Estrategia avanzada de ranking</span
-                                    >
-                                </span>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <span class="text-gold font-mono font-bold"
-                                    >+$300</span
-                                >
-                                <div class="relative flex items-center">
-                                    <input
-                                        type="checkbox"
-                                        name="extraPositioning"
-                                        value="300"
-                                        class="sr-only peer"
-                                    />
-                                    <div
-                                        class="w-14 h-7 bg-neutral-300 dark:bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-gold peer-checked:shadow-[0_0_10px_rgba(217,173,38,0.4)]"
-                                    >
-                                    </div>
-                                </div>
-                            </div>
-                        </label>
-
-                        <!-- Maintenance Toggle -->
-                        <label
-                            class="flex items-center justify-between cursor-pointer group p-5 rounded-2xl bg-neutral-100/50 dark:bg-neutral-800/30 border border-transparent hover:border-gold/30 hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-all"
-                        >
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-xl group-hover:text-gold transition-colors"
-                                >
-                                    🛡️
-                                </div>
-                                <span class="flex flex-col">
-                                    <span
-                                        class="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-gold transition-colors"
-                                        >Mantenimiento Mensual</span
-                                    >
-                                    <span
-                                        class="text-sm text-neutral-600 dark:text-neutral-400"
-                                        >Actualizaciones, seguridad y monitoreo</span
-                                    >
-                                </span>
-                            </div>
-                            <div class="relative flex items-center">
-                                <input
-                                    type="checkbox"
-                                    id="maintenanceToggle"
-                                    class="sr-only peer"
-                                />
-                                <div
-                                    class="w-14 h-7 bg-neutral-300 dark:bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-gold peer-checked:shadow-[0_0_10px_rgba(217,173,38,0.4)]"
-                                >
-                                </div>
-                            </div>
-                        </label>
-
-                        <!-- Maintenance Slider (Conditional) -->
-                        <div
-                            id="maintenanceContainer"
-                            class="p-6 bg-gradient-to-b from-neutral-100 to-white dark:from-neutral-800 dark:to-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-700/50 transition-all duration-500 ease-out hidden opacity-0 transform translate-y-4"
-                        >
-                            <div class="flex justify-between items-center mb-6">
-                                <label
-                                    for="maintenanceMonths"
-                                    class="text-neutral-900 dark:text-white font-medium"
-                                    >Duración del servicio</label
-                                >
-                                <div
-                                    class="bg-white/50 dark:bg-black/50 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-700 text-gold font-mono"
-                                >
-                                    <span
-                                        id="monthsDisplay"
-                                        class="font-bold text-xl">1</span
-                                    > Mes(es)
-                                </div>
-                            </div>
-
-                            <input
-                                type="range"
-                                id="maintenanceMonths"
-                                min="1"
-                                max="12"
-                                value="1"
-                                class="w-full h-3 bg-neutral-300 dark:bg-neutral-700 rounded-lg appearance-none cursor-pointer accent-gold hover:accent-yellow-400 transition-all"
-                            />
-                            <div
-                                class="flex justify-between text-xs text-neutral-500 mt-3 font-medium uppercase tracking-wider"
-                            >
-                                <span>1 Mes</span>
-                                <span class="text-gold">+$50 USD / mes</span>
-                                <span>12 Meses</span>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </section>
-
-        <!-- Sticky Total Bar (Slim/Floating) -->
+    <!-- Background Decor (Optional) -->
+    <div
+        class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-30 dark:opacity-20"
+    >
         <div
-            class="fixed bottom-6 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 w-full md:max-w-4xl bg-white/90 dark:bg-black/90 backdrop-blur-xl border border-neutral-200 dark:border-neutral-800 p-4 rounded-full flex flex-row justify-between items-center gap-4 z-50 shadow-2xl ring-1 ring-black/5 dark:ring-white/10 transition-colors duration-300"
+            class="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"
         >
-            <div class="flex items-center gap-4 pl-2">
-                <div class="flex flex-col">
-                    <div
-                        class="text-[10px] font-bold uppercase tracking-widest text-neutral-600 dark:text-neutral-400 leading-tight"
-                    >
-                        Inversión Estimada
-                    </div>
-                </div>
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-neutral-800/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"
+        >
+        </div>
+    </div>
+
+    <div
+        class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-24 py-12 lg:py-20 max-w-7xl mx-auto px-4 md:px-8"
+    >
+        <!-- Sidebar with ProfileCard -->
+        <aside class="hidden lg:block relative">
+            <ProfileCard />
+        </aside>
+
+        <!-- Main Content (Calculator) -->
+        <div class="min-w-0">
+            <section
+                class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 md:p-12 relative overflow-hidden transition-colors duration-300"
+            >
                 <div
-                    class="text-3xl font-bold font-mono text-neutral-900 dark:text-white leading-none"
+                    class="absolute top-0 right-0 w-64 h-64 bg-gold/5 dark:bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"
                 >
-                    $<span id="totalDisplay">950</span>
-                    <span
-                        class="text-sm text-neutral-600 dark:text-neutral-500 font-sans font-normal"
-                        >USD</span
-                    >
+                </div>
+                <div class="relative z-10">
+                    <div class="text-center mb-12">
+                        <h1
+                            class="text-4xl font-bold text-neutral-900 dark:text-white mb-4"
+                        >
+                            Calcula tu Cotización
+                        </h1>
+                        <p
+                            class="text-xl text-neutral-600 dark:text-neutral-400"
+                        >
+                            Selecciona las opciones que mejor se adapten a tu
+                            proyecto para obtener un estimado instantáneo.
+                        </p>
+                    </div>
+
+                    <form id="quote-form" class="space-y-12">
+                        <!-- Service Type -->
+                        <div class="space-y-6">
+                            <label
+                                class="block text-2xl font-bold text-neutral-900 dark:text-white text-center mb-8"
+                            >
+                                ¿Qué tipo de sitio necesitas?
+                            </label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <label class="cursor-pointer relative group">
+                                    <input
+                                        type="radio"
+                                        name="serviceType"
+                                        value="950"
+                                        data-label="Sitio Corporativo"
+                                        class="peer sr-only"
+                                        checked
+                                    />
+                                    <div
+                                        class="p-6 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border-2 border-transparent peer-checked:border-gold peer-checked:bg-white dark:peer-checked:bg-neutral-800/80 peer-checked:shadow-[0_0_20px_rgba(217,173,38,0.2)] hover:bg-neutral-200 dark:hover:bg-neutral-800/80 transition-all duration-300 text-center h-full flex flex-col items-center justify-center gap-4 relative overflow-hidden"
+                                    >
+                                        <!-- Checkmark -->
+                                        <div
+                                            class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100 transition-opacity text-gold"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="h-6 w-6"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                        </div>
+
+                                        <span
+                                            class="text-4xl group-hover:scale-110 transition-transform duration-300"
+                                            >💻</span
+                                        >
+                                        <div>
+                                            <div
+                                                class="font-bold text-neutral-900 dark:text-white text-lg"
+                                            >
+                                                Corporativo
+                                            </div>
+                                            <div
+                                                class="text-sm text-gold font-mono mt-1 font-bold"
+                                            >
+                                                $950
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="cursor-pointer relative group">
+                                    <input
+                                        type="radio"
+                                        name="serviceType"
+                                        value="500"
+                                        data-label="Blog Personal / Profesional"
+                                        class="peer sr-only"
+                                    />
+                                    <div
+                                        class="p-6 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border-2 border-transparent peer-checked:border-gold peer-checked:bg-white dark:peer-checked:bg-neutral-800/80 peer-checked:shadow-[0_0_20px_rgba(217,173,38,0.2)] hover:bg-neutral-200 dark:hover:bg-neutral-800/80 transition-all duration-300 text-center h-full flex flex-col items-center justify-center gap-4 relative overflow-hidden"
+                                    >
+                                        <!-- Checkmark -->
+                                        <div
+                                            class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100 transition-opacity text-gold"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="h-6 w-6"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                        </div>
+
+                                        <span
+                                            class="text-4xl group-hover:scale-110 transition-transform duration-300"
+                                            >📝</span
+                                        >
+                                        <div>
+                                            <div
+                                                class="font-bold text-neutral-900 dark:text-white text-lg"
+                                            >
+                                                Blog
+                                            </div>
+                                            <div
+                                                class="text-sm text-gold font-mono mt-1 font-bold"
+                                            >
+                                                $500
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="cursor-pointer relative group">
+                                    <input
+                                        type="radio"
+                                        name="serviceType"
+                                        value="1300"
+                                        data-label="E-commerce (Tienda Online)"
+                                        class="peer sr-only"
+                                    />
+                                    <div
+                                        class="p-6 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border-2 border-transparent peer-checked:border-gold peer-checked:bg-white dark:peer-checked:bg-neutral-800/80 peer-checked:shadow-[0_0_20px_rgba(217,173,38,0.2)] hover:bg-neutral-200 dark:hover:bg-neutral-800/80 transition-all duration-300 text-center h-full flex flex-col items-center justify-center gap-4 relative overflow-hidden"
+                                    >
+                                        <!-- Checkmark -->
+                                        <div
+                                            class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100 transition-opacity text-gold"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="h-6 w-6"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                        </div>
+
+                                        <span
+                                            class="text-4xl group-hover:scale-110 transition-transform duration-300"
+                                            >🛒</span
+                                        >
+                                        <div>
+                                            <div
+                                                class="font-bold text-neutral-900 dark:text-white text-lg"
+                                            >
+                                                E-commerce
+                                            </div>
+                                            <div
+                                                class="text-sm text-gold font-mono mt-1 font-bold"
+                                            >
+                                                $1,300
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="cursor-pointer relative group">
+                                    <input
+                                        type="radio"
+                                        name="serviceType"
+                                        value="1800"
+                                        data-label="Academia Online / LMS"
+                                        class="peer sr-only"
+                                    />
+                                    <div
+                                        class="p-6 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border-2 border-transparent peer-checked:border-gold peer-checked:bg-white dark:peer-checked:bg-neutral-800/80 peer-checked:shadow-[0_0_20px_rgba(217,173,38,0.2)] hover:bg-neutral-200 dark:hover:bg-neutral-800/80 transition-all duration-300 text-center h-full flex flex-col items-center justify-center gap-4 relative overflow-hidden"
+                                    >
+                                        <!-- Checkmark -->
+                                        <div
+                                            class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100 transition-opacity text-gold"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="h-6 w-6"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                        </div>
+
+                                        <span
+                                            class="text-4xl group-hover:scale-110 transition-transform duration-300"
+                                            >🎓</span
+                                        >
+                                        <div>
+                                            <div
+                                                class="font-bold text-neutral-900 dark:text-white text-lg"
+                                            >
+                                                Academia
+                                            </div>
+                                            <div
+                                                class="text-sm text-gold font-mono mt-1 font-bold"
+                                            >
+                                                $1,800
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Page Count Pills -->
+                        <div class="space-y-6">
+                            <label
+                                class="block text-2xl font-bold text-neutral-900 dark:text-white text-center mb-8"
+                            >
+                                Número estimado de páginas
+                            </label>
+                            <div
+                                class="flex flex-col md:flex-row justify-center gap-4"
+                            >
+                                <!-- Option 1 -->
+                                <label class="cursor-pointer">
+                                    <input
+                                        type="radio"
+                                        name="pageCountPill"
+                                        value="0"
+                                        data-label="Menos de 10 páginas"
+                                        class="peer sr-only"
+                                        checked
+                                    />
+                                    <div
+                                        class="px-6 py-4 rounded-full bg-neutral-100 dark:bg-neutral-800 border-2 border-transparent peer-checked:border-gold peer-checked:bg-gold/10 peer-checked:text-gold text-neutral-600 dark:text-neutral-400 font-medium transition-all hover:bg-neutral-200 dark:hover:bg-neutral-700 text-center"
+                                    >
+                                        Menos de 10
+                                        <span class="text-xs block opacity-60"
+                                            >Incluido</span
+                                        >
+                                    </div>
+                                </label>
+
+                                <!-- Option 2 -->
+                                <label class="cursor-pointer">
+                                    <input
+                                        type="radio"
+                                        name="pageCountPill"
+                                        value="50"
+                                        data-label="Entre 10 y 20 páginas"
+                                        class="peer sr-only"
+                                    />
+                                    <div
+                                        class="px-6 py-4 rounded-full bg-neutral-100 dark:bg-neutral-800 border-2 border-transparent peer-checked:border-gold peer-checked:bg-gold/10 peer-checked:text-gold text-neutral-600 dark:text-neutral-400 font-medium transition-all hover:bg-neutral-200 dark:hover:bg-neutral-700 text-center"
+                                    >
+                                        Entre 10 y 20
+                                        <span class="text-xs block opacity-60"
+                                            >+$50 USD</span
+                                        >
+                                    </div>
+                                </label>
+
+                                <!-- Option 3 -->
+                                <label class="cursor-pointer">
+                                    <input
+                                        type="radio"
+                                        name="pageCountPill"
+                                        value="75"
+                                        data-label="Entre 20 y 30 páginas"
+                                        class="peer sr-only"
+                                    />
+                                    <div
+                                        class="px-6 py-4 rounded-full bg-neutral-100 dark:bg-neutral-800 border-2 border-transparent peer-checked:border-gold peer-checked:bg-gold/10 peer-checked:text-gold text-neutral-600 dark:text-neutral-400 font-medium transition-all hover:bg-neutral-200 dark:hover:bg-neutral-700 text-center"
+                                    >
+                                        Entre 20 y 30
+                                        <span class="text-xs block opacity-60"
+                                            >+$75 USD</span
+                                        >
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div
+                            class="h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-800 to-transparent my-12"
+                        >
+                        </div>
+
+                        <!-- Extras -->
+                        <div class="space-y-8 max-w-2xl mx-auto">
+                            <h2
+                                class="text-2xl font-bold text-neutral-900 dark:text-white mb-6 text-center"
+                            >
+                                Potencia tu proyecto
+                            </h2>
+
+                            <!-- Auditoria SEO (New) -->
+                            <label
+                                class="flex items-center justify-between cursor-pointer group p-5 rounded-2xl bg-neutral-100/50 dark:bg-neutral-800/30 border border-transparent hover:border-gold/30 hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-all"
+                            >
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-xl group-hover:text-gold transition-colors"
+                                    >
+                                        📊
+                                    </div>
+                                    <span class="flex flex-col">
+                                        <span
+                                            class="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-gold transition-colors"
+                                            >Auditoría y Estrategia SEO</span
+                                        >
+                                        <span
+                                            class="text-sm text-neutral-600 dark:text-neutral-400"
+                                            >Investigación de palabras clave y
+                                            plan de acción</span
+                                        >
+                                    </span>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <span class="text-gold font-mono font-bold"
+                                        >+$200</span
+                                    >
+                                    <div class="relative flex items-center">
+                                        <input
+                                            type="checkbox"
+                                            name="extraAudit"
+                                            value="200"
+                                            class="sr-only peer"
+                                        />
+                                        <div
+                                            class="w-14 h-7 bg-neutral-300 dark:bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-gold peer-checked:shadow-[0_0_10px_rgba(217,173,38,0.4)]"
+                                        >
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Positioning -->
+                            <label
+                                class="flex items-center justify-between cursor-pointer group p-5 rounded-2xl bg-neutral-100/50 dark:bg-neutral-800/30 border border-transparent hover:border-gold/30 hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-all"
+                            >
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-xl group-hover:text-gold transition-colors"
+                                    >
+                                        🚀
+                                    </div>
+                                    <span class="flex flex-col">
+                                        <span
+                                            class="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-gold transition-colors"
+                                            >Posicionamiento Web</span
+                                        >
+                                        <span
+                                            class="text-sm text-neutral-600 dark:text-neutral-400"
+                                            >Estrategia avanzada de ranking</span
+                                        >
+                                    </span>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <span class="text-gold font-mono font-bold"
+                                        >+$300</span
+                                    >
+                                    <div class="relative flex items-center">
+                                        <input
+                                            type="checkbox"
+                                            name="extraPositioning"
+                                            value="300"
+                                            class="sr-only peer"
+                                        />
+                                        <div
+                                            class="w-14 h-7 bg-neutral-300 dark:bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-gold peer-checked:shadow-[0_0_10px_rgba(217,173,38,0.4)]"
+                                        >
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Maintenance Toggle -->
+                            <label
+                                class="flex items-center justify-between cursor-pointer group p-5 rounded-2xl bg-neutral-100/50 dark:bg-neutral-800/30 border border-transparent hover:border-gold/30 hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-all"
+                            >
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-xl group-hover:text-gold transition-colors"
+                                    >
+                                        🛡️
+                                    </div>
+                                    <span class="flex flex-col">
+                                        <span
+                                            class="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-gold transition-colors"
+                                            >Mantenimiento Mensual</span
+                                        >
+                                        <span
+                                            class="text-sm text-neutral-600 dark:text-neutral-400"
+                                            >Actualizaciones, seguridad y
+                                            monitoreo</span
+                                        >
+                                    </span>
+                                </div>
+                                <div class="relative flex items-center">
+                                    <input
+                                        type="checkbox"
+                                        id="maintenanceToggle"
+                                        class="sr-only peer"
+                                    />
+                                    <div
+                                        class="w-14 h-7 bg-neutral-300 dark:bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-gold peer-checked:shadow-[0_0_10px_rgba(217,173,38,0.4)]"
+                                    >
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Maintenance Slider (Conditional) -->
+                            <div
+                                id="maintenanceContainer"
+                                class="p-6 bg-gradient-to-b from-neutral-100 to-white dark:from-neutral-800 dark:to-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-700/50 transition-all duration-500 ease-out hidden opacity-0 transform translate-y-4"
+                            >
+                                <div
+                                    class="flex justify-between items-center mb-6"
+                                >
+                                    <label
+                                        for="maintenanceMonths"
+                                        class="text-neutral-900 dark:text-white font-medium"
+                                        >Duración del servicio</label
+                                    >
+                                    <div
+                                        class="bg-white/50 dark:bg-black/50 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-700 text-gold font-mono"
+                                    >
+                                        <span
+                                            id="monthsDisplay"
+                                            class="font-bold text-xl">1</span
+                                        > Mes(es)
+                                    </div>
+                                </div>
+
+                                <input
+                                    type="range"
+                                    id="maintenanceMonths"
+                                    min="1"
+                                    max="12"
+                                    value="1"
+                                    class="w-full h-3 bg-neutral-300 dark:bg-neutral-700 rounded-lg appearance-none cursor-pointer accent-gold hover:accent-yellow-400 transition-all"
+                                />
+                                <div
+                                    class="flex justify-between text-xs text-neutral-500 mt-3 font-medium uppercase tracking-wider"
+                                >
+                                    <span>1 Mes</span>
+                                    <span class="text-gold">+$50 USD / mes</span
+                                    >
+                                    <span>12 Meses</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Sticky Total Bar (Slim/Floating) - Anchored to bottom -->
+    <div
+        class="fixed bottom-6 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 w-full md:max-w-4xl bg-white/90 dark:bg-black/90 backdrop-blur-xl border border-neutral-200 dark:border-neutral-800 p-4 rounded-full flex flex-row justify-between items-center gap-4 z-50 shadow-2xl ring-1 ring-black/5 dark:ring-white/10 transition-colors duration-300"
+    >
+        <div class="flex items-center gap-4 pl-2">
+            <div class="flex flex-col">
+                <div
+                    class="text-[10px] font-bold uppercase tracking-widest text-neutral-600 dark:text-neutral-400 leading-tight"
+                >
+                    Inversión Estimada
                 </div>
             </div>
-
-            <div class="flex items-center gap-3">
-                <button
-                    id="download-pdf-btn"
-                    class="bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white p-2 md:px-4 md:py-2 rounded-full font-bold hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:text-gold dark:hover:text-gold transition-colors border border-black/5 dark:border-white/5 flex items-center justify-center gap-2"
-                    title="Descargar PDF"
-                    aria-label="Descargar PDF"
+            <div
+                class="text-3xl font-bold font-mono text-neutral-900 dark:text-white leading-none"
+            >
+                $<span id="totalDisplay">950</span>
+                <span
+                    class="text-sm text-neutral-600 dark:text-neutral-500 font-sans font-normal"
+                    >USD</span
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                        ></path>
-                    </svg>
-                    <span class="hidden md:inline text-sm"
-                        >Descargar Cotización</span
-                    >
-                </button>
-
-                <a
-                    href="/contacto"
-                    class="bg-gold text-black px-6 py-2 rounded-full font-bold hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all shadow-lg hover:shadow-gold/25 text-sm md:text-base whitespace-nowrap"
-                >
-                    Me interesa
-                </a>
             </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button
+                id="download-pdf-btn"
+                class="bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white p-2 md:px-4 md:py-2 rounded-full font-bold hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:text-gold dark:hover:text-gold transition-colors border border-black/5 dark:border-white/5 flex items-center justify-center gap-2"
+                title="Descargar PDF"
+                aria-label="Descargar PDF"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                    ></path>
+                </svg>
+                <span class="hidden md:inline text-sm"
+                    >Descargar Cotización</span
+                >
+            </button>
+
+            <a
+                href="/contacto"
+                class="bg-gold text-black px-6 py-2 rounded-full font-bold hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all shadow-lg hover:shadow-gold/25 text-sm md:text-base whitespace-nowrap"
+            >
+                Me interesa
+            </a>
         </div>
     </div>
 </Layout>
@@ -532,11 +562,30 @@ import Layout from "../layouts/Layout.astro";
     import { jsPDF } from "jspdf";
 
     document.addEventListener("astro:page-load", initCalculator);
-    // document.addEventListener("DOMContentLoaded", initCalculator); // Avoid double init if page load handles it, but keeps it safe
+    document.addEventListener("DOMContentLoaded", initCalculator);
 
     function initCalculator() {
+        console.log("--- initCalculator START ---");
         const form = document.getElementById("quote-form");
-        if (!form) return;
+        if (!form) {
+            // console.error("Form #quote-form not found"); // reducing noise
+            return;
+        }
+
+        const maintenanceToggle = document.getElementById("maintenanceToggle");
+        const maintenanceContainer = document.getElementById(
+            "maintenanceContainer",
+        );
+        const maintenanceMonths = document.getElementById("maintenanceMonths");
+        const monthsDisplay = document.getElementById("monthsDisplay");
+        const totalDisplay = document.getElementById("totalDisplay");
+        const downloadBtn = document.getElementById("download-pdf-btn");
+
+        console.log("Elements check:", {
+            maintenanceToggle: !!maintenanceToggle,
+            maintenanceContainer: !!maintenanceContainer,
+            maintenanceMonths: !!maintenanceMonths,
+        });
 
         // Cleanup old listeners if re-running (simplistic approach, modern frameworks handle this better but pure JS needs care)
         // For this Astro setup with view transitions, the DOM is replaced so it's usually fine.
@@ -544,28 +593,20 @@ import Layout from "../layouts/Layout.astro";
         const pageCountPills = document.querySelectorAll(
             'input[name="pageCountPill"]',
         );
-        const extraSeo = document.querySelector(
-            'input[name="extraSeo"]',
+
+        const extraAudit = document.querySelector(
+            'input[name="extraAudit"]',
         ) as HTMLInputElement | null;
         const extraPositioning = document.querySelector(
             'input[name="extraPositioning"]',
         ) as HTMLInputElement | null;
-        const maintenanceToggle = document.getElementById(
-            "maintenanceToggle",
-        ) as HTMLInputElement | null;
-        const maintenanceMonths = document.getElementById(
-            "maintenanceMonths",
-        ) as HTMLInputElement | null;
-        const maintenanceContainer = document.getElementById(
-            "maintenanceContainer",
-        );
-        const monthsDisplay = document.getElementById("monthsDisplay");
-        const totalDisplay = document.getElementById("totalDisplay");
-        const downloadBtn = document.getElementById("download-pdf-btn");
+
+        // ... (rest of element selection if needed)
 
         let currentTotal = 0;
 
         function calculateTotal() {
+            // console.log("calculateTotal triggered");
             let total = 0;
 
             // 1. Service Base
@@ -587,42 +628,59 @@ import Layout from "../layouts/Layout.astro";
             }
 
             // 3. Extras
-            if (extraSeo && extraSeo.checked) {
-                total += parseInt(extraSeo.value) || 0;
+            if (extraAudit && extraAudit.checked) {
+                total += parseInt(extraAudit.value) || 0;
             }
             if (extraPositioning && extraPositioning.checked) {
                 total += parseInt(extraPositioning.value) || 0;
             }
 
             // 4. Maintenance
-            if (maintenanceToggle && maintenanceToggle.checked) {
+            const toggleChecked =
+                maintenanceToggle &&
+                (maintenanceToggle as HTMLInputElement).checked;
+
+            if (toggleChecked) {
                 const months = maintenanceMonths
-                    ? parseInt(maintenanceMonths.value) || 1
+                    ? parseInt((maintenanceMonths as HTMLInputElement).value) ||
+                      1
                     : 1;
                 total += months * 50;
 
                 // Show container
-                maintenanceContainer?.classList.remove("hidden");
-                // Small delay to allow element to exist before fading in
-                requestAnimationFrame(() => {
-                    maintenanceContainer?.classList.remove(
+                if (maintenanceContainer) {
+                    maintenanceContainer.classList.remove("hidden");
+                    // Force a small delay to allow display:block to apply
+                    setTimeout(() => {
+                        maintenanceContainer.classList.remove(
+                            "opacity-0",
+                            "translate-y-4",
+                        );
+                    }, 10);
+                }
+            } else {
+                // Hide container
+                if (maintenanceContainer) {
+                    maintenanceContainer.classList.add(
                         "opacity-0",
                         "translate-y-4",
                     );
-                });
-            } else {
-                maintenanceContainer?.classList.add(
-                    "opacity-0",
-                    "translate-y-4",
-                );
-                setTimeout(() => {
-                    maintenanceContainer?.classList.add("hidden");
-                }, 300);
+                    setTimeout(() => {
+                        if (
+                            maintenanceToggle &&
+                            !(maintenanceToggle as HTMLInputElement).checked
+                        ) {
+                            maintenanceContainer.classList.add("hidden");
+                        }
+                    }, 300);
+                }
             }
 
             // Update UI
             if (monthsDisplay && maintenanceMonths) {
-                monthsDisplay.textContent = maintenanceMonths.value;
+                monthsDisplay.textContent = (
+                    maintenanceMonths as HTMLInputElement
+                ).value;
             }
 
             // Animate Total
@@ -738,8 +796,9 @@ import Layout from "../layouts/Layout.astro";
             cursorY += 10;
 
             // 3. Extras
-            if (extraSeo && extraSeo.checked) {
-                drawRow(doc, "Optimización SEO", "+$200", cursorY);
+
+            if (extraAudit && extraAudit.checked) {
+                drawRow(doc, "Auditoría SEO", "+$200", cursorY);
                 cursorY += 10;
             }
             if (extraPositioning && extraPositioning.checked) {
@@ -748,9 +807,12 @@ import Layout from "../layouts/Layout.astro";
             }
 
             // 4. Maintenance
-            if (maintenanceToggle && maintenanceToggle.checked) {
+            if (
+                maintenanceToggle &&
+                (maintenanceToggle as HTMLInputElement).checked
+            ) {
                 const months = maintenanceMonths
-                    ? maintenanceMonths.value
+                    ? (maintenanceMonths as HTMLInputElement).value
                     : "1";
                 const maintTotal = parseInt(months) * 50;
                 drawRow(
@@ -799,47 +861,41 @@ import Layout from "../layouts/Layout.astro";
                 { align: "center" },
             );
 
+            // Save
             doc.save("Cotizacion-NicolasCardenas.pdf");
         }
 
-        function drawRow(doc: any, label: string, price: string, y: number) {
+        function drawRow(doc: jsPDF, label: string, price: string, y: number) {
             const pageWidth = doc.internal.pageSize.getWidth();
             doc.text(label, 20, y);
             doc.text(price, pageWidth - 20, y, { align: "right" });
         }
 
-        // Listeners
-        form.addEventListener("change", calculateTotal);
-        form.addEventListener("input", calculateTotal);
-        downloadBtn?.addEventListener("click", generatePDF);
+        // --- Event Listeners ---
+        const inputs = document.querySelectorAll("input");
+        inputs.forEach((input) => {
+            input.addEventListener("change", calculateTotal);
+            if (input.type === "range" || input.type === "number") {
+                input.addEventListener("input", calculateTotal);
+            }
+        });
 
+        // Explicit listeners for safely (in case querySelectorAll missed something or dynamic update)
+        if (maintenanceToggle) {
+            maintenanceToggle.addEventListener("change", () => {
+                console.log("Explicit toggle change listener fired");
+                calculateTotal();
+            });
+        }
+        if (maintenanceMonths) {
+            maintenanceMonths.addEventListener("input", calculateTotal);
+        }
+
+        if (downloadBtn) {
+            downloadBtn.addEventListener("click", generatePDF);
+        }
+
+        // Init
         calculateTotal();
     }
 </script>
-
-<style>
-    /* Custom Range Slider Style */
-    input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        height: 20px;
-        width: 20px;
-        border-radius: 50%;
-        background: #d9ad26;
-        cursor: pointer;
-        margin-top: -8px;
-        box-shadow: 0 0 10px rgba(217, 173, 38, 0.5);
-        transition: transform 0.1s;
-    }
-
-    input[type="range"]::-webkit-slider-thumb:hover {
-        transform: scale(1.2);
-    }
-
-    input[type="range"]::-webkit-slider-runnable-track {
-        width: 100%;
-        height: 4px;
-        cursor: pointer;
-        background: #333;
-        border-radius: 2px;
-    }
-</style>

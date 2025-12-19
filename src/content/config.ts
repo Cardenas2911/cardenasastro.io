@@ -1,5 +1,5 @@
 import { defineCollection, z } from 'astro:content';
-import { getPosts, getCertificates } from '../lib/wp';
+import { getPosts, getCertificates, getPortfolios } from '../lib/wp';
 
 const blog = defineCollection({
     loader: async () => {
@@ -51,4 +51,37 @@ const certificados = defineCollection({
     }),
 });
 
-export const collections = { blog, certificados };
+const portafolio = defineCollection({
+    loader: async () => {
+        const portfolios = await getPortfolios();
+        return portfolios.map(item => ({
+            ...item,
+            id: item.slug,
+        }));
+    },
+    schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        pubDate: z.coerce.date(),
+        heroImage: z.string().optional(),
+        content: z.string().optional(),
+        // Custom Fields
+        projectLink: z.string().optional(),
+        projectDate: z.string().optional(),
+        projectLogo: z.string().optional(),
+        customH1: z.string().optional(),
+        projectDescription: z.string().optional(),
+        challengeHeading: z.string().optional(),
+        challengeText: z.string().optional(),
+        solutionHeading: z.string().optional(),
+        solutionText: z.string().optional(),
+        resultsHeading: z.string().optional(),
+        resultsText: z.string().optional(),
+        galleryImages: z.array(z.string()).optional(),
+        // Taxonomies
+        portfolioCategories: z.array(z.string()).optional(),
+        portfolioTags: z.array(z.string()).optional(),
+    }),
+});
+
+export const collections = { blog, certificados, portafolio };

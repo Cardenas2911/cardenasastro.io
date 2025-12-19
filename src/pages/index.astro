@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import ProfileCard from "../components/ProfileCard.astro";
 import SkillsCarousel from "../components/SkillsCarousel.astro";
+
 import { getPosts } from "../lib/wp";
 
 const posts = await getPosts();
@@ -271,8 +272,12 @@ const posts = await getPosts();
                     const track = document.getElementById(
                         "blog-carousel-track",
                     );
-                    const prevBtn = document.getElementById("prev-btn");
-                    const nextBtn = document.getElementById("next-btn");
+                    const prevBtn = document.getElementById(
+                        "prev-btn",
+                    ) as HTMLButtonElement | null;
+                    const nextBtn = document.getElementById(
+                        "next-btn",
+                    ) as HTMLButtonElement | null;
 
                     let currentIndex = 0;
                     const getItemsPerView = () => {
@@ -288,7 +293,9 @@ const posts = await getPosts();
                         const maxIndex = Math.max(0, totalItems - itemsPerView);
                         currentIndex = Math.min(currentIndex, maxIndex);
 
-                        const itemWidth = track?.children[0]?.offsetWidth || 0;
+                        const itemWidth =
+                            (track?.children[0] as HTMLElement)?.offsetWidth ||
+                            0;
                         const gap = 24; // 6 * 4px (gap-6)
                         const offset = -(currentIndex * (itemWidth + gap));
 

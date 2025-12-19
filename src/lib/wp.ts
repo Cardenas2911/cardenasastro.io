@@ -142,3 +142,120 @@ export async function getCertificates() {
     };
   });
 }
+
+
+interface WPImage {
+  url: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+interface WPPortfolio {
+  id: number;
+  date: string;
+  slug: string;
+  title: { rendered: string };
+  content: { rendered: string };
+  excerpt: { rendered: string };
+  _embedded?: {
+    'wp:featuredmedia'?: Array<{ source_url: string }>;
+    'wp:term'?: Array<Array<{ taxonomy: string; name: string }>>;
+  };
+  acf?: {
+    link_del_proyecto?: string;
+    fecha_del_trabajo?: string;
+    logo_del_proyecto?: WPImage | string | boolean; // can be false if not set
+    titulo_h1?: string;
+    descripcion_del_proyecto?: string;
+    contenido_principal?: string;
+    h3_de_desafio?: string;
+    el_desafio?: string;
+    h3_de_la_solucion?: string;
+    la_solucion?: string;
+    h3_de_los_resultados?: string;
+    los_resultados?: string;
+    'imagen_#1'?: WPImage | string | boolean;
+    'imagen_#2'?: WPImage | string | boolean;
+    'imagen_#3'?: WPImage | string | boolean;
+    'imagen_#4'?: WPImage | string | boolean;
+    'imagen_#5'?: WPImage | string | boolean;
+  };
+}
+
+export async function getPortfolios() {
+  console.log('Fetching portfolios from:', `${API_URL}/portafolio?_embed&per_page=100`);
+  const res = await fetch(`${API_URL}/portafolio?_embed&per_page=100`);
+  const portfolios: WPPortfolio[] = await res.json();
+  console.log('Fetched portfolios count:', portfolios.length);
+
+  console.log(`[WP] Mapping ${portfolios.length} portfolios...`);
+
+  return portfolios.map(item => {
+    try {
+      const heroImage = item._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+
+      // Normalize ACF: WP returns [] if empty, object if populated.
+      const acfData = (item.acf && typeof item.acf === 'object' && !Array.isArray(item.acf)) ? item.acf : {};
+
+      // Helper to extract image URL safely from ACF
+      const getAcfImageUrl = (field: any): string => {
+        if (!field) return '';
+        if (typeof field === 'string') return field;
+        if (typeof field === 'object' && field.url) return field.url;
+        return '';
+      };
+
+      // Extract Taxonomies
+      let categories: string[] = [];
+      let tags: string[] = [];
+
+      if (item._embedded && item._embedded['wp:term']) {
+        item._embedded['wp:term'].forEach(termGroup => {
+          termGroup.forEach(term => {
+            if (term.taxonomy === 'cateogorias-de-portafolio') {
+              categories.push(term.name);
+            } else if (term.taxonomy === 'etiqueta-de-proyecto') {
+              tags.push(term.name);
+            }
+          });
+        });
+      }
+
+      return {
+        id: item.id.toString(),
+        slug: item.slug,
+        title: item.title?.rendered || 'Sin Título',
+        description: item.excerpt?.rendered ? item.excerpt.rendered.replace(/<[^>]*>?/gm, '') : '',
+        pubDate: new Date(item.date),
+        heroImage: heroImage,
+        content: item.content?.rendered || acfData.contenido_principal || '',
+        // Taxonomies
+        portfolioCategories: categories,
+        portfolioTags: tags,
+        // ACF Fields
+        projectLink: acfData.link_del_proyecto || '',
+        projectDate: acfData.fecha_del_trabajo || '',
+        projectLogo: getAcfImageUrl(acfData.logo_del_proyecto),
+        customH1: acfData.titulo_h1 || item.title?.rendered,
+        projectDescription: acfData.descripcion_del_proyecto || '',
+        challengeHeading: acfData.h3_de_desafio || 'El Desafío',
+        challengeText: acfData.el_desafio || '',
+        solutionHeading: acfData.h3_de_la_solucion || 'La Solución',
+        solutionText: acfData.la_solucion || '',
+        resultsHeading: acfData.h3_de_los_resultados || 'Los Resultados',
+        resultsText: acfData.los_resultados || '',
+        galleryImages: [
+          getAcfImageUrl(acfData['imagen_#1']),
+          getAcfImageUrl(acfData['imagen_#2']),
+          getAcfImageUrl(acfData['imagen_#3']),
+          getAcfImageUrl(acfData['imagen_#4']),
+          getAcfImageUrl(acfData['imagen_#5']),
+        ].filter(Boolean),
+      };
+    } catch (err: any) {
+      console.error(`[WP] Error mapping portfolio item ${item.id}:`, err);
+      return null;
+    }
+  }).filter((item) => item !== null);
+}

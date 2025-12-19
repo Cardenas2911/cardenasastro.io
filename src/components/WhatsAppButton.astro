@@ -2,43 +2,276 @@
 
 ---
 
-<a
-    href="https://wa.me/573238162908"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Chatear por WhatsApp"
-    class="fixed bottom-6 right-6 z-[70] flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg shadow-black/20 hover:shadow-[#25D366]/40 hover:scale-110 transition-all duration-300 animate-fade-in group"
+<div
+    id="whatsapp-widget"
+    class="fixed bottom-6 right-6 z-[70] flex flex-col items-end gap-4 font-sans animate-fade-in"
 >
-    <svg
-        class="w-8 h-8 fill-current"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
+    <!-- Chat Window (Desktop: 350px, Mobile: Full width minus padding) -->
+    <div
+        id="chat-window"
+        class="hidden w-[350px] max-w-[calc(100vw-3rem)] bg-white dark:bg-neutral-900 rounded-2xl shadow-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden origin-bottom-right transition-all duration-300 transform scale-95 opacity-0"
     >
-        <path
-            d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"
-        ></path>
-    </svg>
-    <!-- Tooltip (Optional, hidden by default only show on hover) -->
-    <span
-        class="absolute right-full mr-3 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-white text-xs font-bold py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md border border-neutral-100 dark:border-neutral-700"
+        <!-- Header -->
+        <div class="bg-[#00a884] p-4 flex items-center gap-3 text-white">
+            <div class="relative">
+                <img
+                    src="https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp"
+                    alt="Nicolas Cardenas"
+                    class="w-10 h-10 rounded-full border-2 border-white/20 bg-white object-contain p-1"
+                />
+                <span
+                    class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-[#00a884] rounded-full"
+                ></span>
+            </div>
+            <div>
+                <h3 class="font-bold text-sm leading-tight">
+                    Nicolas Cardenas
+                </h3>
+                <p class="text-xs text-white/80">
+                    Normalmente responde en 1 hora
+                </p>
+            </div>
+            <button
+                id="close-chat"
+                class="ml-auto opacity-70 hover:opacity-100 transition-opacity p-1 rounded hover:bg-white/10"
+                aria-label="Cerrar chat"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Body -->
+        <div
+            class="h-[300px] overflow-y-auto bg-[#efeae2] dark:bg-[#0b141a] p-4 flex flex-col gap-3"
+            style="background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png'); background-blend-mode: overlay;"
+        >
+            <div
+                class="bg-white dark:bg-[#202c33] p-3 rounded-r-lg rounded-bl-lg max-w-[85%] self-start shadow-sm text-sm text-neutral-800 dark:text-neutral-200"
+            >
+                <div>
+                    Hola 👋 <br />
+                    ¿En qué puedo ayudarte con tu proyecto hoy?
+                </div>
+                <span
+                    class="text-[10px] text-neutral-400 block text-right mt-1 select-none"
+                    id="current-time">10:00 AM</span
+                >
+            </div>
+        </div>
+
+        <!-- Footer / Input -->
+        <div
+            class="p-3 bg-neutral-50 dark:bg-[#202c33] border-t border-neutral-200 dark:border-neutral-700 flex gap-2 items-center"
+        >
+            <input
+                type="text"
+                id="chat-input"
+                placeholder="Escribe tu mensaje..."
+                class="flex-1 bg-white dark:bg-[#2a3942] border-none rounded-full px-4 py-2 text-sm focus:ring-0 focus:outline-none placeholder-neutral-400 dark:text-white shadow-sm"
+            />
+            <button
+                id="send-btn"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-[#00a884] text-white hover:bg-[#008f6f] transition-colors shadow-sm flex-shrink-0"
+                aria-label="Enviar mensaje"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5 ml-0.5"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                >
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Toggle Button -->
+    <button
+        id="toggle-chat"
+        class="w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg shadow-black/20 hover:shadow-[#25D366]/40 hover:scale-110 transition-all duration-300 flex items-center justify-center group relative overflow-hidden"
+        aria-label="Abrir chat de WhatsApp"
     >
-        ¡Hablemos!
-    </span>
-</a>
+        <span
+            id="icon-whatsapp"
+            class="transition-all duration-300 transform group-hover:rotate-12 animate-wiggle"
+        >
+            <svg
+                class="w-8 h-8 fill-current"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"
+                ></path>
+            </svg>
+        </span>
+        <span
+            id="icon-close"
+            class="hidden absolute inset-0 flex items-center justify-center transition-all duration-300 transform scale-50 opacity-0 bg-neutral-800"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </span>
+    </button>
+</div>
+
+<script>
+    document.addEventListener("astro:page-load", initWhatsAppWidget);
+    document.addEventListener("DOMContentLoaded", initWhatsAppWidget);
+
+    function initWhatsAppWidget() {
+        const toggleBtn = document.getElementById("toggle-chat");
+        const closeBtn = document.getElementById("close-chat");
+        const chatWindow = document.getElementById("chat-window");
+        const chatInput = document.getElementById(
+            "chat-input",
+        ) as HTMLInputElement;
+        const sendBtn = document.getElementById("send-btn");
+        const iconWhatsApp = document.getElementById("icon-whatsapp");
+        const iconClose = document.getElementById("icon-close");
+        const timeDisplay = document.getElementById("current-time");
+
+        // Update time
+        if (timeDisplay) {
+            const now = new Date();
+            timeDisplay.textContent = now.toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+            });
+        }
+
+        let isOpen = false;
+
+        function toggleChat() {
+            isOpen = !isOpen;
+
+            if (isOpen) {
+                // Open
+                chatWindow?.classList.remove("hidden");
+                // Small delay to allow display:block to apply before opacity transition
+                setTimeout(() => {
+                    chatWindow?.classList.remove("scale-95", "opacity-0");
+                }, 10);
+
+                iconWhatsApp?.classList.add(
+                    "opacity-0",
+                    "rotate-90",
+                    "scale-50",
+                );
+                iconWhatsApp?.classList.remove("animate-wiggle"); // Stop animation when hidden
+                iconClose?.classList.remove("hidden", "scale-50", "opacity-0");
+
+                // Focus input
+                setTimeout(() => chatInput?.focus(), 100);
+            } else {
+                // Close
+                chatWindow?.classList.add("scale-95", "opacity-0");
+                setTimeout(() => {
+                    chatWindow?.classList.add("hidden");
+                }, 300);
+
+                iconWhatsApp?.classList.remove(
+                    "opacity-0",
+                    "rotate-90",
+                    "scale-50",
+                );
+                setTimeout(
+                    () => iconWhatsApp?.classList.add("animate-wiggle"),
+                    300,
+                ); // Resume animation after transition
+                iconClose?.classList.add("scale-50", "opacity-0");
+                setTimeout(() => iconClose?.classList.add("hidden"), 300);
+            }
+        }
+
+        function sendMessage() {
+            const message = chatInput?.value.trim();
+            if (!message) return;
+
+            const phone = "573238162908";
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(
+                message,
+            )}`;
+            window.open(url, "_blank");
+
+            chatInput.value = ""; // Optional: Clear input
+            toggleChat(); // Optional: Close chat after sending
+        }
+
+        toggleBtn?.addEventListener("click", toggleChat);
+        closeBtn?.addEventListener("click", toggleChat);
+
+        sendBtn?.addEventListener("click", sendMessage);
+        chatInput?.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") sendMessage();
+        });
+    }
+</script>
 
 <style>
     @keyframes fadeIn {
         from {
             opacity: 0;
-            transform: scale(0.5);
+            transform: scale(0.8) translateY(20px);
         }
         to {
             opacity: 1;
-            transform: scale(1);
+            transform: scale(1) translateY(0);
         }
     }
     .animate-fade-in {
-        animation: fadeIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s
-            backwards;
+        animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1s backwards;
+    }
+
+    @keyframes wiggle {
+        0% {
+            transform: rotate(0) scale(1);
+        }
+        5% {
+            transform: rotate(-10deg) scale(1.1);
+        }
+        10% {
+            transform: rotate(10deg) scale(1.1);
+        }
+        15% {
+            transform: rotate(-10deg) scale(1.1);
+        }
+        20% {
+            transform: rotate(10deg) scale(1.1);
+        }
+        25% {
+            transform: rotate(0) scale(1);
+        }
+        100% {
+            transform: rotate(0) scale(1);
+        }
+    }
+
+    .animate-wiggle {
+        animation: wiggle 3s ease-in-out infinite;
     }
 </style>

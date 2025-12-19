@@ -3,6 +3,7 @@ interface Props {
     title: string;
     description?: string;
     image?: string;
+    robots?: string;
     schema?: object;
     showGlobalBanner?: boolean;
 }
@@ -13,69 +14,28 @@ import Footer from "../components/Footer.astro";
 import CookieBanner from "../components/CookieBanner.astro";
 import GlobalBanner from "../components/GlobalBanner.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
+import SEOHead from "../components/SEOHead.astro";
 
 const {
     title,
-    description = "Blog de Nicolas Cardenas - SEO y Marketing Digital",
-    image = "/favicon.webp",
+    description,
+    image,
+    robots,
     schema,
     showGlobalBanner = true,
 } = Astro.props;
-
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
 <html lang="es" class="scroll-smooth">
     <head>
-        <meta charset="UTF-8" />
-        <script is:inline>
-            // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-            if (
-                localStorage.getItem("color-theme") === "dark" ||
-                !("color-theme" in localStorage)
-            ) {
-                document.documentElement.classList.add("dark");
-            } else {
-                document.documentElement.classList.remove("dark");
-            }
-        </script>
-        <meta name="description" content={description} />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/webp" href="/favicon.webp" />
-        <meta name="generator" content={Astro.generator} />
-        <link rel="canonical" href={canonicalURL} />
-
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={Astro.url} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={new URL(image, Astro.url)} />
-
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={Astro.url} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={new URL(image, Astro.url)} />
-
-        <title>{title}</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-            rel="stylesheet"
+        <SEOHead
+            title={title}
+            description={description}
+            image={image}
+            robots={robots}
+            schema={schema}
         />
-
-        {
-            schema && (
-                <script
-                    type="application/ld+json"
-                    set:html={JSON.stringify(schema)}
-                />
-            )
-        }
     </head>
     <body
         class="bg-neutral-50 dark:bg-black text-neutral-900 dark:text-neutral-300 font-sans antialiased min-h-screen flex flex-col transition-colors duration-300"

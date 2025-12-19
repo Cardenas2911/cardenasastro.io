@@ -1,0 +1,80 @@
+---
+import { siteMetadata, defaultMetadata } from "../data/seoConfig";
+
+interface Props {
+    title?: string;
+    description?: string;
+    image?: string;
+    robots?: string;
+    schema?: object;
+}
+
+const { pathname } = Astro.url;
+// Normalize path (remove trailing slash if present, unless it's root)
+const currentPath = pathname === "/" ? "/" : pathname.replace(/\/$/, "");
+
+// 1. Get static config for this path (if exists)
+const config = siteMetadata[currentPath] || {};
+
+// 2. Merge: Props > Config > Defaults
+const title = Astro.props.title || config.title || defaultMetadata.title;
+const description =
+    Astro.props.description ||
+    config.description ||
+    defaultMetadata.description;
+const image = Astro.props.image || config.image || defaultMetadata.image;
+const robots = Astro.props.robots || config.robots || defaultMetadata.robots;
+const schema = Astro.props.schema;
+
+const canonicalURL = new URL(pathname, Astro.site);
+---
+
+<meta charset="UTF-8" />
+<meta name="description" content={description} />
+<meta name="viewport" content="width=device-width" />
+<link rel="icon" type="image/webp" href="/favicon.webp" />
+<meta name="generator" content={Astro.generator} />
+<link rel="canonical" href={canonicalURL} />
+<meta name="robots" content={robots} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<title>{title}</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+/>
+
+{
+    schema && (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    )
+}
+
+<script is:inline>
+    // Theme toggle logic to prevent FOUC
+    if (
+        localStorage.getItem("color-theme") === "dark" ||
+        !("color-theme" in localStorage)
+    ) {
+        document.documentElement.classList.add("dark");
+    } else {
+        document.documentElement.classList.remove("dark");
+    }
+</script>

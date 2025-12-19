@@ -1,0 +1,210 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+// Fetch and sort portfolios
+const allPortfolios = await getCollection("portafolio");
+const projects = allPortfolios.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<section
+    class="bg-[#332f38] py-16 -mx-4 md:-mx-8 lg:-mx-16 px-4 md:px-8 lg:px-16"
+>
+    <div class="relative group max-w-7xl mx-auto">
+        <!-- Carousel Container -->
+        <div class="overflow-hidden" id="project-carousel">
+            <div
+                class="flex md:gap-6 gap-4 py-4 items-stretch"
+                id="project-carousel-track"
+            >
+                {
+                    projects.map((project) => (
+                        <article class="min-w-[calc(100%-0px)] md:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] bg-[#101010] rounded-lg overflow-hidden shadow-2xl flex-shrink-0 flex flex-col group/card hover:-translate-y-2 transition-transform duration-500">
+                            {/* 1. Hero Image (16:9 Aspect Ratio for Screens) */}
+                            <div class="aspect-video relative overflow-hidden bg-neutral-900 border-b border-white/5">
+                                {project.data.heroImage && (
+                                    <Image
+                                        src={project.data.heroImage}
+                                        alt={project.data.title}
+                                        width={600}
+                                        height={338}
+                                        class="w-full h-full object-cover object-top transition-transform duration-700 group-hover/card:scale-105"
+                                    />
+                                )}
+                                {/* Dark Overlay/Filter */}
+                                <div class="absolute inset-0 bg-black/20 group-hover/card:bg-transparent transition-colors duration-300" />
+
+                                {/* Category Tag (Top Right) */}
+                                {project.data.portfolioCategories &&
+                                    project.data.portfolioCategories.length >
+                                        0 && (
+                                        <div class="absolute top-4 right-4">
+                                            <span class="text-[10px] font-bold tracking-widest uppercase text-white bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+                                                {
+                                                    project.data
+                                                        .portfolioCategories[0]
+                                                }
+                                            </span>
+                                        </div>
+                                    )}
+                            </div>
+
+                            {/* 2. Content (Below Image, centered) */}
+                            <div class="p-8 flex flex-col items-center text-center flex-grow">
+                                {/* Title (Serif, Elegant) */}
+                                <h3 class="text-xl font-serif text-white mb-3 line-clamp-1 h-[1.75rem] group-hover/card:text-gold transition-colors">
+                                    <a
+                                        href={`/portafolio/${project.id}`}
+                                        class="focus:outline-none"
+                                    >
+                                        <span
+                                            class="absolute inset-0"
+                                            aria-hidden="true"
+                                        />
+                                        {project.data.title}
+                                    </a>
+                                </h3>
+
+                                {/* Description */}
+                                <p class="text-neutral-400 text-sm leading-relaxed line-clamp-2 h-[3rem] mb-6">
+                                    {project.data.description}
+                                </p>
+
+                                {/* CTA Button (Pill Shape) */}
+                                <div class="mt-auto relative z-10">
+                                    <span class="inline-flex items-center justify-center px-8 py-3 text-xs font-bold uppercase tracking-widest text-white bg-[#101010] border border-white/20 rounded-full group-hover/card:bg-white group-hover/card:text-black transition-all duration-300">
+                                        Ver Proyecto
+                                    </span>
+                                </div>
+                            </div>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- Controls (Square Buttons Anchored to Edges) -->
+        <button
+            id="project-prev-btn"
+            class="absolute -left-4 md:-left-8 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-black hover:bg-gold text-white hover:text-black transition-all z-20 shadow-lg disabled:opacity-0 disabled:cursor-not-allowed border border-white/10"
+            aria-label="Previous Project"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+
+        <button
+            id="project-next-btn"
+            class="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-black hover:bg-gold text-white hover:text-black transition-all z-20 shadow-lg disabled:opacity-0 disabled:cursor-not-allowed border border-white/10"
+            aria-label="Next Project"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+    </div>
+</section>
+
+<script>
+    const track = document.getElementById("project-carousel-track");
+    const prevBtn = document.getElementById(
+        "project-prev-btn",
+    ) as HTMLButtonElement;
+    const nextBtn = document.getElementById(
+        "project-next-btn",
+    ) as HTMLButtonElement;
+
+    if (track && prevBtn && nextBtn) {
+        let currentIndex = 0;
+        let autoPlayInterval: any;
+        const autoPlayDelay = 4000;
+
+        const getItemsPerView = () => {
+            if (window.innerWidth >= 1024) return 3;
+            if (window.innerWidth >= 768) return 2;
+            return 1;
+        };
+
+        const updateCarousel = () => {
+            const items = track.children;
+            const totalItems = items.length;
+            const itemsPerView = getItemsPerView();
+            const maxIndex = Math.max(0, totalItems - itemsPerView);
+
+            // Loop logic
+            if (currentIndex > maxIndex) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = maxIndex;
+
+            const itemWidth = (items[0] as HTMLElement)?.offsetWidth || 0;
+            const gap = window.innerWidth >= 768 ? 24 : 16;
+            const offset = -(currentIndex * (itemWidth + gap));
+
+            track.style.transform = `translateX(${offset}px)`;
+            track.style.transition =
+                "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)";
+        };
+
+        const nextSlide = () => {
+            currentIndex++;
+            updateCarousel();
+            resetAutoPlay();
+        };
+
+        const prevSlide = () => {
+            currentIndex--;
+            updateCarousel();
+            resetAutoPlay();
+        };
+
+        const startAutoPlay = () => {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(() => {
+                currentIndex++;
+                updateCarousel();
+            }, autoPlayDelay);
+        };
+
+        const resetAutoPlay = () => {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        };
+
+        nextBtn.addEventListener("click", nextSlide);
+        prevBtn.addEventListener("click", prevSlide);
+
+        window.addEventListener("resize", updateCarousel);
+
+        // Initial
+        updateCarousel();
+        startAutoPlay();
+
+        // Pause on hover
+        track.addEventListener("mouseenter", () =>
+            clearInterval(autoPlayInterval),
+        );
+        track.addEventListener("mouseleave", startAutoPlay);
+    }
+</script>
