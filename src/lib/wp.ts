@@ -48,8 +48,8 @@ interface WPPost {
 
 const API_URL = 'https://cardenasnicolas.com/wp-json/wp/v2';
 
-export async function getPosts() {
-  const res = await fetch(`${API_URL}/posts?_embed&per_page=100`);
+export async function getPosts(limit = 100) {
+  const res = await fetch(`${API_URL}/posts?_embed&per_page=${limit}`);
   const posts: WPPost[] = await res.json();
 
   return posts.map(post => {

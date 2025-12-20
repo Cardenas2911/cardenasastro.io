@@ -6,7 +6,7 @@ import SkillsCarousel from "../components/SkillsCarousel.astro";
 
 import { getPosts } from "../lib/wp";
 
-const posts = await getPosts();
+const posts = await getPosts(9);
 // Show all posts in carousel, sorted by date (already sorted in getPosts)
 ---
 
