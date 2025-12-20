@@ -1,0 +1,265 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProfileCard from "../../components/ProfileCard.astro";
+
+const benefits = [
+  {
+    title: "WPO Extremo",
+    description: "Uso de servidores LiteSpeed y optimización avanzada con Cloudflare para métricas verdes en Core Web Vitals.",
+    icon: "speed"
+  },
+  {
+    title: "Arquitectura en Silos",
+    description: "Organización semántica del contenido para que Google te reconozca como autoridad en tu nicho.",
+    icon: "structure"
+  },
+  {
+    title: "Mobile-First Real",
+    description: "Tu web se verá perfecta y cargará instantáneamente en cualquier celular de Colombia.",
+    icon: "mobile"
+  },
+  {
+    title: "IA Aplicada",
+    description: "Integración de flujos de contenido inteligentes para escalar tu visibilidad más rápido que la competencia.",
+    icon: "ai"
+  }
+];
+
+const methodology = [
+  {
+    step: "01",
+    title: "Diagnóstico y Estrategia",
+    description: "Análisis de competencia con SEMrush y búsqueda de keywords transaccionales."
+  },
+  {
+    step: "02",
+    title: "Arquitectura de Información",
+    description: "Diseño de la jerarquía de URLs y enlazado interno estratégico para distribuir la autoridad."
+  },
+  {
+    step: "03",
+    title: "Desarrollo Limpio",
+    description: "Programación centrada en la experiencia de usuario (UX) y conversión (CRO)."
+  },
+  {
+    step: "04",
+    title: "Optimización On-Page",
+    description: "Configuración avanzada de Rank Math y marcado de datos estructurados (Schema)."
+  },
+  {
+    step: "05",
+    title: "Lanzamiento y Medición",
+    description: "Instalación de Google Analytics para rastrear cada clic y venta."
+  }
+];
+
+const faqs = [
+  {
+    question: "¿Cuánto tiempo tarda en posicionar una web nueva?",
+    answer: "El SEO es una estrategia a mediano-largo plazo. Sin embargo, con una arquitectura SEO-First correcta, los primeros resultados pueden verse entre los 3 y 6 meses, dependiendo de la competencia del sector."
+  },
+  {
+    question: "¿Por qué es mejor WordPress que otras plataformas?",
+    answer: "WordPress alimenta el 43% de la web. Es flexible, escalable y, lo más importante, a Google le encanta su estructura si está bien optimizada. Te da control total sobre tu contenido y SEO."
+  },
+  {
+    question: "¿Entregas la web con SEO incluido?",
+    answer: "Sí, es la base de mi trabajo, no un 'adicional'. Tu web nace optimizada: velocidad, estructura, metaetiquetas y schema markup están incluidos desde el día 1."
+  }
+];
+---
+
+<Layout 
+  title="Desarrollo WordPress SEO-First Colombia | Nicolás Cárdenas"
+  description="Construyo sitios WordPress optimizados para Google desde el código. Velocidad <1s, arquitectura de silos y SEO técnico integrado para dominar el mercado colombiano."
+>
+  <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 py-8">
+    <!-- Sidebar -->
+    <div class="hidden lg:block w-full">
+      <ProfileCard />
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex flex-col gap-32">
+      
+      <!-- Hero Section -->
+      <section class="relative overflow-hidden rounded-3xl bg-neutral-900 border border-white/10 p-8 md:p-12">
+        <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+              Tu Web no necesita un diseño bonito, necesita una <span class="text-gold">Máquina de Ventas</span> optimizada por un experto.
+            </h1>
+            <p class="text-lg text-neutral-400 leading-relaxed">
+              Desarrollo WordPress SEO-First en Colombia: Fusiono ingeniería de software, arquitectura de conversión y posicionamiento orgánico para que tu negocio lidere Google.
+            </p>
+            <div class="pt-4">
+              <a href="https://wa.me/573238162908" target="_blank" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-black bg-gold rounded-lg hover:bg-gold-400 transition-colors shadow-lg shadow-gold/20">
+                Solicitar Consultoría
+              </a>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gold/20 blur-3xl rounded-full opacity-30"></div>
+            <img 
+              src="/images/pagespeed_metrics_100.png" 
+              alt="Métricas PageSpeed 100/100" 
+              class="relative rounded-xl border border-white/10 shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- El Problema -->
+      <section class="space-y-24 pt-12">
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+          <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white">
+            ¿Por qué tu WordPress actual no aparece en Google?
+          </h2>
+          <p class="text-lg text-neutral-600 dark:text-neutral-400">
+            La mayoría de diseñadores instalan una plantilla pesada y "rezan" para que funcione. Yo construyo con SEO-First.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-neutral-50 dark:bg-white/5 p-8 rounded-2xl border border-neutral-200 dark:border-white/10 hover:border-gold/30 transition-colors">
+            <div class="text-4xl mb-4">⚡</div>
+            <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-3">Código Sucio vs. HTML5</h3>
+            <p class="text-neutral-600 dark:text-neutral-400">Menos plugins, más velocidad. Código limpio y semántico que los motores de búsqueda aman.</p>
+          </div>
+          <div class="bg-neutral-50 dark:bg-white/5 p-8 rounded-2xl border border-neutral-200 dark:border-white/10 hover:border-gold/30 transition-colors">
+            <div class="text-4xl mb-4">⏱️</div>
+            <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-3">Sitios Lentos</h3>
+            <p class="text-neutral-600 dark:text-neutral-400">El 40% abandona si tarda >3s. Mis sitios responden en 0.3s para retener a cada visitante.</p>
+          </div>
+          <div class="bg-neutral-50 dark:bg-white/5 p-8 rounded-2xl border border-neutral-200 dark:border-white/10 hover:border-gold/30 transition-colors">
+            <div class="text-4xl mb-4">🏗️</div>
+            <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-3">Arquitectura Plana</h3>
+            <p class="text-neutral-600 dark:text-neutral-400">Si Google no entiende tu estructura, no te posiciona. Creo jerarquías lógicas y efectivas.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stack Tecnológico -->
+      <section class="space-y-24 pt-12">
+        <div class="text-center max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white mb-4">
+            No solo instalo WordPress, optimizo cada línea de código.
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          {benefits.map(benefit => (
+            <div class="flex gap-6 p-6 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 hover:border-gold/50 transition-all group">
+              <div class="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center text-gold shrink-0 group-hover:scale-110 transition-transform">
+                {benefit.icon === 'speed' && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>}
+                {benefit.icon === 'structure' && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2zM16 13a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2z" /></svg>}
+                {benefit.icon === 'mobile' && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>}
+                {benefit.icon === 'ai' && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>}
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-neutral-900 dark:text-white mb-2">{benefit.title}</h3>
+                <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">{benefit.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Metodología -->
+      <section class="space-y-24 pt-12">
+        <div class="text-center max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white mb-4">
+            Un proceso diseñado para el éxito empresarial
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+          {methodology.map((step, index) => (
+            <div class="group relative bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 p-8 rounded-2xl hover:border-gold/50 transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-neutral-200/50 dark:shadow-none">
+              <div class="absolute top-4 right-4 text-6xl font-bold text-neutral-100 dark:text-white/5 select-none group-hover:text-gold/10 transition-colors">
+                {step.step}
+              </div>
+              <div class="relative z-10">
+                <div class="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center mb-6 text-gold group-hover:scale-110 transition-transform duration-300">
+                  <span class="font-bold text-lg">{step.step}</span>
+                </div>
+                <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-3 group-hover:text-gold transition-colors">
+                  {step.title}
+                </h3>
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- E-E-A-T -->
+      <section class="mt-20 bg-neutral-900 rounded-3xl p-8 md:p-12 text-center space-y-8 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+        <div class="relative z-10 max-w-3xl mx-auto space-y-6">
+          <h2 class="text-3xl font-bold text-white">Experiencia probada en sectores de alta competitividad (YMYL)</h2>
+          <p class="text-neutral-400 text-lg">
+            He transformado la presencia digital de firmas legales en EE.UU., servicios financieros y clínicas dermatológicas en Bogotá.
+          </p>
+          
+          <div class="p-6 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm">
+            <p class="text-gold font-bold mb-2">GARANTÍA DE RENDIMIENTO</p>
+            <p class="text-white">"Si tu web no supera los estándares técnicos de Google en el primer mes, ajustamos la estrategia sin costo adicional."</p>
+          </div>
+
+          <div class="pt-4">
+            <a href="/portafolio" class="text-white hover:text-gold font-medium underline underline-offset-4 transition-colors">
+              Ver Casos de Éxito &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="space-y-24 pt-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white text-center">
+          Dudas comunes sobre Desarrollo WordPress y SEO
+        </h2>
+
+        <div class="max-w-3xl mx-auto space-y-4">
+          {faqs.map(faq => (
+            <details class="group bg-neutral-50 dark:bg-white/5 rounded-xl border border-neutral-200 dark:border-white/10 overflow-hidden">
+              <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                <span class="font-bold text-neutral-900 dark:text-white">{faq.question}</span>
+                <span class="transition-transform group-open:rotate-180">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </summary>
+              <div class="px-6 pb-6 text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA Final -->
+      <section class="text-center py-12 space-y-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white">
+          ¿Listo para que tu web trabaje para ti y no al revés?
+        </h2>
+        <p class="text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+          No acepto todos los proyectos. Busco empresas en Colombia que quieran escalar seriamente.
+        </p>
+        <a 
+          href="https://wa.me/573238162908" 
+          target="_blank"
+          class="inline-flex items-center gap-2 px-8 py-4 text-base font-bold text-black bg-gold rounded-lg hover:bg-gold-400 transition-colors shadow-lg shadow-gold/20"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          Hablemos por WhatsApp
+        </a>
+      </section>
+
+    </div>
+  </div>
+</Layout>

@@ -1,13 +1,23 @@
 ---
-import SocialLinks from "./SocialLinks.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
 const navItems = [
   { label: "Inicio", href: "/" },
-  { label: "Servicios", href: "/servicios" },
-  { label: "Certificados", href: "/certificados" },
-  { label: "Portafolio", href: "/portafolio" },
-  { label: "¿Quién Soy?", href: "/quien-soy" },
+  { 
+    label: "Servicios", 
+    href: "/servicios",
+    children: [
+      { label: "Consultoría SEO Estratégica", href: "/servicios/consultoria-seo" },
+      { label: "Desarrollo WordPress SEO-First", href: "/servicios/desarrollo-wordpress-seo-first" },
+      { label: "SEO Local Colombia", href: "/servicios/seo-local" },
+      { label: "E-commerce & Embudos", href: "/servicios/ecommerce-embudos-venta-colombia" },
+      { label: "IA aplicada al SEO", href: "/servicios/ia-seo" }
+    ]
+  },
+  { 
+    label: "Portafolio", 
+    href: "/portafolio"
+  },
   { label: "Contacto", href: "/contacto" },
   { label: "Aprende de Marketing", href: "/blog" },
 ];
@@ -20,9 +30,9 @@ const isActive = (href: string) => {
 ---
 
 <header class="fixed top-0 left-0 w-full z-50 pointer-events-none">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
     <nav
-      class="pointer-events-auto bg-black/80 backdrop-blur-md border border-white/10 rounded-b-2xl px-6 py-4 flex items-center justify-between lg:justify-end gap-6 shadow-[0_4px_30px_rgba(255,255,255,0.03)] relative"
+      class="pointer-events-auto bg-black/80 backdrop-blur-md border border-white/10 rounded-b-2xl px-6 py-4 flex items-center justify-between lg:justify-center gap-6 shadow-[0_4px_30px_rgba(255,255,255,0.03)] relative"
     >
       <!-- Mobile Logo/Brand (Optional, keeps layout balanced on mobile) -->
       <a href="/" class="lg:hidden">
@@ -39,37 +49,57 @@ const isActive = (href: string) => {
         {
           navItems.map((item) => {
             const active = isActive(item.href);
+            const hasChildren = item.children && item.children.length > 0;
+            
             return (
-              <a
-                href={item.href}
-                class:list={[
-                  "relative group text-xs uppercase tracking-wider font-medium transition-colors",
-                  active ? "text-gold" : "text-neutral-300 hover:text-white",
-                ]}
-              >
-                {item.label}
-                <div
+              <div class="relative group">
+                <a
+                  href={item.href}
                   class:list={[
-                    "absolute -bottom-2 left-1/2 flex gap-1 transition-all duration-300 transform -translate-x-1/2",
-                    active
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0",
+                    "relative text-xs uppercase tracking-wider font-medium transition-colors flex items-center gap-1",
+                    active ? "text-gold" : "text-neutral-300 hover:text-white",
                   ]}
                 >
-                  <span class="w-1 h-1 bg-gold rounded-full" />
-                  <span class="w-1 h-1 bg-gold rounded-full opacity-70" />
-                  <span class="w-1 h-1 bg-gold rounded-full opacity-40" />
-                </div>
-              </a>
+                  {item.label}
+                  {hasChildren && (
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 opacity-70 group-hover:rotate-180 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  )}
+                  
+                  <div
+                    class:list={[
+                      "absolute -bottom-2 left-1/2 flex gap-1 transition-all duration-300 transform -translate-x-1/2",
+                      active
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0",
+                    ]}
+                  >
+                    <span class="w-1 h-1 bg-gold rounded-full" />
+                    <span class="w-1 h-1 bg-gold rounded-full opacity-70" />
+                    <span class="w-1 h-1 bg-gold rounded-full opacity-40" />
+                  </div>
+                </a>
+
+                {hasChildren && (
+                  <div class="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 w-64">
+                    <div class="bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl p-2 shadow-xl overflow-hidden">
+                      {item.children.map((child) => (
+                        <a
+                          href={child.href}
+                          class="block px-4 py-3 text-sm text-neutral-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                        >
+                          {child.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             );
           })
         }
 
-        <div class="h-4 w-px bg-white/10 mx-2"></div>
-
-        <div class="hidden lg:block">
-          <SocialLinks />
-        </div>
 
         <div class="h-4 w-px bg-white/10 mx-2"></div>
         <ThemeToggle />
@@ -127,16 +157,33 @@ const isActive = (href: string) => {
       {
         navItems.map((item) => {
           const active = isActive(item.href);
+          const hasChildren = item.children && item.children.length > 0;
+          
           return (
-            <a
-              href={item.href}
-              class:list={[
-                "text-2xl font-bold tracking-tight transition-colors",
-                active ? "text-gold" : "text-white hover:text-gold",
-              ]}
-            >
-              {item.label}
-            </a>
+            <div class="flex flex-col items-center gap-4 w-full">
+              <a
+                href={item.href}
+                class:list={[
+                  "text-2xl font-bold tracking-tight transition-colors",
+                  active ? "text-gold" : "text-white hover:text-gold",
+                ]}
+              >
+                {item.label}
+              </a>
+              
+              {hasChildren && (
+                <div class="flex flex-col items-center gap-3 w-full bg-white/5 rounded-xl py-4 px-4">
+                  {item.children.map((child) => (
+                    <a
+                      href={child.href}
+                      class="text-base text-neutral-300 hover:text-white transition-colors text-center"
+                    >
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           );
         })
       }
@@ -144,7 +191,6 @@ const isActive = (href: string) => {
       <div class="w-16 h-px bg-white/10 my-2"></div>
 
       <div class="mt-8 flex flex-col items-center gap-6">
-        <SocialLinks />
         <ThemeToggle />
       </div>
     </div>
