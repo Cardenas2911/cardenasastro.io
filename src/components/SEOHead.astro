@@ -7,6 +7,8 @@ interface Props {
     image?: string;
     robots?: string;
     schema?: object;
+    ogTitle?: string;
+    ogDescription?: string;
 }
 
 const { pathname } = Astro.url;
@@ -26,6 +28,9 @@ const image = Astro.props.image || config.image || defaultMetadata.image;
 const robots = Astro.props.robots || config.robots || defaultMetadata.robots;
 const schema = Astro.props.schema;
 
+const ogTitle = Astro.props.ogTitle || title;
+const ogDescription = Astro.props.ogDescription || description;
+
 const canonicalURL = new URL(pathname, Astro.site);
 ---
 
@@ -40,8 +45,8 @@ const canonicalURL = new URL(pathname, Astro.site);
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
+<meta property="og:title" content={ogTitle} />
+<meta property="og:description" content={ogDescription} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
 
 <!-- Twitter -->

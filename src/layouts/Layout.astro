@@ -6,6 +6,8 @@ interface Props {
     robots?: string;
     schema?: object;
     showGlobalBanner?: boolean;
+    ogTitle?: string;
+    ogDescription?: string;
 }
 
 import "../styles/global.css";
@@ -24,6 +26,8 @@ const {
     robots,
     schema,
     showGlobalBanner = true,
+    ogTitle,
+    ogDescription,
 } = Astro.props;
 ---
 
@@ -36,11 +40,14 @@ const {
             image={image}
             robots={robots}
             schema={schema}
+            ogTitle={ogTitle}
+            ogDescription={ogDescription}
         />
     </head>
     <body
         class="bg-neutral-50 dark:bg-black text-neutral-900 dark:text-neutral-300 font-sans antialiased min-h-screen flex flex-col transition-colors duration-300"
     >
+        {showGlobalBanner && <GlobalBanner />}
         <Header />
         <main
             class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-8"

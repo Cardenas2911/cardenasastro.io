@@ -1,0 +1,388 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProfileCard from "../../components/ProfileCard.astro";
+---
+
+<Layout
+    title="Generador de Enlaces de Reseñas de Google Gratis | Nicolás Cárdenas"
+    description="Crea un enlace directo para que tus clientes te califiquen en Google Maps con un solo clic. Mejora tu reputación online y SEO local en Colombia de forma gratuita."
+>
+    <!-- Background Decor -->
+    <div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+        <div
+            class="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"
+        >
+        </div>
+    </div>
+
+    <div
+        class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 py-8 md:py-12 max-w-7xl mx-auto px-4 min-h-[800px]"
+    >
+        <!-- Sidebar -->
+        <div class="hidden lg:block w-full h-full">
+            <ProfileCard />
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col gap-8 min-w-0">
+            <!-- Header Tool -->
+            <div class="space-y-4">
+                <h1
+                    class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white"
+                >
+                    Generador de Enlaces <span class="text-gold"
+                        >Google Reviews</span
+                    >
+                </h1>
+                <p class="text-neutral-600 dark:text-neutral-400 max-w-2xl">
+                    Facilita que tus clientes te dejen 5 estrellas. Convierte tu
+                    ID de Google Maps en un enlace directo y un código QR listo
+                    para imprimir.
+                </p>
+            </div>
+
+            <!-- Tool Interface -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <!-- Input Section -->
+                <div
+                    class="space-y-6 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 p-6 md:p-8 rounded-3xl shadow-xl"
+                >
+                    <div>
+                        <label
+                            class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2"
+                            >Google Place ID</label
+                        >
+                        <div class="relative">
+                            <input
+                                type="text"
+                                id="input-place-id"
+                                class="w-full pl-4 pr-12 py-3 rounded-xl bg-neutral-50 dark:bg-black/50 border border-neutral-200 dark:border-neutral-700 focus:border-gold focus:ring-gold dark:text-white font-mono"
+                                placeholder="Pega aquí tu Place ID o una URL que lo contenga (ChIJ...)"
+                            />
+                            <div
+                                class="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    ><path
+                                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                                    ></path><circle cx="12" cy="10" r="3"
+                                    ></circle></svg
+                                >
+                            </div>
+                        </div>
+                        <a
+                            href="https://developers.google.com/maps/documentation/places/web-service/place-id"
+                            target="_blank"
+                            class="text-xs text-gold hover:underline mt-2 inline-block"
+                        >
+                            ¿Cómo encuentro mi Place ID?
+                        </a>
+                    </div>
+
+                    <button
+                        id="btn-generate"
+                        class="w-full py-4 bg-gold text-black font-bold rounded-xl shadow-lg hover:shadow-gold/25 hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
+                    >
+                        <span>Generar mi Enlace Mágico</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><path
+                                d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 3.1-2 5.5-2 1.8 0 2.9.8 3.5 1.2a13.2 13.2 0 0 0-5 5c-.4-.6-1.2-1.7-1.2-3.5 0-2.4 1-4.5 2-5.5.8-.8 1.5-1.3 2.5-1.5a9 9 0 1 0-8.8 8.8"
+                            ></path></svg
+                        >
+                    </button>
+
+                    <p
+                        id="error-msg"
+                        class="text-red-500 text-sm hidden animate-pulse"
+                    >
+                        ⚠️ Por favor ingresa un Place ID válido.
+                    </p>
+                </div>
+
+                <!-- Result Section -->
+                <div
+                    id="result-card"
+                    class="space-y-6 bg-neutral-100 dark:bg-[#1A1A1A] border border-neutral-200 dark:border-white/5 p-6 md:p-8 rounded-3xl opacity-50 pointer-events-none transition-all duration-500"
+                >
+                    <!-- Link Output -->
+                    <div>
+                        <h3
+                            class="font-bold text-neutral-900 dark:text-white mb-2"
+                        >
+                            Tu Enlace Directo
+                        </h3>
+                        <div class="flex gap-2">
+                            <input
+                                type="text"
+                                id="output-url"
+                                readonly
+                                class="w-full px-4 py-3 rounded-xl bg-white dark:bg-black/50 border border-neutral-200 dark:border-neutral-700 text-neutral-500 text-sm"
+                                value="https://search.google.com/local/writereview?placeid=..."
+                            />
+                            <button
+                                id="btn-copy"
+                                class="p-3 bg-neutral-900 dark:bg-white text-white dark:text-black rounded-xl hover:scale-105 transition-transform shrink-0"
+                                title="Copiar al portapapeles"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    ><rect
+                                        x="9"
+                                        y="9"
+                                        width="13"
+                                        height="13"
+                                        rx="2"
+                                        ry="2"></rect><path
+                                        d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                                    ></path></svg
+                                >
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- QR Code -->
+                    <div
+                        class="flex flex-col items-center justify-center p-6 bg-white rounded-2xl border border-neutral-200 shadow-sm relative overflow-hidden group"
+                    >
+                        <div
+                            id="qrcode"
+                            class="opacity-50 blur-sm transition-all duration-500"
+                        >
+                        </div>
+                        <div
+                            id="qr-placeholder"
+                            class="absolute inset-0 flex items-center justify-center text-neutral-400 text-sm"
+                        >
+                            Tu QR aparecerá aquí
+                        </div>
+                        <!-- Download Btn (Hidden initially) -->
+                        <a
+                            id="btn-download-qr"
+                            href="#"
+                            download="review-qr.png"
+                            class="absolute inset-x-4 bottom-4 py-2 bg-black/80 text-white text-sm font-bold rounded-lg text-center opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0"
+                        >
+                            Descargar QR
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO Content & Conversion -->
+            <div class="mt-8 space-y-8">
+                <section
+                    class="prose dark:prose-invert max-w-none bg-white/50 dark:bg-neutral-900/50 p-8 rounded-3xl border border-neutral-100 dark:border-white/5"
+                >
+                    <h3>¿Por qué son tan importantes las reseñas?</h3>
+                    <p>
+                        Para el algoritmo de SEO Local de Google (Local Pack),
+                        la cantidad y calidad de las reseñas son uno de los
+                        factores de ranking más determinantes. En ciudades
+                        competitivas como <strong>Medellín</strong> o <strong
+                            >Bogotá</strong
+                        >, tener un flujo constante de reseñas positivas:
+                    </p>
+                    <ul>
+                        <li>
+                            Aumenta tu CTR (tasa de clics) gracias a las
+                            estrellitas.
+                        </li>
+                        <li>Genera confianza inmediata en nuevos clientes.</li>
+                        <li>
+                            Nutre a Google con palabras clave semánticas sobre
+                            tus servicios.
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- CTA Banner -->
+                <div
+                    class="relative overflow-hidden rounded-3xl bg-neutral-900 border border-white/10 p-8 md:p-12 text-center"
+                >
+                    <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+                        <h2 class="text-2xl md:text-3xl font-bold text-white">
+                            ¿Quieres una estrategia automatizada para conseguir
+                            reviews?
+                        </h2>
+                        <p class="text-neutral-400">
+                            No dejes tu reputación al azar. Diseñamos sistemas
+                            de captación de reseñas integrados con tu CRM o
+                            WhatsApp.
+                        </p>
+                        <a
+                            href="/servicios/seo-local-colombia"
+                            class="inline-flex px-8 py-3 bg-white text-black font-bold rounded-xl hover:bg-gold hover:shadow-[0_0_20px_rgba(255,215,0,0.3)] transition-all"
+                        >
+                            Hablemos de SEO Local
+                        </a>
+                    </div>
+                    <!-- Decor -->
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-[80px] pointer-events-none"
+                    >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<!-- Lightweight QR Library -->
+<script
+    is:inline
+    src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+></script>
+
+<script>
+    const els = {
+        input: document.getElementById("input-place-id"),
+        btnGenerate: document.getElementById("btn-generate"),
+        resultCard: document.getElementById("result-card"),
+        output: document.getElementById("output-url"),
+        btnCopy: document.getElementById("btn-copy"),
+        errorMsg: document.getElementById("error-msg"),
+        qrContainer: document.getElementById("qrcode"),
+        qrPlaceholder: document.getElementById("qr-placeholder"),
+        btnDownloadQr: document.getElementById("btn-download-qr"),
+    };
+
+    const BASE_URL = "https://search.google.com/local/writereview?placeid=";
+    let qrInstance = null;
+
+    els.btnGenerate?.addEventListener("click", generateLink);
+    els.btnCopy?.addEventListener("click", copyLink);
+
+    async function generateLink() {
+        const rawInput = els.input.value.trim();
+        let placeId = "";
+
+        // UI Reset
+        showError(false);
+        els.btnGenerate.disabled = true;
+        const originalBtnText = els.btnGenerate.innerHTML;
+        els.btnGenerate.innerHTML = `<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Analizando...`;
+
+        try {
+            // Case 1: Simple Regex Match (Local)
+            const idMatch = rawInput.match(/(ChIJ[a-zA-Z0-9_-]{15,})/);
+            if (idMatch) {
+                placeId = idMatch[1];
+            }
+            // Case 2: URL that needs resolving (Short links or Long Maps URLs without visible ID)
+            else if (rawInput.startsWith("http")) {
+                const response = await fetch(
+                    `/api/get-place-id?url=${encodeURIComponent(rawInput)}`,
+                );
+                const data = await response.json();
+
+                if (data.success && data.placeId) {
+                    placeId = data.placeId;
+                } else {
+                    throw new Error("No extracted ID");
+                }
+            }
+
+            // Final Validation
+            if (!placeId) {
+                showError(true);
+            } else {
+                const finalUrl = BASE_URL + placeId;
+                revealResult(finalUrl);
+            }
+        } catch (e) {
+            console.error(e);
+            showError(true);
+        } finally {
+            els.btnGenerate.disabled = false;
+            els.btnGenerate.innerHTML = originalBtnText;
+        }
+    }
+
+    function revealResult(url) {
+        // Activate Card
+        els.resultCard.classList.remove("opacity-50", "pointer-events-none");
+        els.output.value = url;
+
+        // Generate QR
+        generateQR(url);
+    }
+
+    function generateQR(url) {
+        // Clear previous
+        els.qrContainer.innerHTML = "";
+        els.qrPlaceholder.style.display = "none";
+        els.qrContainer.classList.remove("opacity-50", "blur-sm");
+
+        // Create new QR
+        // @ts-ignore (qrcodejs loaded via CDN)
+        qrInstance = new QRCode(els.qrContainer, {
+            text: url,
+            width: 200,
+            height: 200,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H,
+        });
+
+        // Update Download Link (wait a bit for canvas rendering)
+        setTimeout(() => {
+            const canvas = els.qrContainer.querySelector("canvas");
+            const img = els.qrContainer.querySelector("img");
+            if (canvas) {
+                els.btnDownloadQr.href = canvas.toDataURL("image/png");
+            } else if (img) {
+                els.btnDownloadQr.href = img.src;
+            }
+        }, 300);
+    }
+
+    function copyLink() {
+        if (!els.output.value) return;
+
+        navigator.clipboard.writeText(els.output.value).then(() => {
+            const original = els.btnCopy.innerHTML;
+            els.btnCopy.innerHTML = `<span class="text-green-500">✓</span>`;
+            setTimeout(() => (els.btnCopy.innerHTML = original), 2000);
+        });
+    }
+
+    function showError(show) {
+        if (show) {
+            els.errorMsg.classList.remove("hidden");
+            els.input.classList.add("border-red-500", "ring-1", "ring-red-500");
+        } else {
+            els.errorMsg.classList.add("hidden");
+            els.input.classList.remove(
+                "border-red-500",
+                "ring-1",
+                "ring-red-500",
+            );
+        }
+    }
+</script>

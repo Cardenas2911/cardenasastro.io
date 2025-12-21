@@ -1,0 +1,504 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProfileCard from "../../components/ProfileCard.astro";
+
+const seoMeta = {
+    title: "Calculadora de ROI para SEO en Colombia | Proyecta tus Ganancias",
+    description:
+        "Calcula el retorno de inversión de tu estrategia SEO en Colombia. Proyecta ingresos potenciales en COP y descubre por qué el SEO es el activo más rentable para tu empresa.",
+    image: "/images/calculadora-roi-og.jpg",
+    robots: "index, follow, max-image-preview:large",
+    schema: {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "Calculadora de ROI SEO Colombia",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "COP",
+        },
+    },
+};
+---
+
+<Layout
+    title={seoMeta.title}
+    description={seoMeta.description}
+    image={seoMeta.image}
+    robots={seoMeta.robots}
+    schema={seoMeta.schema}
+>
+    <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 py-8">
+        <!-- Sidebar -->
+        <div class="hidden lg:block w-full">
+            <ProfileCard />
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col gap-12">
+            <!-- Header Section with Premium Style -->
+            <section
+                class="relative overflow-hidden rounded-3xl bg-neutral-900 border border-white/10 p-8 md:p-12 text-center"
+            >
+                <div
+                    class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"
+                >
+                </div>
+                <!-- Subtle Gradient Glow -->
+                <div
+                    class="absolute -top-24 -right-24 w-64 h-64 bg-gold/10 blur-[100px] rounded-full pointer-events-none"
+                >
+                </div>
+                <div
+                    class="absolute -bottom-24 -left-24 w-64 h-64 bg-gold/5 blur-[100px] rounded-full pointer-events-none"
+                >
+                </div>
+
+                <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+                    <h1
+                        class="text-3xl md:text-5xl font-bold text-white leading-tight"
+                    >
+                        Calculadora de <span class="text-gold"
+                            >Retorno de Inversión (ROI)</span
+                        > para SEO
+                    </h1>
+                    <p class="text-lg text-neutral-400 leading-relaxed">
+                        Descubre cuánto podrías ganar con una estrategia SEO
+                        bien ejecutada. Proyecta tus ingresos y valida por qué
+                        es la inversión más inteligente para tu negocio.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Calculator Component -->
+            <div
+                class="bg-white dark:bg-neutral-900 rounded-2xl shadow-2xl shadow-black/5 dark:shadow-black/50 border border-neutral-200 dark:border-white/10 overflow-hidden"
+            >
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-0 md:divide-x dark:divide-white/10"
+                >
+                    <!-- Inputs Section -->
+                    <div
+                        class="p-6 md:p-8 space-y-6 bg-white dark:bg-neutral-900/50"
+                    >
+                        <div class="flex items-center gap-3 mb-6">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center text-gold"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <h2
+                                class="text-xl font-bold text-neutral-900 dark:text-white"
+                            >
+                                Parámetros del Negocio
+                            </h2>
+                        </div>
+
+                        <!-- Traffic Input -->
+                        <div class="space-y-2">
+                            <label
+                                for="traffic"
+                                class="block text-sm font-medium text-neutral-600 dark:text-neutral-400"
+                            >
+                                Tráfico Mensual Estimado
+                            </label>
+                            <input
+                                type="number"
+                                id="traffic"
+                                placeholder="Ej: 5000"
+                                min="0"
+                                class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder-neutral-400 focus:ring-2 focus:ring-gold focus:border-gold transition-all outline-none"
+                                required
+                            />
+                        </div>
+
+                        <!-- Conversion Rate Input -->
+                        <div class="space-y-2">
+                            <label
+                                for="conversion"
+                                class="block text-sm font-medium text-neutral-600 dark:text-neutral-400"
+                            >
+                                Tasa de Conversión (%)
+                            </label>
+                            <div class="relative">
+                                <input
+                                    type="number"
+                                    id="conversion"
+                                    placeholder="Ej: 1.5"
+                                    step="0.1"
+                                    min="0"
+                                    max="100"
+                                    class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder-neutral-400 focus:ring-2 focus:ring-gold focus:border-gold transition-all outline-none"
+                                    required
+                                />
+                                <div
+                                    class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none"
+                                >
+                                    <span class="text-neutral-500 font-medium"
+                                        >%</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AOV Input -->
+                        <div class="space-y-2">
+                            <label
+                                for="aov"
+                                class="block text-sm font-medium text-neutral-600 dark:text-neutral-400"
+                            >
+                                Ticket Promedio (COP)
+                            </label>
+                            <div class="relative">
+                                <input
+                                    type="number"
+                                    id="aov"
+                                    placeholder="Ej: 250,000"
+                                    min="0"
+                                    class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder-neutral-400 focus:ring-2 focus:ring-gold focus:border-gold transition-all outline-none"
+                                    required
+                                />
+                                <div
+                                    class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none"
+                                >
+                                    <span
+                                        class="text-neutral-500 text-xs font-medium"
+                                        >COP</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Investment Input -->
+                        <div class="space-y-2">
+                            <label
+                                for="investment"
+                                class="block text-sm font-medium text-neutral-600 dark:text-neutral-400"
+                            >
+                                Inversión SEO Mensual (COP)
+                            </label>
+                            <div class="relative">
+                                <input
+                                    type="number"
+                                    id="investment"
+                                    placeholder="Ej: 2,500,000"
+                                    min="0"
+                                    class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder-neutral-400 focus:ring-2 focus:ring-gold focus:border-gold transition-all outline-none"
+                                    required
+                                />
+                                <div
+                                    class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none"
+                                >
+                                    <span
+                                        class="text-neutral-500 text-xs font-medium"
+                                        >COP</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results Section -->
+                    <div
+                        class="p-6 md:p-8 bg-neutral-50 dark:bg-neutral-800/30 flex flex-col justify-center space-y-8 relative overflow-hidden"
+                    >
+                        <!-- Background Glow for Results -->
+                        <div
+                            class="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-gold/5 via-transparent to-transparent opacity-50 pointer-events-none"
+                        >
+                        </div>
+
+                        <div
+                            class="text-center group p-6 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 shadow-sm relative z-10"
+                        >
+                            <p
+                                class="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest mb-2"
+                            >
+                                Ingresos Proyectados
+                            </p>
+                            <div
+                                id="revenue-display"
+                                class="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight break-words"
+                            >
+                                $0
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 relative z-10">
+                            <div
+                                class="text-center p-4 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 shadow-sm"
+                            >
+                                <p
+                                    class="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest mb-1"
+                                >
+                                    Beneficio Neto
+                                </p>
+                                <div
+                                    id="benefit-display"
+                                    class="text-lg md:text-xl font-bold text-neutral-800 dark:text-neutral-200 break-words"
+                                >
+                                    $0
+                                </div>
+                            </div>
+
+                            <div
+                                class="text-center p-4 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 shadow-sm relative overflow-hidden"
+                            >
+                                <p
+                                    class="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest mb-1"
+                                >
+                                    ROI Est.
+                                </p>
+                                <div
+                                    id="roi-display"
+                                    class="text-lg md:text-xl font-bold text-neutral-400 break-words"
+                                >
+                                    0%
+                                </div>
+                                <!-- Status Indicator Dot -->
+                                <div
+                                    id="roi-indicator"
+                                    class="absolute top-3 right-3 w-2 h-2 rounded-full bg-neutral-300"
+                                >
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic CTA -->
+                        <div
+                            id="cta-container"
+                            class="opacity-0 transform translate-y-4 transition-all duration-500 pointer-events-none relative z-10"
+                        >
+                            <div class="text-center space-y-3">
+                                <p
+                                    class="text-sm text-neutral-600 dark:text-neutral-400 font-medium"
+                                >
+                                    ¿Estos números te parecen interesantes?
+                                </p>
+                                <a
+                                    href="/contacto"
+                                    id="cta-button"
+                                    class="inline-flex items-center justify-center w-full px-6 py-4 text-sm font-bold text-black uppercase tracking-wide bg-gold rounded-xl hover:bg-gold-400 transition-all shadow-lg shadow-gold/20 hover:shadow-gold/30 hover:-translate-y-0.5"
+                                >
+                                    Solicitar Diagnóstico Gratuito
+                                    <svg
+                                        class="ml-2 w-4 h-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        ><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                                        ></path></svg
+                                    >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="text-center max-w-2xl mx-auto">
+                <p
+                    class="text-xs text-neutral-400 dark:text-neutral-600 leading-relaxed"
+                >
+                    * Esta herramienta proporciona estimaciones basadas en los
+                    datos ingresados. Los resultados reales pueden variar según
+                    la competencia del sector, la estacionalidad y la ejecución
+                    técnica de la estrategia.
+                </p>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    // DOM Elements
+    const inputs = {
+        traffic: document.getElementById("traffic") as HTMLInputElement,
+        conversion: document.getElementById("conversion") as HTMLInputElement,
+        aov: document.getElementById("aov") as HTMLInputElement,
+        investment: document.getElementById("investment") as HTMLInputElement,
+    };
+
+    const displays = {
+        revenue: document.getElementById("revenue-display"),
+        benefit: document.getElementById("benefit-display"),
+        roi: document.getElementById("roi-display"),
+        roiIndicator: document.getElementById("roi-indicator"),
+        ctaContainer: document.getElementById("cta-container"),
+    };
+
+    // Currency formatter for COP
+    const currencyFormatter = new Intl.NumberFormat("es-CO", {
+        style: "currency",
+        currency: "COP",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+    });
+
+    // Calculation Logic
+    function calculate() {
+        const traffic = parseFloat(inputs.traffic.value) || 0;
+        const conversion = parseFloat(inputs.conversion.value) || 0;
+        const aov = parseFloat(inputs.aov.value) || 0;
+        const investment = parseFloat(inputs.investment.value) || 0;
+
+        // Check if all inputs have values
+        const allFilled =
+            inputs.traffic.value &&
+            inputs.conversion.value &&
+            inputs.aov.value &&
+            inputs.investment.value;
+
+        // 1. Projected Revenue (R) = T * (C / 100) * AOV
+        const revenue = traffic * (conversion / 100) * aov;
+
+        // 2. Net Benefit (B) = R - I
+        const benefit = revenue - investment;
+
+        // 3. ROI % = (B / I) * 100
+        // Handle division by zero if investment is 0
+        let roi = 0;
+        if (investment > 0) {
+            roi = (benefit / investment) * 100;
+        }
+
+        // Update Displays
+        updateDisplays(revenue, benefit, roi, allFilled);
+    }
+
+    function updateDisplays(revenue, benefit, roi, allFilled) {
+        if (
+            !displays.revenue ||
+            !displays.benefit ||
+            !displays.roi ||
+            !displays.roiIndicator ||
+            !displays.ctaContainer
+        )
+            return;
+
+        displays.revenue.textContent = currencyFormatter.format(revenue);
+        displays.benefit.textContent = currencyFormatter.format(benefit);
+        displays.roi.textContent = `${roi.toFixed(1)}%`;
+
+        // Visual Feedback for ROI
+        if (allFilled) {
+            if (roi > 0) {
+                // Positive ROI -> Green (standard for money gain)
+                displays.roi.classList.remove(
+                    "text-red-500",
+                    "text-neutral-400",
+                );
+                displays.roi.classList.add("text-emerald-500"); // Keeping Green for profit status as it is universal
+                displays.roiIndicator.classList.remove(
+                    "bg-red-500",
+                    "bg-neutral-300",
+                );
+                displays.roiIndicator.classList.add("bg-emerald-500");
+            } else {
+                // Negative ROI -> Red
+                displays.roi.classList.remove(
+                    "text-emerald-500",
+                    "text-neutral-400",
+                );
+                displays.roi.classList.add("text-red-500");
+                displays.roiIndicator.classList.remove(
+                    "bg-emerald-500",
+                    "bg-neutral-300",
+                );
+                displays.roiIndicator.classList.add("bg-red-500");
+            }
+
+            // Show CTA
+            displays.ctaContainer.classList.remove(
+                "opacity-0",
+                "transform",
+                "translate-y-4",
+                "pointer-events-none",
+            );
+
+            trackCompletion();
+        } else {
+            // Reset colors if incomplete
+            displays.roi.classList.remove("text-emerald-500", "text-red-500");
+            displays.roi.classList.add("text-neutral-400");
+            displays.roiIndicator.classList.remove(
+                "bg-emerald-500",
+                "bg-red-500",
+            );
+            displays.roiIndicator.classList.add("bg-neutral-300");
+
+            // Hide CTA
+            displays.ctaContainer.classList.add(
+                "opacity-0",
+                "transform",
+                "translate-y-4",
+                "pointer-events-none",
+            );
+        }
+    }
+
+    // GA4 Event Tracking
+    let hasTracked = false;
+    let debounceTimer;
+
+    function trackCompletion() {
+        if (hasTracked) return;
+
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            const allFilled =
+                inputs.traffic.value &&
+                inputs.conversion.value &&
+                inputs.aov.value &&
+                inputs.investment.value;
+            if (allFilled) {
+                if (typeof window.gtag === "function") {
+                    window.gtag("event", "roi_calculator_complete", {
+                        event_category: "engagement",
+                        event_label: "ROI Calculator Usage",
+                    });
+                }
+                hasTracked = true;
+            }
+        }, 2000);
+    }
+
+    // Event Listeners
+    Object.values(inputs).forEach((input) => {
+        input.addEventListener("input", calculate);
+    });
+
+    // Dynamic Tab Title
+    const originalTitle = document.title;
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            document.title = "💰 ¡Mira tus ganancias potenciales!";
+        } else {
+            document.title = originalTitle;
+        }
+    });
+
+    // Initialize
+    calculate();
+</script>

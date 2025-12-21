@@ -1,0 +1,531 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProfileCard from "../../components/ProfileCard.astro";
+---
+
+<Layout
+    title="Simulador de Google SERP 2025: Previsualiza tu SEO en Píxeles | Nicolás Cárdenas"
+    description="Usa nuestro simulador SERP gratuito para optimizar tus títulos y descripciones. Mide píxeles reales para escritorio y móvil. Evita que Google corte tu contenido."
+>
+    <!-- Background Decor -->
+    <div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+        <div
+            class="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"
+        >
+        </div>
+    </div>
+
+    <div
+        class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 py-8 md:py-12 max-w-7xl mx-auto px-4 min-h-[800px]"
+    >
+        <!-- Sidebar -->
+        <div class="hidden lg:block w-full h-full">
+            <ProfileCard />
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col gap-8 min-w-0">
+            <!-- Header Tool -->
+            <div class="space-y-4">
+                <h1
+                    class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white"
+                >
+                    Simulador <span class="text-gold">Google SERP 2025</span>
+                </h1>
+                <p class="text-neutral-600 dark:text-neutral-400 max-w-2xl">
+                    Previsualiza cómo se verá tu web en Google. Esta herramienta
+                    mide el ancho real en píxeles (igual que el algoritmo de
+                    Google) para evitar que tus títulos se corten con "...".
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 items-start">
+                <!-- Inputs Column -->
+                <div
+                    class="space-y-6 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 p-6 md:p-8 rounded-3xl shadow-xl"
+                >
+                    <!-- Device Toggle -->
+                    <div
+                        class="flex items-center gap-4 bg-neutral-100 dark:bg-black/50 p-2 rounded-xl border border-neutral-200 dark:border-white/5 w-fit"
+                    >
+                        <button
+                            id="btn-desktop"
+                            class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-sm"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><rect
+                                    x="2"
+                                    y="3"
+                                    width="20"
+                                    height="14"
+                                    rx="2"
+                                    ry="2"></rect><line
+                                    x1="8"
+                                    y1="21"
+                                    x2="16"
+                                    y2="21"></line><line
+                                    x1="12"
+                                    y1="17"
+                                    x2="12"
+                                    y2="21"></line></svg
+                            >
+                            Escritorio
+                        </button>
+                        <button
+                            id="btn-mobile"
+                            class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><rect
+                                    x="5"
+                                    y="2"
+                                    width="14"
+                                    height="20"
+                                    rx="2"
+                                    ry="2"></rect><line
+                                    x1="12"
+                                    y1="18"
+                                    x2="12.01"
+                                    y2="18"></line></svg
+                            >
+                            Móvil
+                        </button>
+                    </div>
+
+                    <!-- URL -->
+                    <div>
+                        <label
+                            class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1"
+                            >URL (Breadcrumbs)</label
+                        >
+                        <input
+                            type="text"
+                            id="input-url"
+                            class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-black/50 border border-neutral-200 dark:border-neutral-700 focus:border-gold focus:ring-gold dark:text-white"
+                            placeholder="cardenasnicolas.com/herramientas"
+                        />
+                    </div>
+
+                    <!-- Title -->
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <label
+                                class="block text-sm font-medium text-neutral-700 dark:text-neutral-300"
+                                >Título SEO</label
+                            >
+                            <span
+                                id="title-counter"
+                                class="text-xs font-mono text-neutral-500"
+                                >0px / 600px</span
+                            >
+                        </div>
+                        <input
+                            type="text"
+                            id="input-title"
+                            class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-black/50 border border-neutral-200 dark:border-neutral-700 focus:border-gold focus:ring-gold dark:text-white font-sans"
+                            placeholder="Ej: Agencia SEO en Colombia | Nicolás Cárdenas"
+                        />
+                        <div
+                            class="h-1.5 w-full bg-neutral-100 dark:bg-neutral-800 mt-2 rounded-full overflow-hidden"
+                        >
+                            <div
+                                id="title-bar"
+                                class="h-full w-0 bg-green-500 transition-all duration-300"
+                            >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <label
+                                class="block text-sm font-medium text-neutral-700 dark:text-neutral-300"
+                                >Meta Descripción</label
+                            >
+                            <span
+                                id="desc-counter"
+                                class="text-xs font-mono text-neutral-500"
+                                >0px / 960px</span
+                            >
+                        </div>
+                        <textarea
+                            id="input-desc"
+                            rows="3"
+                            class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-black/50 border border-neutral-200 dark:border-neutral-700 focus:border-gold focus:ring-gold dark:text-white font-sans"
+                            placeholder="Ej: Aumenta tu tráfico orgánico con estrategias SEO avanzadas. Consultoría especializada en e-commerce y servicios B2B en Colombia."
+                        ></textarea>
+                        <div
+                            class="h-1.5 w-full bg-neutral-100 dark:bg-neutral-800 mt-2 rounded-full overflow-hidden"
+                        >
+                            <div
+                                id="desc-bar"
+                                class="h-full w-0 bg-green-500 transition-all duration-300"
+                            >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Keywords -->
+                    <div>
+                        <label
+                            class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1"
+                            >Palabra Clave Objetivo (Negritas)</label
+                        >
+                        <input
+                            type="text"
+                            id="input-keyword"
+                            class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-black/50 border border-neutral-200 dark:border-neutral-700 focus:border-gold focus:ring-gold dark:text-white"
+                            placeholder="Ej: Agencia SEO"
+                        />
+                        <p class="text-xs text-neutral-400 mt-1">
+                            Las coincidencias se resaltarán en negrita como en
+                            Google.
+                        </p>
+                    </div>
+
+                    <!-- Actions -->
+                    <button
+                        id="btn-copy"
+                        class="w-full py-3 bg-neutral-900 dark:bg-white text-white dark:text-black font-bold rounded-xl shadow-lg hover:translate-y-[-2px] transition-all flex items-center justify-center gap-2"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><rect
+                                x="9"
+                                y="9"
+                                width="13"
+                                height="13"
+                                rx="2"
+                                ry="2"></rect><path
+                                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                            ></path></svg
+                        >
+                        Copiar Metadatos
+                    </button>
+                </div>
+
+                <!-- Preview Column -->
+                <div class="lg:sticky lg:top-32 space-y-4">
+                    <h3
+                        class="font-bold text-neutral-900 dark:text-white text-lg"
+                    >
+                        Vista Previa en Google
+                    </h3>
+
+                    <!-- Google Preview Card -->
+                    <div
+                        class="bg-white dark:bg-[#1f1f1f] p-4 rounded-xl shadow-sm border border-neutral-200 dark:border-[#3c4043] font-arial select-none min-h-[200px]"
+                    >
+                        <!-- Breadcrumb Row -->
+                        <div class="flex items-center gap-3 mb-1.5">
+                            <div
+                                class="w-7 h-7 bg-neutral-100 rounded-full flex items-center justify-center text-xs overflow-hidden shrink-0 border border-neutral-100"
+                            >
+                                <img
+                                    src="/favicon.webp"
+                                    alt="Favicon"
+                                    class="w-full h-full object-cover opacity-80"
+                                    onerror="this.style.display='none'"
+                                />
+                                <span class="hidden">G</span>
+                            </div>
+                            <div class="flex flex-col leading-tight">
+                                <span
+                                    class="text-[#202124] dark:text-[#dadce0] text-sm"
+                                    >Nicolás Cárdenas</span
+                                >
+                                <span
+                                    id="preview-url"
+                                    class="text-[#202124] dark:text-[#dadce0] text-xs truncate max-w-[250px] md:max-w-md"
+                                    >https://cardenasnicolas.com > herramientas</span
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Title -->
+                        <h3 class="group cursor-pointer mb-1 block">
+                            <span
+                                id="preview-title"
+                                class="text-[#1a0dab] dark:text-[#8ab4f8] text-xl hover:underline truncate-line-clamp"
+                            >
+                                Simulador de Google SERP 2025: Previsualiza tu
+                                SEO en Píxeles
+                            </span>
+                        </h3>
+
+                        <!-- Description -->
+                        <div
+                            id="preview-desc"
+                            class="text-[#4d5156] dark:text-[#bdc1c6] text-sm leading-relaxed break-words"
+                        >
+                            Usa nuestro simulador SERP gratuito para optimizar
+                            tus títulos y descripciones. Mide píxeles reales
+                            para escritorio y móvil. Evita que Google corte tu
+                            contenido.
+                        </div>
+                    </div>
+
+                    <!-- Info Box -->
+                    <div
+                        class="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/30 p-4 rounded-xl text-sm text-blue-800 dark:text-blue-300"
+                    >
+                        <strong class="block mb-1"
+                            >💡 ¿Por qué medir en píxeles?</strong
+                        >
+                        Google no cuenta caracteres, mide el espacio físico que ocupa
+                        el texto. Una "W" ocupa mucho más que una "i". Esta herramienta
+                        usa el mismo método de renderizado.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    // --- Config based on 2025 Specs ---
+    const SPECS = {
+        desktop: {
+            titleFont: "20px Arial, sans-serif",
+            titleMax: 600,
+            descFont: "14px Arial, sans-serif",
+            descMax: 960,
+        },
+        mobile: {
+            titleFont: "18px Arial, sans-serif",
+            titleMax: 920, // Allowing for wrapping
+            descFont: "14px Arial, sans-serif",
+            descMax: 680,
+        },
+    };
+
+    let mode = "desktop"; // 'desktop' | 'mobile'
+
+    // Canvas for measuring
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    // Elements
+    const els = {
+        inputUrl: document.getElementById("input-url"),
+        inputTitle: document.getElementById("input-title"),
+        inputDesc: document.getElementById("input-desc"),
+        inputKeyword: document.getElementById("input-keyword"),
+
+        previewUrl: document.getElementById("preview-url"),
+        previewTitle: document.getElementById("preview-title"),
+        previewDesc: document.getElementById("preview-desc"),
+
+        titleCounter: document.getElementById("title-counter"),
+        titleBar: document.getElementById("title-bar"),
+        descCounter: document.getElementById("desc-counter"),
+        descBar: document.getElementById("desc-bar"),
+
+        btnDesktop: document.getElementById("btn-desktop"),
+        btnMobile: document.getElementById("btn-mobile"),
+        btnCopy: document.getElementById("btn-copy"),
+    };
+
+    function init() {
+        if (!els.inputTitle) return; // Guard
+
+        // Listeners
+        els.inputUrl.addEventListener("input", updatePreview);
+        els.inputTitle.addEventListener("input", updatePreview);
+        els.inputDesc.addEventListener("input", updatePreview);
+        els.inputKeyword.addEventListener("input", updatePreview);
+
+        els.btnDesktop.addEventListener("click", () => setMode("desktop"));
+        els.btnMobile.addEventListener("click", () => setMode("mobile"));
+        els.btnCopy.addEventListener("click", copyToClipboard);
+
+        // Pre-fill inputs from placeholders if empty (optional demo exp)
+        // updatePreview();
+    }
+
+    function setMode(newMode) {
+        mode = newMode;
+
+        // Update Buttons
+        const activeClass = [
+            "bg-white",
+            "dark:bg-neutral-800",
+            "text-neutral-900",
+            "dark:text-white",
+            "shadow-sm",
+            "font-bold",
+        ];
+        const inactiveClass = [
+            "text-neutral-500",
+            "hover:text-neutral-900",
+            "dark:hover:text-white",
+            "font-medium",
+        ];
+
+        // Reset
+        els.btnDesktop.className =
+            "flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all";
+        els.btnMobile.className =
+            "flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all";
+
+        if (mode === "desktop") {
+            els.btnDesktop.classList.add(...activeClass);
+            els.btnMobile.classList.add(...inactiveClass);
+        } else {
+            els.btnMobile.classList.add(...activeClass);
+            els.btnDesktop.classList.add(...inactiveClass);
+        }
+
+        updatePreview();
+    }
+
+    function measureText(text, font) {
+        if (!ctx) return 0;
+        ctx.font = font;
+        return Math.floor(ctx.measureText(text).width);
+    }
+
+    function highlightKeywords(text, keyword) {
+        if (!keyword || keyword.trim() === "") return text;
+
+        // Escape regex special chars
+        const safeKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const regex = new RegExp(`(${safeKeyword})`, "gi");
+
+        // Replace with bold tag
+        return text.replace(regex, "<b>$1</b>");
+    }
+
+    function updatePreview() {
+        const spec = SPECS[mode];
+        const titleText =
+            els.inputTitle.value ||
+            els.inputTitle.placeholder.replace("Ej: ", "");
+        const descText =
+            els.inputDesc.value ||
+            els.inputDesc.placeholder.replace("Ej: ", "");
+        const urlText = els.inputUrl.value || els.inputUrl.placeholder;
+        const keyword = els.inputKeyword.value;
+
+        // --- URL ---
+        // Clean URL scheme
+        let displayUrl = urlText
+            .replace(/^https?:\/\//, "")
+            .replace(/^www\./, "");
+        // Replace slashes with breadcrumbs
+        displayUrl = displayUrl.split("/").filter(Boolean).join(" › ");
+        els.previewUrl.innerText = displayUrl;
+
+        // --- Title Logic ---
+        const titlePx = measureText(titleText, spec.titleFont);
+        const titleLimit = spec.titleMax;
+
+        // Visual Truncation logic for preview
+        let displayedTitle = titleText;
+        if (titlePx > titleLimit) {
+            // Binary search or iterative chop to find cut point?
+            // Simple iterative chop for robustness
+            let cut = titleText.length;
+            while (
+                measureText(displayedTitle + "...", spec.titleFont) >
+                    titleLimit &&
+                cut > 0
+            ) {
+                cut--;
+                displayedTitle = titleText.substring(0, cut);
+            }
+            displayedTitle += "...";
+        }
+
+        // Render Title
+        els.previewTitle.innerHTML = highlightKeywords(displayedTitle, keyword);
+
+        // Counters
+        updateBar(els.titleBar, els.titleCounter, titlePx, titleLimit);
+
+        // --- Description Logic ---
+        const descPx = measureText(descText, spec.descFont);
+        const descLimit = spec.descMax;
+
+        let displayedDesc = descText;
+        if (descPx > descLimit) {
+            let cut = descText.length;
+            while (
+                measureText(displayedDesc + "...", spec.descFont) > descLimit &&
+                cut > 0
+            ) {
+                cut--;
+                displayedDesc = descText.substring(0, cut);
+            }
+            displayedDesc += "...";
+        }
+
+        els.previewDesc.innerHTML = highlightKeywords(displayedDesc, keyword);
+        updateBar(els.descBar, els.descCounter, descPx, descLimit);
+    }
+
+    function updateBar(barEl, textEl, current, max) {
+        textEl.innerText = `${current}px / ${max}px`;
+        const percentage = Math.min((current / max) * 100, 100);
+
+        barEl.style.width = `${percentage}%`;
+
+        // Colors
+        barEl.classList.remove("bg-green-500", "bg-orange-500", "bg-red-500");
+        if (current > max) {
+            barEl.classList.add("bg-red-500");
+            textEl.classList.add("text-red-500");
+        } else if (current > max * 0.9) {
+            barEl.classList.add("bg-orange-500");
+            textEl.classList.remove("text-red-500");
+        } else {
+            barEl.classList.add("bg-green-500");
+            textEl.classList.remove("text-red-500");
+        }
+    }
+
+    function copyToClipboard() {
+        const data = `
+Title: ${els.inputTitle.value}
+Description: ${els.inputDesc.value}
+URL: ${els.inputUrl.value}
+        `.trim();
+
+        navigator.clipboard.writeText(data).then(() => {
+            const original = els.btnCopy.innerHTML;
+            els.btnCopy.innerHTML = `<span class="text-green-500 font-bold">¡Copiado!</span>`;
+            setTimeout(() => (els.btnCopy.innerHTML = original), 2000);
+        });
+    }
+
+    // Run
+    document.addEventListener("astro:page-load", init);
+    document.addEventListener("DOMContentLoaded", init);
+</script>
