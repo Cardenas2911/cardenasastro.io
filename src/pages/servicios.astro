@@ -4,43 +4,37 @@ import ProfileCard from "../components/ProfileCard.astro";
 
 const webServices = [
     {
-        title: "Desarrollo WordPress a Medida",
+        title: "Desarrollo WordPress SEO-First",
         description:
-            "Sitios web únicos diseñados desde cero. Sin plantillas pesadas ni código basura. Priorizo la velocidad, la seguridad y la escalabilidad de tu negocio.",
+            "Sitios web rápidos, seguros y optimizados desde el código para rankear en Google. Sin plantillas pesadas, solo rendimiento puro.",
         icon: "code",
     },
     {
-        title: "Arquitecturas Headless (Astro/Next.js)",
+        title: "E-commerce & Embudos",
         description:
-            "La vanguardia del desarrollo web. Desacoplo el frontend de tu WordPress para lograr tiempos de carga instantáneos y una seguridad impenetrable.",
-        icon: "rocket",
-    },
-    {
-        title: "E-commerce y Tiendas Online",
-        description:
-            "Desarrollo de tiendas WooCommerce optimizadas para la conversión. Pasarelas de pago, gestión de inventario y experiencia de usuario fluida.",
+            "Tiendas online que convierten visitas en clientes. Embudos de venta automatizados y pasarelas de pago integradas sin fricción.",
         icon: "cart",
     },
 ];
 
 const seoServices = [
     {
-        title: "Auditoría SEO Técnica",
+        title: "Consultoría SEO Estratégica",
         description:
-            "Análisis exhaustivo de tu sitio. Detecto y soluciono problemas de indexación, rastreo, arquitectura web y Core Web Vitals que frenan tu crecimiento.",
+            "Auditorías profundas y planes de acción claros. Detecto oportunidades y elimino barreras técnicas que impiden tu crecimiento.",
         icon: "search",
     },
     {
-        title: "SEO Local y Google Business",
+        title: "SEO Local Colombia",
         description:
-            "Domina las búsquedas en tu ciudad. Optimización de fichas de Google Business Profile y estrategias para captar clientes cercanos a tu ubicación.",
+            "Domina las búsquedas en tu ciudad. Optimización de Google Business Profile para atraer clientes cercanos a tu ubicación.",
         icon: "map",
     },
     {
-        title: "Estrategia de Contenidos",
+        title: "IA aplicada al SEO",
         description:
-            "Investigación de palabras clave (Keyword Research) orientada a ventas. Planifico qué contenidos crear para atraer tráfico cualificado, no solo visitas.",
-        icon: "chart",
+            "Automatización inteligente y análisis de datos. Uso inteligencia artificial para escalar tu creación de contenidos y análisis de competencia.",
+        icon: "rocket",
     },
 ];
 ---
@@ -229,6 +223,22 @@ const seoServices = [
                                                         stroke-linejoin="round"
                                                         stroke-width="2"
                                                         d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                                                    />
+                                                </svg>
+                                            )}
+                                            {service.icon === "rocket" && (
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-6 w-6"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M13 10V3L4 14h7v7l9-11h-7z"
                                                     />
                                                 </svg>
                                             )}

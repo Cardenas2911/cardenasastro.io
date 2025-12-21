@@ -1,5 +1,5 @@
 ---
-
+import SocialLinks from "./SocialLinks.astro";
 ---
 
 <aside
@@ -31,20 +31,8 @@
         Desarrollador Web
     </p>
 
-    <div class="flex gap-3 mb-6 w-full">
-        <a
-            href="mailto:contacto@cardenasnicolas.com"
-            class="flex-1 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-900 dark:text-white text-sm py-2 rounded-lg transition-colors border border-neutral-200 dark:border-neutral-700"
-        >
-            Email
-        </a>
-        <a
-            href="https://wa.me/"
-            target="_blank"
-            class="flex-1 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-900 dark:text-white text-sm py-2 rounded-lg transition-colors border border-neutral-200 dark:border-neutral-700"
-        >
-            WhatsApp
-        </a>
+    <div class="flex justify-center gap-3 mb-6 w-full">
+        <SocialLinks />
     </div>
 
     <div
