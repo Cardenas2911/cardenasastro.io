@@ -3,124 +3,416 @@ import Layout from "../layouts/Layout.astro";
 import ProfileCard from "../components/ProfileCard.astro";
 ---
 
-<Layout title="Contacto | Nicolas Cardenas - Hablemos de tu Proyecto">
+<Layout
+    title="Contacto | Nicolás Cárdenas - Especialista SEO y WordPress Colombia"
+    description="¿Listo para escalar tu negocio? Agenda una consulta gratuita. Hablemos sobre SEO técnico, desarrollo WordPress y estrategias de IA para dominar Google en Colombia."
+>
+    <!-- Schema.org Markup for Local Business -->
+    <script type="application/ld+json" slot="head">
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Nicolás Cárdenas",
+            "image": "https://cardenasnicolas.com/profile.jpg",
+            "url": "https://cardenasnicolas.com/contacto",
+            "telephone": "+573238162908",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Medellín",
+                "addressRegion": "Antioquia",
+                "addressCountry": "CO"
+            },
+            "priceRange": "$$"
+        }
+    </script>
+
     <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 py-8">
-        <!-- Sidebar -->
+        <!-- Sidebar (Hidden on mobile for focus) -->
         <div class="hidden lg:block">
             <ProfileCard />
         </div>
 
         <!-- Main Content -->
         <div class="space-y-12 min-w-0">
+            <!-- Hero Section -->
             <section
-                class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 md:p-12 relative overflow-hidden transition-colors duration-300"
+                class="relative bg-neutral-900 rounded-3xl p-8 md:p-12 overflow-hidden border border-white/10 text-center md:text-left"
             >
-                <!-- Background decoration -->
                 <div
-                    class="absolute top-0 right-0 w-64 h-64 bg-gold/5 dark:bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none transition-colors"
+                    class="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-[100px] pointer-events-none"
                 >
                 </div>
 
-                <div class="relative z-10 max-w-2xl mx-auto">
-                    <div class="text-center mb-12">
-                        <h1
-                            class="text-4xl font-bold mb-4 text-neutral-900 dark:text-white transition-colors"
-                        >
-                            Contacta Conmigo
-                        </h1>
-                        <p
-                            class="text-xl text-neutral-600 dark:text-neutral-400 transition-colors"
-                        >
-                            ¿Listo para mejorar tu posicionamiento web? Cuéntame
-                            sobre tu proyecto.
-                        </p>
-                    </div>
-
-                    <div
-                        class="bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 p-8 rounded-xl relative overflow-hidden transition-colors"
+                <div class="relative z-10 max-w-3xl">
+                    <h1
+                        class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight"
                     >
-                        <form
-                            id="contact-form"
-                            action="https://formspree.io/f/YOUR_FORM_ID"
-                            method="POST"
-                            class="space-y-6"
-                        >
-                            <div class="text-left">
-                                <label
-                                    for="name"
-                                    class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2 transition-colors"
-                                    >Nombre</label
-                                >
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    class="w-full px-4 py-3 bg-white dark:bg-black border border-neutral-300 dark:border-white/10 rounded-lg text-neutral-900 dark:text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
-                                    placeholder="Tu nombre"
-                                    required
-                                />
-                            </div>
-                            <div class="text-left">
-                                <label
-                                    for="email"
-                                    class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2 transition-colors"
-                                    >Email</label
-                                >
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    class="w-full px-4 py-3 bg-white dark:bg-black border border-neutral-300 dark:border-white/10 rounded-lg text-neutral-900 dark:text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
-                                    placeholder="tu@email.com"
-                                    required
-                                />
-                            </div>
-                            <div class="text-left">
-                                <label
-                                    for="message"
-                                    class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2 transition-colors"
-                                    >Mensaje</label
-                                >
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    rows="4"
-                                    class="w-full px-4 py-3 bg-white dark:bg-black border border-neutral-300 dark:border-white/10 rounded-lg text-neutral-900 dark:text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
-                                    placeholder="¿En qué puedo ayudarte?"
-                                    required></textarea>
-                            </div>
-                            <button
-                                type="submit"
-                                id="submit-btn"
-                                class="w-full bg-gold hover:bg-gold-400 text-black font-bold py-3 px-6 rounded-lg transition-colors shadow-lg shadow-gold/20 disabled:opacity-50 disabled:cursor-not-allowed"
-                            >
-                                Enviar Mensaje
-                            </button>
-                            <p
-                                id="form-status"
-                                class="text-center text-sm mt-4 hidden"
-                            >
-                            </p>
-                        </form>
-                    </div>
-
-                    <div class="mt-12 text-center">
-                        <p
-                            class="text-neutral-600 dark:text-neutral-400 mb-4 transition-colors"
-                        >
-                            O si prefieres, escríbeme directamente:
-                        </p>
-                        <a
-                            href="mailto:contacto@cardenasnicolas.com"
-                            class="text-gold hover:text-neutral-900 dark:hover:text-white font-medium text-lg transition-colors"
-                        >
-                            contacto@cardenasnicolas.com
-                        </a>
+                        Tu próximo gran salto digital empieza con una <span
+                            class="text-gold">conversación</span
+                        >.
+                    </h1>
+                    <p class="text-lg text-neutral-400 mb-8 leading-relaxed">
+                        No busco clientes, busco socios estratégicos. Mi enfoque
+                        es trabajar contigo, no solo para ti, para transformar
+                        tu web en un activo financiero real en el mercado
+                        colombiano.
+                    </p>
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-sm font-medium"
+                    >
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+                            ></span>
+                            <span
+                                class="relative inline-flex rounded-full h-2 w-2 bg-green-500"
+                            ></span>
+                        </span>
+                        Respuesta en menos de 24h
                     </div>
                 </div>
             </section>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Smart Form Component -->
+                <div
+                    class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 p-8 rounded-2xl shadow-xl"
+                >
+                    <h2
+                        class="text-2xl font-bold text-neutral-900 dark:text-white mb-2"
+                    >
+                        Hablemos de tu Proyecto
+                    </h2>
+                    <p
+                        class="text-sm text-neutral-500 dark:text-neutral-400 mb-6"
+                    >
+                        Obtén un pre-diagnóstico técnico sin costo.
+                    </p>
+
+                    <form
+                        id="contact-form"
+                        action="https://formspree.io/f/YOUR_FORM_ID"
+                        method="POST"
+                        class="space-y-4"
+                    >
+                        <div>
+                            <label
+                                for="name"
+                                class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1"
+                                >Nombre Completo</label
+                            >
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                required
+                                class="w-full px-4 py-3 bg-neutral-50 dark:bg-black/50 border border-neutral-200 dark:border-white/10 rounded-lg focus:ring-2 focus:ring-gold/50 focus:border-gold outline-none transition-all dark:text-white"
+                                placeholder="Ej. Juan Pérez"
+                            />
+                        </div>
+
+                        <div>
+                            <label
+                                for="email"
+                                class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1"
+                                >Correo Corporativo</label
+                            >
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                class="w-full px-4 py-3 bg-neutral-50 dark:bg-black/50 border border-neutral-200 dark:border-white/10 rounded-lg focus:ring-2 focus:ring-gold/50 focus:border-gold outline-none transition-all dark:text-white"
+                                placeholder="juan@empresa.com"
+                            />
+                        </div>
+
+                        <div>
+                            <label
+                                for="website"
+                                class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1"
+                                >URL del Sitio Web <span
+                                    class="text-neutral-400 font-normal"
+                                    >(Opcional)</span
+                                ></label
+                            >
+                            <input
+                                type="url"
+                                id="website"
+                                name="website"
+                                class="w-full px-4 py-3 bg-neutral-50 dark:bg-black/50 border border-neutral-200 dark:border-white/10 rounded-lg focus:ring-2 focus:ring-gold/50 focus:border-gold outline-none transition-all dark:text-white"
+                                placeholder="https://tuweb.com"
+                            />
+                        </div>
+
+                        <div>
+                            <label
+                                for="service"
+                                class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1"
+                                >¿En qué puedo ayudarte?</label
+                            >
+                            <select
+                                id="service"
+                                name="service"
+                                class="w-full px-4 py-3 bg-neutral-50 dark:bg-black/50 border border-neutral-200 dark:border-white/10 rounded-lg focus:ring-2 focus:ring-gold/50 focus:border-gold outline-none transition-all dark:text-white"
+                            >
+                                <option value="Consultoria SEO"
+                                    >Consultoría SEO Estratégica</option
+                                >
+                                <option value="WordPress"
+                                    >Desarrollo WordPress SEO-First</option
+                                >
+                                <option value="Ecommerce"
+                                    >E-commerce & Embudos</option
+                                >
+                                <option value="IA SEO"
+                                    >IA aplicada al SEO</option
+                                >
+                                <option value="Otro"
+                                    >Otro / Consulta General</option
+                                >
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                for="message"
+                                class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1"
+                                >Mensaje Breve</label
+                            >
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="3"
+                                required
+                                class="w-full px-4 py-3 bg-neutral-50 dark:bg-black/50 border border-neutral-200 dark:border-white/10 rounded-lg focus:ring-2 focus:ring-gold/50 focus:border-gold outline-none transition-all dark:text-white"
+                                placeholder="Cuéntame tus objetivos..."
+                            ></textarea>
+                        </div>
+
+                        <button
+                            type="submit"
+                            id="submit-btn"
+                            class="w-full bg-gold hover:bg-gold-400 text-black font-bold py-4 rounded-lg transition-all shadow-lg shadow-gold/20 flex justify-center items-center gap-2"
+                        >
+                            <span>Enviar y solicitar pre-diagnóstico</span>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+                            >
+                        </button>
+                        <p
+                            id="form-status"
+                            class="text-center text-sm mt-4 hidden"
+                        >
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Direct Channels -->
+                <div class="space-y-8">
+                    <div>
+                        <h3
+                            class="text-xl font-bold text-neutral-900 dark:text-white mb-6"
+                        >
+                            Otras formas de conectar
+                        </h3>
+                        <div class="space-y-4">
+                            <!-- WhatsApp -->
+                            <a
+                                href="https://wa.me/573238162908"
+                                target="_blank"
+                                class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-white/5 border border-neutral-200 dark:border-white/10 hover:border-green-500/50 transition-colors group"
+                            >
+                                <div
+                                    class="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center text-green-500 group-hover:scale-110 transition-transform"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        ><path
+                                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+                                        ></path></svg
+                                    >
+                                </div>
+                                <div>
+                                    <div
+                                        class="font-bold text-neutral-900 dark:text-white"
+                                    >
+                                        WhatsApp Business
+                                    </div>
+                                    <div
+                                        class="text-sm text-neutral-500 dark:text-neutral-400"
+                                    >
+                                        Respuesta inmediata para urgencias
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Calendly -->
+                            <a
+                                href="https://calendly.com/"
+                                target="_blank"
+                                class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-white/5 border border-neutral-200 dark:border-white/10 hover:border-blue-500/50 transition-colors group"
+                            >
+                                <div
+                                    class="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        ><rect
+                                            x="3"
+                                            y="4"
+                                            width="18"
+                                            height="18"
+                                            rx="2"
+                                            ry="2"></rect><line
+                                            x1="16"
+                                            y1="2"
+                                            x2="16"
+                                            y2="6"></line><line
+                                            x1="8"
+                                            y1="2"
+                                            x2="8"
+                                            y2="6"></line><line
+                                            x1="3"
+                                            y1="10"
+                                            x2="21"
+                                            y2="10"></line></svg
+                                    >
+                                </div>
+                                <div>
+                                    <div
+                                        class="font-bold text-neutral-900 dark:text-white"
+                                    >
+                                        Agenda Virtual
+                                    </div>
+                                    <div
+                                        class="text-sm text-neutral-500 dark:text-neutral-400"
+                                    >
+                                        Reserva 15 min de diagnóstico
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Email -->
+                            <a
+                                href="mailto:contacto@cardenasnicolas.com"
+                                class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-white/5 border border-neutral-200 dark:border-white/10 hover:border-gold/50 transition-colors group"
+                            >
+                                <div
+                                    class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center text-gold group-hover:scale-110 transition-transform"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        ><path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                                        ></path><polyline
+                                            points="22,6 12,13 2,6"
+                                        ></polyline></svg
+                                    >
+                                </div>
+                                <div>
+                                    <div
+                                        class="font-bold text-neutral-900 dark:text-white"
+                                    >
+                                        Email Corporativo
+                                    </div>
+                                    <div
+                                        class="text-sm text-neutral-500 dark:text-neutral-400"
+                                    >
+                                        contacto@cardenasnicolas.com
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Trust Signals -->
+                    <div
+                        class="p-6 rounded-2xl bg-gradient-to-br from-neutral-100 to-neutral-200 dark:from-neutral-900 dark:to-black border border-neutral-200 dark:border-white/5"
+                    >
+                        <h4
+                            class="font-bold text-neutral-900 dark:text-white mb-4"
+                        >
+                            ¿Por qué confiar?
+                        </h4>
+                        <ul class="space-y-3">
+                            <li
+                                class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400"
+                            >
+                                <span class="text-green-500 mt-0.5">✓</span>
+                                Base en Medellín, alcance global.
+                            </li>
+                            <li
+                                class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400"
+                            >
+                                <span class="text-green-500 mt-0.5">✓</span>
+                                Herramientas de grado industrial (SEMrush, Screaming
+                                Frog).
+                            </li>
+                            <li
+                                class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400"
+                            >
+                                <span class="text-green-500 mt-0.5">✓</span>
+                                Cumplimiento Ley de Protección de Datos.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- Floating WhatsApp for Mobile -->
+    <a
+        href="https://wa.me/573238162908"
+        target="_blank"
+        class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform md:hidden"
+        aria-label="Chat en WhatsApp"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            ><path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"
+            ></path></svg
+        >
+    </a>
 
     <script is:inline>
         const form = document.getElementById("contact-form");
@@ -133,7 +425,7 @@ import ProfileCard from "../components/ProfileCard.astro";
                 const data = new FormData(form);
 
                 submitBtn.disabled = true;
-                submitBtn.textContent = "Enviando...";
+                submitBtn.innerHTML = `<span>Enviando...</span>`;
                 status.classList.add("hidden");
 
                 try {
@@ -146,12 +438,7 @@ import ProfileCard from "../components/ProfileCard.astro";
                     });
 
                     if (response.ok) {
-                        status.textContent =
-                            "¡Gracias! Tu mensaje ha sido enviado correctamente.";
-                        status.className =
-                            "text-center text-sm mt-4 text-green-600 dark:text-green-400";
-                        status.classList.remove("hidden");
-                        form.reset();
+                        window.location.href = "/gracias";
                     } else {
                         const data = await response.json();
                         if (Object.hasOwn(data, "errors")) {
@@ -165,6 +452,9 @@ import ProfileCard from "../components/ProfileCard.astro";
                         status.className =
                             "text-center text-sm mt-4 text-red-600 dark:text-red-400";
                         status.classList.remove("hidden");
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = `<span>Enviar y solicitar pre-diagnóstico</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>`;
                     }
                 } catch (error) {
                     status.textContent =
@@ -172,9 +462,9 @@ import ProfileCard from "../components/ProfileCard.astro";
                     status.className =
                         "text-center text-sm mt-4 text-red-600 dark:text-red-400";
                     status.classList.remove("hidden");
-                } finally {
                     submitBtn.disabled = false;
-                    submitBtn.textContent = "Enviar Mensaje";
+                    submitBtn.innerHTML = `<span>Enviar y solicitar pre-diagnóstico</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>`;
                 }
             });
         }

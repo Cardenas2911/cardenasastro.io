@@ -2,329 +2,332 @@
 import Layout from "../layouts/Layout.astro";
 import ProfileCard from "../components/ProfileCard.astro";
 
-const webServices = [
-    {
-        title: "Desarrollo WordPress SEO-First",
-        description:
-            "Sitios web rápidos, seguros y optimizados desde el código para rankear en Google. Sin plantillas pesadas, solo rendimiento puro.",
-        icon: "code",
-    },
-    {
-        title: "E-commerce & Embudos",
-        description:
-            "Tiendas online que convierten visitas en clientes. Embudos de venta automatizados y pasarelas de pago integradas sin fricción.",
-        icon: "cart",
-    },
-];
-
-const seoServices = [
+const services = [
     {
         title: "Consultoría SEO Estratégica",
         description:
-            "Auditorías profundas y planes de acción claros. Detecto oportunidades y elimino barreras técnicas que impiden tu crecimiento.",
-        icon: "search",
+            "Más que tráfico, buscamos ROI. Auditorías técnicas 360°, investigación de mercado y rutas de crecimiento para empresas que quieren dejar de ser invisibles.",
+        icon: "strategy",
+        link: "/servicios/consultoria-seo-estrategica-colombia",
+        color: "bg-blue-500/10 text-blue-500",
+    },
+    {
+        title: "Desarrollo WordPress SEO-First",
+        description:
+            "Webs que vuelan y posicionan. Sitios construidos desde el código (HTML5/CSS3) para cargar en <0.4s y cumplir con los Core Web Vitals.",
+        icon: "code",
+        link: "/servicios/desarrollo-wordpress-seo-first",
+        color: "bg-purple-500/10 text-purple-500",
     },
     {
         title: "SEO Local Colombia",
         description:
-            "Domina las búsquedas en tu ciudad. Optimización de Google Business Profile para atraer clientes cercanos a tu ubicación.",
+            "Domina Google Maps en ciudades como Bogotá, Medellín o Cali. Atrae clientes en tu ubicación exacta con estrategias geolocalizadas.",
         icon: "map",
+        link: "/servicios/seo-local-colombia",
+        color: "bg-green-500/10 text-green-500",
     },
     {
-        title: "IA aplicada al SEO",
+        title: "IA aplicada al SEO (Vanguardia 2025)",
         description:
-            "Automatización inteligente y análisis de datos. Uso inteligencia artificial para escalar tu creación de contenidos y análisis de competencia.",
-        icon: "rocket",
+            "Preparamos tu web para Google SGE, ChatGPT y Perplexity. Optimizamos para motores de respuesta (AEO) con el poder de la IA.",
+        icon: "ai",
+        link: "/servicios/ia-aplicada-al-seo-colombia",
+        color: "bg-gold/10 text-gold",
+    },
+    {
+        title: "E-commerce & Embudos",
+        description:
+            "Convierte visitas en facturación recurrente. Optimización de WooCommerce y diseño de funnels de conversión automatizados.",
+        icon: "cart",
+        link: "/servicios/ecommerce-embudos-venta-colombia",
+        color: "bg-orange-500/10 text-orange-500",
+    },
+];
+
+const methodology = [
+    {
+        step: "01",
+        title: "Escucha y Diagnóstico",
+        description:
+            "Entendemos tu negocio y analizamos a tu competencia con herramientas de grado industrial (SEMrush, Screaming Frog).",
+    },
+    {
+        step: "02",
+        title: "Arquitectura y Diseño",
+        description:
+            "Estructuramos tu sitio para que sea semánticamente perfecto para Google y fluido para el usuario.",
+    },
+    {
+        step: "03",
+        title: "Ejecución y Optimización",
+        description:
+            "Implementamos las tácticas y medimos resultados en tiempo real con Dashboards personalizados.",
     },
 ];
 ---
 
-<Layout title="Servicios de SEO y Desarrollo Web | Nicolas Cardenas">
+<Layout
+    title="Servicios SEO y Desarrollo WordPress Colombia | Nicolás Cárdenas"
+    description="Potencia tu negocio con servicios de Consultoría SEO, Desarrollo WordPress SEO-First, IA aplicada y E-commerce. Estrategias de alto impacto para dominar el mercado colombiano."
+>
     <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 py-8">
         <!-- Sidebar -->
         <div class="hidden lg:block w-full">
             <ProfileCard />
         </div>
 
-        <!-- Main Content (Right Column) -->
-        <div class="space-y-12">
+        <!-- Main Content -->
+        <div class="flex flex-col gap-32">
+            <!-- Hero Section -->
             <section
-                class="py-12 text-center bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 relative overflow-hidden transition-colors duration-300"
+                class="relative overflow-hidden rounded-3xl bg-neutral-900 border border-white/10 p-8 md:p-16 text-center md:text-left"
             >
-                <div class="relative z-10">
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-neutral-900 via-neutral-900 to-neutral-800"
+                >
+                </div>
+                <div
+                    class="absolute inset-0 bg-[url('/noise.svg')] opacity-20 mix-blend-overlay"
+                >
+                </div>
+
+                <div class="relative z-10 max-w-3xl">
                     <h1
-                        class="text-4xl font-bold mb-4 text-neutral-900 dark:text-white transition-colors"
+                        class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6"
                     >
-                        Mis Servicios
+                        Transformo tu presencia digital en un <span
+                            class="text-gold">activo financiero</span
+                        > de alto rendimiento.
                     </h1>
                     <p
-                        class="text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-12 transition-colors"
+                        class="text-lg text-neutral-400 leading-relaxed mb-8 max-w-2xl"
                     >
-                        Especialización técnica dividida en dos pilares
-                        fundamentales.
+                        No vendo sitios web ni palabras clave; diseño
+                        ecosistemas de ventas. Mi metodología fusiona la
+                        ingeniería técnica con la inteligencia artificial para
+                        que tu marca lidere las búsquedas en Colombia y el
+                        mundo.
                     </p>
 
-                    <!-- Toggle Controls -->
-                    <div class="flex justify-center mb-16">
-                        <div
-                            class="bg-neutral-100 dark:bg-neutral-900 p-1 rounded-xl border border-neutral-200 dark:border-white/10 inline-flex relative transition-colors"
-                        >
-                            <div
-                                id="toggle-bg"
-                                class="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] bg-gold rounded-lg transition-all duration-300 ease-in-out shadow-sm"
-                            >
-                            </div>
-                            <button
-                                id="btn-web"
-                                class="relative z-10 px-8 py-3 rounded-lg text-neutral-900 font-bold transition-colors w-48"
-                                onclick="switchTab('web')"
-                            >
-                                Desarrollo Web
-                            </button>
-                            <button
-                                id="btn-seo"
-                                class="relative z-10 px-8 py-3 rounded-lg text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white font-medium transition-colors w-48"
-                                onclick="switchTab('seo')"
-                            >
-                                Posicionamiento SEO
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Categoría: Desarrollo Web -->
-                    <div
-                        id="web-services"
-                        class="service-panel transition-opacity duration-300"
-                    >
-                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {
-                                webServices.map((service) => (
-                                    <div class="bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 p-6 rounded-xl hover:border-gold/30 transition-all hover:-translate-y-1 text-left group">
-                                        <div class="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center mb-6 text-gold group-hover:scale-110 transition-transform">
-                                            {service.icon === "code" && (
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    class="h-6 w-6"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                                                    />
-                                                </svg>
-                                            )}
-                                            {service.icon === "rocket" && (
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    class="h-6 w-6"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M13 10V3L4 14h7v7l9-11h-7z"
-                                                    />
-                                                </svg>
-                                            )}
-                                            {service.icon === "cart" && (
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    class="h-6 w-6"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                                                    />
-                                                </svg>
-                                            )}
-                                        </div>
-                                        <h3 class="text-lg font-bold text-neutral-900 dark:text-white mb-2 transition-colors">
-                                            {service.title}
-                                        </h3>
-                                        <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm transition-colors">
-                                            {service.description}
-                                        </p>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    </div>
-
-                    <!-- Categoría: SEO -->
-                    <div
-                        id="seo-services"
-                        class="service-panel hidden transition-opacity duration-300"
-                    >
-                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {
-                                seoServices.map((service) => (
-                                    <div class="bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 p-6 rounded-xl hover:border-gold/30 transition-all hover:-translate-y-1 text-left group">
-                                        <div class="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center mb-6 text-gold group-hover:scale-110 transition-transform">
-                                            {service.icon === "search" && (
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    class="h-6 w-6"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                                    />
-                                                </svg>
-                                            )}
-                                            {service.icon === "map" && (
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    class="h-6 w-6"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                                                    />
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                                                    />
-                                                </svg>
-                                            )}
-                                            {service.icon === "chart" && (
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    class="h-6 w-6"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                                                    />
-                                                </svg>
-                                            )}
-                                            {service.icon === "rocket" && (
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    class="h-6 w-6"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M13 10V3L4 14h7v7l9-11h-7z"
-                                                    />
-                                                </svg>
-                                            )}
-                                        </div>
-                                        <h3 class="text-lg font-bold text-neutral-900 dark:text-white mb-2 transition-colors">
-                                            {service.title}
-                                        </h3>
-                                        <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm transition-colors">
-                                            {service.description}
-                                        </p>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    </div>
-
-                    <div class="mt-20">
+                    <div class="flex flex-col md:flex-row gap-6 items-center">
                         <a
-                            href="/contacto"
-                            class="inline-flex items-center justify-center px-8 py-4 text-base font-bold leading-6 text-black transition duration-150 ease-in-out bg-gold border border-transparent rounded-lg hover:bg-gold-400 shadow-lg shadow-gold/20"
+                            href="#soluciones"
+                            class="px-8 py-4 bg-gold text-black font-bold rounded-lg hover:bg-gold-400 transition-colors shadow-lg shadow-gold/20"
                         >
-                            Solicitar Presupuesto Personalizado
+                            Explorar Soluciones
                         </a>
+                        <div
+                            class="flex items-center gap-2 text-sm text-neutral-400"
+                        >
+                            <span class="text-green-400 text-xl">✓</span>
+                            +6 años de experiencia y resultados reales.
+                        </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- Soluciones Estratégicas Grid -->
+            <section id="soluciones" class="space-y-12">
+                <div class="text-center md:text-left">
+                    <h2
+                        class="text-3xl font-bold text-neutral-900 dark:text-white"
+                    >
+                        Soluciones Estratégicas
+                    </h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 mt-2">
+                        Cada servicio está diseñado para resolver un problema de
+                        negocio específico.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    {
+                        services.map((service) => (
+                            <a
+                                href={service.link}
+                                class="group block p-8 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 hover:border-gold/50 transition-all hover:-translate-y-1 shadow-sm hover:shadow-xl"
+                            >
+                                <div
+                                    class={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-2xl ${service.color} transition-transform group-hover:scale-110`}
+                                >
+                                    {service.icon === "strategy" && "🎯"}
+                                    {service.icon === "code" && "⚡"}
+                                    {service.icon === "map" && "📍"}
+                                    {service.icon === "ai" && "🤖"}
+                                    {service.icon === "cart" && "🛍️"}
+                                </div>
+                                <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-3 group-hover:text-gold transition-colors">
+                                    {service.title}
+                                </h3>
+                                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                                    {service.description}
+                                </p>
+                                <div class="mt-6 flex items-center text-sm font-bold text-neutral-900 dark:text-white opacity-60 group-hover:opacity-100 transition-opacity">
+                                    Ver detalles <span class="ml-2">→</span>
+                                </div>
+                            </a>
+                        ))
+                    }
+                </div>
+            </section>
+
+            <!-- Diferencial: Experto vs Agencia -->
+            <section
+                class="bg-neutral-100 dark:bg-white/5 rounded-3xl p-8 md:p-12"
+            >
+                <div class="text-center mb-12">
+                    <h2
+                        class="text-3xl font-bold text-neutral-900 dark:text-white mb-4"
+                    >
+                        ¿Por qué elegir un Experto Independiente?
+                    </h2>
+                    <p class="text-neutral-600 dark:text-neutral-400">
+                        La diferencia entre tener una cuenta más y tener un
+                        socio estratégico.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="space-y-4">
+                        <div class="text-4xl">🤝</div>
+                        <h3
+                            class="text-xl font-bold text-neutral-900 dark:text-white"
+                        >
+                            Trato Directo
+                        </h3>
+                        <p
+                            class="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed"
+                        >
+                            Hablas directamente con el estratega que ejecuta tu
+                            proyecto, sin intermediarios comerciales ni
+                            analistas junior aprendiendo con tu presupuesto.
+                        </p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="text-4xl">🚀</div>
+                        <h3
+                            class="text-xl font-bold text-neutral-900 dark:text-white"
+                        >
+                            Agilidad Técnica
+                        </h3>
+                        <p
+                            class="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed"
+                        >
+                            Implementación de cambios rápidos gracias al dominio
+                            total del código y la arquitectura. No dependo de
+                            "departamentos de TI" externos.
+                        </p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="text-4xl">💎</div>
+                        <h3
+                            class="text-xl font-bold text-neutral-900 dark:text-white"
+                        >
+                            Estrategia a Medida
+                        </h3>
+                        <p
+                            class="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed"
+                        >
+                            Sin paquetes genéricos de "Plan Oro/Plata". Cada
+                            solución se diseña milimétricamente según la
+                            competencia y objetivos de tu nicho.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Methodology -->
+            <section class="space-y-12">
+                <div class="text-center">
+                    <h2
+                        class="text-3xl font-bold text-neutral-900 dark:text-white"
+                    >
+                        El Camino al Éxito
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 relative">
+                    <div
+                        class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-gold/30 to-transparent -z-10"
+                    >
+                    </div>
+
+                    {
+                        methodology.map((item, index) => (
+                            <div class="relative bg-white dark:bg-neutral-900 p-6 rounded-xl border border-neutral-200 dark:border-white/10 text-center">
+                                <div class="w-12 h-12 bg-neutral-900 dark:bg-white text-white dark:text-black font-bold rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 border-4 border-white dark:border-neutral-900 shadow-xl">
+                                    {index + 1}
+                                </div>
+                                <h3 class="text-lg font-bold text-neutral-900 dark:text-white mb-2">
+                                    {item.title}
+                                </h3>
+                                <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                                    {item.description}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
+
+            <!-- Tech Stack Badges -->
+            <section
+                class="opacity-70 hover:opacity-100 transition-opacity text-center space-y-6"
+            >
+                <p
+                    class="text-sm font-bold tracking-widest text-neutral-500 uppercase"
+                >
+                    Potenciado por los mejores
+                </p>
+                <div
+                    class="flex flex-wrap justify-center gap-8 md:gap-12 grayscale hover:grayscale-0 transition-all duration-500"
+                >
+                    <!-- Simple Text Badges/Placeholders for Tech Stack to avoid broken images if paths misplaced -->
+                    <span class="text-xl font-bold text-neutral-400"
+                        >SEMrush</span
+                    >
+                    <span class="text-xl font-bold text-neutral-400"
+                        >Ahrefs</span
+                    >
+                    <span class="text-xl font-bold text-neutral-400"
+                        >ScreamingFrog</span
+                    >
+                    <span class="text-xl font-bold text-neutral-400">Astro</span
+                    >
+                    <span class="text-xl font-bold text-neutral-400"
+                        >WordPress</span
+                    >
+                    <span class="text-xl font-bold text-neutral-400"
+                        >GoogleAI</span
+                    >
+                </div>
+            </section>
+
+            <!-- Final CTA -->
+            <section
+                class="bg-gold rounded-3xl p-12 text-center space-y-8 shadow-2xl shadow-gold/20 text-black"
+            >
+                <h2 class="text-3xl md:text-5xl font-bold">
+                    ¿Listo para convertir tu web en una máquina de clientes?
+                </h2>
+                <p
+                    class="text-lg md:text-xl font-medium max-w-2xl mx-auto opacity-90"
+                >
+                    No acepto todos los proyectos, me enfoco en aquellos donde
+                    puedo generar un impacto real. Si buscas escalar, hablemos
+                    hoy.
+                </p>
+                <div class="pt-4">
+                    <a
+                        href="https://wa.me/573238162908"
+                        target="_blank"
+                        class="inline-block px-10 py-5 bg-black text-white font-bold rounded-xl hover:bg-neutral-800 transition-transform hover:scale-105 shadow-xl"
+                    >
+                        Agendar Consultoría
+                    </a>
                 </div>
             </section>
         </div>
     </div>
-
-    <script is:inline>
-        function switchTab(tab) {
-            const webPanel = document.getElementById("web-services");
-            const seoPanel = document.getElementById("seo-services");
-            const btnWeb = document.getElementById("btn-web");
-            const btnSeo = document.getElementById("btn-seo");
-            const toggleBg = document.getElementById("toggle-bg");
-
-            // We need to handle Light/Dark classes for text.
-            // Active: text-neutral-900 (always dark since bg is gold? No, wait)
-            // The active button is ON TOP of the GOLD background `toggle-bg`.
-            // Gold background usually works with black text.
-            // The inactive button is on neutral background. In dark mode text-neutral-400. In light mode text-neutral-500.
-
-            if (tab === "web") {
-                webPanel.classList.remove("hidden");
-                seoPanel.classList.add("hidden");
-
-                // BTN WEB ACTIVE (On Gold)
-                btnWeb.classList.remove(
-                    "text-neutral-500",
-                    "dark:text-neutral-400",
-                    "font-medium",
-                );
-                btnWeb.classList.add("text-neutral-900", "font-bold"); // Keep it black/dark even in dark mode because gold bg
-
-                // BTN SEO INACTIVE
-                btnSeo.classList.add(
-                    "text-neutral-500",
-                    "dark:text-neutral-400",
-                    "font-medium",
-                );
-                btnSeo.classList.remove("text-neutral-900", "font-bold");
-
-                toggleBg.style.transform = "translateX(0)";
-            } else {
-                webPanel.classList.add("hidden");
-                seoPanel.classList.remove("hidden");
-
-                // BTN WEB INACTIVE
-                btnWeb.classList.add(
-                    "text-neutral-500",
-                    "dark:text-neutral-400",
-                    "font-medium",
-                );
-                btnWeb.classList.remove("text-neutral-900", "font-bold");
-
-                // BTN SEO ACTIVE (On Gold)
-                btnSeo.classList.remove(
-                    "text-neutral-500",
-                    "dark:text-neutral-400",
-                    "font-medium",
-                );
-                btnSeo.classList.add("text-neutral-900", "font-bold");
-
-                toggleBg.style.transform = "translateX(100%)";
-            }
-        }
-    </script>
 </Layout>

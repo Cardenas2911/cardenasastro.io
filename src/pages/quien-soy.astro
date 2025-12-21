@@ -1,101 +1,386 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ProfileCard from "../components/ProfileCard.astro";
+
+const timeline = [
+    {
+        year: "2015-2016",
+        title: "El Despertar Digital",
+        description:
+            "Mis inicios configurando campañas de Facebook Ads y experimentando con los primeros ChatBots. Entendí que la tecnología sin estrategia es solo ruido.",
+    },
+    {
+        year: "2017-2019",
+        title: "Dominando el Código",
+        description:
+            "Me sumergí en HTML, CSS y JavaScript. Dejé de depender de plantillas básicas de WordPress para crear soluciones a medida, rápidas y seguras.",
+    },
+    {
+        year: "2020-2023",
+        title: "Consultoría Estratégica",
+        description:
+            "Lideré proyectos SEO para clínicas y bufetes de abogados, logrando duplicar su facturación orgánica. Me especialicé en SEO Técnico y WPO.",
+    },
+    {
+        year: "2024-2025",
+        title: "La Era de la IA",
+        description:
+            "Transición hacia la Inteligencia Artificial aplicada al SEO (AEO/GEO). Hoy ayudo a empresas a sobrevivir y prosperar en el ecosistema de Google SGE y ChatGPT.",
+    },
+];
+
+const pillars = [
+    {
+        icon: "🛡️",
+        title: "Marketing sin Artificios",
+        description:
+            "No creo en los engaños de corto plazo. Busco proyectos que requieran visión, cabeza y corazón para perdurar en el tiempo.",
+    },
+    {
+        icon: "🧠",
+        title: "Curiosidad Intelectual",
+        description:
+            "Mi formación no se detiene. Investigo constantemente IA y tendencias para que tu negocio siempre tenga la ventaja del 'first mover'.",
+    },
+    {
+        icon: "🔍",
+        title: "Transparencia Radical",
+        description:
+            "Valoro los entornos donde el crecimiento es mutuo. Trabajo contigo, no solo para ti, asegurando estrategias claras y medibles.",
+    },
+];
+
+const playlists = [
+    {
+        title: "Enfoque Técnico",
+        genre: "Mint (Electronic)",
+        src: "https://open.spotify.com/embed/playlist/37i9dQZF1DX4dyzvuaRJ0n?utm_source=generator&theme=0",
+    },
+    {
+        title: "Energía Creativa",
+        genre: "Baila Reggaetón",
+        src: "https://open.spotify.com/embed/playlist/37i9dQZF1DXaSQzrQRXhZ3?utm_source=generator&theme=0",
+    },
+    {
+        title: "Estrategia Sólida",
+        genre: "Rock Classics",
+        src: "https://open.spotify.com/embed/playlist/37i9dQZF1DWXRqgorJj26U?utm_source=generator&theme=0",
+    },
+];
 ---
 
-<Layout title="Quién Soy | Nicolas Cardenas - Experto en SEO y WordPress">
+<Layout
+    title="Quién Soy | Nicolás Cárdenas - Estratega Digital y Arquitecto Web"
+    description="Más que un desarrollador, soy tu socio estratégico. Conoce mi trayectoria desde 2015 transformando negocios digitales en Colombia y el mundo."
+>
     <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 py-8">
         <!-- Sidebar -->
         <div class="hidden lg:block w-full">
             <ProfileCard />
         </div>
 
-        <!-- Main Content (Right Column) -->
-        <div class="space-y-12">
+        <!-- Main Content -->
+        <div class="space-y-24 min-w-0">
+            <!-- Hero Section -->
             <section
-                class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 md:p-12 relative overflow-hidden transition-colors duration-300"
+                class="relative overflow-hidden rounded-3xl bg-neutral-900 border border-white/10 p-8 md:p-16"
             >
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-neutral-900 via-neutral-900 to-black"
+                >
+                </div>
                 <div
                     class="grid md:grid-cols-2 gap-12 items-center relative z-10"
                 >
-                    <div>
+                    <div class="space-y-6">
                         <h1
-                            class="text-4xl md:text-5xl font-bold mb-6 text-neutral-900 dark:text-white transition-colors"
+                            class="text-3xl md:text-5xl font-bold text-white leading-tight"
                         >
-                            Hola, soy <span class="text-gold"
-                                >Nicolas Cardenas</span
-                            >
+                            Estratega Digital y Arquitecto WordPress: <span
+                                class="text-gold">10 años</span
+                            > transformando negocios.
                         </h1>
-                        <h2
-                            class="text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 mb-6 font-medium transition-colors"
-                        >
-                            Consultor SEO & Desarrollador WordPress
-                        </h2>
-                        <div
-                            class="prose prose-neutral dark:prose-invert prose-lg text-neutral-600 dark:text-neutral-400 transition-colors"
-                        >
-                            <p class="mb-4">
-                                Ayudo a negocios a construir una presencia
-                                digital sólida, rápida y visible. Mi
-                                especialidad es la intersección entre el <strong
-                                    >Desarrollo Web técnico</strong
-                                > y el <strong
-                                    >Posicionamiento en Buscadores (SEO)</strong
-                                >.
-                            </p>
-                            <p class="mb-4">
-                                No solo creo sitios web bonitos; creo
-                                herramientas de venta optimizadas. Con años de
-                                experiencia en el ecosistema <strong
-                                    >WordPress</strong
-                                >, sé cómo exprimir al máximo la plataforma, o
-                                como en este caso, llevarla al siguiente nivel
-                                con arquitecturas modernas como <strong
-                                    >Astro</strong
-                                >.
-                            </p>
-                            <p>
-                                Mi objetivo es simple: que tu web no solo
-                                exista, sino que trabaje para ti atrayendo
-                                tráfico cualificado y convirtiendo visitas en
-                                clientes.
-                            </p>
-                        </div>
-                        <div class="mt-8 flex gap-4">
+                        <p class="text-lg text-neutral-400 leading-relaxed">
+                            No vendo 'parches' temporales. Diseño ecosistemas
+                            digitales robustos que funcionan como activos
+                            financieros para tu empresa.
+                        </p>
+                        <div class="pt-4">
                             <a
-                                href="/contacto"
-                                class="bg-gold hover:bg-gold-400 text-black font-bold py-3 px-6 rounded-lg transition-colors shadow-lg shadow-gold/20"
+                                href="#proposito"
+                                class="text-white hover:text-gold transition-colors font-bold underline decoration-gold decoration-2 underline-offset-4"
+                                >Mi filosofía ↓</a
                             >
-                                Hablemos de tu proyecto
-                            </a>
-                            <a
-                                href="/servicios"
-                                class="border border-neutral-300 dark:border-white/20 hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-900 dark:text-white font-medium py-3 px-6 rounded-lg transition-colors"
-                            >
-                                Ver mis servicios
-                            </a>
                         </div>
                     </div>
                     <div class="relative">
                         <div
-                            class="absolute inset-0 bg-gold/10 rounded-2xl blur-2xl"
+                            class="absolute inset-0 bg-gold/10 blur-[80px] rounded-full"
                         >
                         </div>
                         <div
-                            class="relative bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 rounded-2xl p-2 aspect-[4/5] flex items-center justify-center overflow-hidden shadow-2xl shadow-gold/10 transition-colors"
+                            class="relative aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500"
                         >
                             <img
                                 src="https://cardenasnicolas.com/wp-content/uploads/2025/05/nicolas-cardenas-seo-y-desarrollador-web-imagen.png.webp"
-                                alt="Nicolas Cardenas - Consultor SEO y Desarrollador Web"
-                                class="w-full h-full object-cover rounded-xl"
+                                alt="Nicolás Cárdenas"
+                                class="w-full h-full object-cover object-top"
                             />
                         </div>
                     </div>
                 </div>
-                <!-- Background decoration -->
+            </section>
+
+            <!-- Timeline -->
+            <section class="space-y-12">
+                <div class="text-center max-w-2xl mx-auto">
+                    <h2
+                        class="text-3xl font-bold text-neutral-900 dark:text-white"
+                    >
+                        La Evolución Técnica
+                    </h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 mt-2">
+                        Un viaje de curiosidad constante, desde los anuncios
+                        básicos hasta la ingeniería de software.
+                    </p>
+                </div>
+
                 <div
-                    class="absolute top-0 right-0 w-64 h-64 bg-gold/5 dark:bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none transition-colors"
+                    class="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-neutral-300 before:to-transparent dark:before:via-white/10"
                 >
+                    {
+                        timeline.map((item, index) => (
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-neutral-200 dark:bg-neutral-800 dark:border-white/20 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-colors group-hover:bg-gold group-hover:border-gold">
+                                    <span class="w-3 h-3 bg-neutral-600 dark:bg-white rounded-full group-hover:bg-black transition-colors" />
+                                </div>
+                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 shadow-sm hover:shadow-xl hover:border-gold/30 transition-all">
+                                    <div class="flex items-center justify-between space-x-2 mb-1">
+                                        <div class="font-bold text-neutral-900 dark:text-white">
+                                            {item.title}
+                                        </div>
+                                        <time class="font-mono italic text-neutral-500 dark:text-neutral-400">
+                                            {item.year}
+                                        </time>
+                                    </div>
+                                    <div class="text-neutral-600 dark:text-neutral-400 text-sm">
+                                        {item.description}
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
+
+            <!-- Purpose & Pillars -->
+            <section id="proposito" class="space-y-12">
+                <div
+                    class="bg-neutral-100 dark:bg-white/5 rounded-3xl p-8 md:p-12 border border-neutral-200 dark:border-white/5"
+                >
+                    <div class="max-w-3xl mx-auto text-center mb-12 space-y-6">
+                        <h2
+                            class="text-3xl font-bold text-neutral-900 dark:text-white"
+                        >
+                            Más allá del código: Construir con Propósito
+                        </h2>
+                        <p
+                            class="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed"
+                        >
+                            Crear y escalar proyectos digitales es mi pasión,
+                            pero mi motor real no son las métricas aisladas o
+                            las automatizaciones complejas, sino la construcción
+                            de <strong class="text-gold"
+                                >activos con alma</strong
+                            >. En un mercado saturado de "fórmulas mágicas", mi
+                            compromiso es con un marketing honesto y sólido.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        {
+                            pillars.map((val) => (
+                                <div class="text-center space-y-4 p-4 rounded-xl hover:bg-white/50 dark:hover:bg-white/5 transition-colors">
+                                    <div class="text-4xl mb-2">{val.icon}</div>
+                                    <h3 class="text-lg font-bold text-neutral-900 dark:text-white">
+                                        {val.title}
+                                    </h3>
+                                    <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                                        {val.description}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </section>
+
+            <!-- Human Factor -->
+            <section class="space-y-12">
+                <div class="grid md:grid-cols-2 gap-12 items-start">
+                    <div class="space-y-8">
+                        <h2
+                            class="text-3xl font-bold text-neutral-900 dark:text-white"
+                        >
+                            El Factor Humano: <br /><span class="text-gold"
+                                >Inspiración fuera del teclado</span
+                            >
+                        </h2>
+                        <div
+                            class="space-y-6 text-neutral-600 dark:text-neutral-400 leading-relaxed"
+                        >
+                            <p>
+                                Para ser un estratega agudo, necesito fuentes de
+                                inspiración que alimenten la creatividad y la
+                                disciplina. Más allá de los párrafos técnicos,
+                                esto es lo que me define:
+                            </p>
+
+                            <div class="space-y-4">
+                                <div class="flex gap-4">
+                                    <div class="text-2xl mt-1">🥋</div>
+                                    <div>
+                                        <h4
+                                            class="font-bold text-neutral-900 dark:text-white"
+                                        >
+                                            Disciplina y Equilibrio (Jiu Jitsu)
+                                        </h4>
+                                        <p class="text-sm">
+                                            El Jiu Jitsu Brasileño (BJJ) me
+                                            enseña humildad y resolución de
+                                            problemas bajo presión. Cada 'role'
+                                            es un ajedrez físico que exige
+                                            enfoque total, igual que una
+                                            estrategia SEO compleja.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="text-2xl mt-1">🏴‍☠️</div>
+                                    <div>
+                                        <h4
+                                            class="font-bold text-neutral-900 dark:text-white"
+                                        >
+                                            Cultura Geek (One Piece)
+                                        </h4>
+                                        <p class="text-sm">
+                                            Como en One Piece, entiendo el valor
+                                            de construir el equipo correcto
+                                            (Nakamas) y perseguir una visión a
+                                            largo plazo. Las grandes historias
+                                            me recuerdan que el viaje importa
+                                            tanto como el destino.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="text-2xl mt-1">🧘</div>
+                                    <div>
+                                        <h4
+                                            class="font-bold text-neutral-900 dark:text-white"
+                                        >
+                                            Curiosidad por lo humano
+                                        </h4>
+                                        <p class="text-sm">
+                                            Mis lecturas sobre historia,
+                                            política y espiritualidad me ayudan
+                                            a crear copys que conectan con
+                                            personas reales, no solo con
+                                            algoritmos.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-4 mt-8">
+                            <div
+                                class="aspect-[3/4] rounded-2xl bg-neutral-200 dark:bg-neutral-800 overflow-hidden shadow-lg transform translate-y-4 border border-white/10 group"
+                            >
+                                <img
+                                    src="/images/jiu-jitsu-roll.jpg"
+                                    alt="Entrenamiento de Jiu Jitsu Brasileño - Disciplina bajo presión y mentalidad estratégica"
+                                    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0 duration-500"
+                                />
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div
+                                class="aspect-[3/4] rounded-2xl bg-neutral-200 dark:bg-neutral-800 overflow-hidden shadow-lg border border-white/10 group"
+                            >
+                                <img
+                                    src="/images/one-piece-luffy.jpg"
+                                    alt="Monkey D. Luffy One Piece - Simbolismo de liderazgo, equipo y visión a largo plazo"
+                                    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spotify Playlists -->
+            <section class="space-y-8">
+                <div class="text-center">
+                    <h2
+                        class="text-2xl font-bold text-neutral-900 dark:text-white mb-2"
+                    >
+                        🎧 El ritmo de la creación
+                    </h2>
+                    <p class="text-neutral-600 dark:text-neutral-400">
+                        Nada como un buen beat para mantener el foco (Deep
+                        Work).
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    {
+                        playlists.map((playlist) => (
+                            <div class="bg-black rounded-xl overflow-hidden shadow-lg border border-white/10">
+                                <iframe
+                                    style="border-radius:12px"
+                                    src={playlist.src}
+                                    width="100%"
+                                    height="152"
+                                    frameborder="0"
+                                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                    loading="lazy"
+                                />
+                                <div class="p-3 text-center">
+                                    <p class="text-xs text-neutral-400 font-bold uppercase tracking-wider">
+                                        {playlist.title}
+                                    </p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
+
+            <!-- Final Benefit -->
+            <section
+                class="bg-gold rounded-3xl p-12 text-center space-y-8 shadow-2xl shadow-gold/20 text-black"
+            >
+                <h2 class="text-3xl md:text-4xl font-bold">
+                    ¿Por qué todo esto te beneficia?
+                </h2>
+                <p class="text-xl font-medium max-w-3xl mx-auto opacity-90">
+                    Porque cuando sumas a Nicolás Cárdenas a tu equipo, no solo
+                    contratas habilidades en WordPress o SEO. Sumas compromiso,
+                    energía y una visión ética del mundo.
+                    <br /><br />
+                    <strong>"Servir es vivir"</strong> es mi lema, y estoy listo para
+                    ponerlo al servicio de tu empresa.
+                </p>
+                <div class="pt-4">
+                    <a
+                        href="/contacto"
+                        class="inline-block px-10 py-5 bg-black text-white font-bold rounded-xl hover:bg-neutral-800 transition-transform hover:scale-105 shadow-xl"
+                    >
+                        Construyamos tu máquina de clientes
+                    </a>
                 </div>
             </section>
         </div>

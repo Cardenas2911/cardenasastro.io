@@ -11,8 +11,20 @@ export const siteMetadata: Record<string, PageMetadata> = {
         description: "Transformo ideas en negocios digitales rentables. Experto en Desarrollo Web con Astro, SEO Técnico y Estrategias de Marketing para crecimiento real.",
     },
     "/servicios": {
-        title: "Servicios | Desarrollo Web y SEO - Nicolas Cardenas",
-        description: "Soluciones digitales a medida: Diseño Web Corporativo, E-commerce, Auditorías SEO y Consultoría de Marketing. Potencia tu presencia online.",
+        title: "Servicios SEO y Desarrollo WordPress Colombia | Nicolás Cárdenas",
+        description: "Potencia tu negocio con servicios de Consultoría SEO, Desarrollo WordPress SEO-First, IA aplicada y E-commerce. Estrategias de alto impacto para dominar el mercado colombiano.",
+    },
+    "/servicios/consultoria-seo-estrategica-colombia": {
+        title: "Consultoría SEO Estratégica Colombia | Experto Nicolás Cárdenas",
+        description: "Acompañamiento SEO estratégico para empresas en Colombia. Auditorías técnicas profundas, investigación de mercado con IA y estrategias de crecimiento orientadas al ROI y visibilidad real.",
+    },
+    "/servicios/seo-local-colombia": {
+        title: "SEO Local Colombia | Posicionamiento en Google Maps | Nicolás Cárdenas",
+        description: "Especialista en SEO Local para negocios en Colombia. Optimizo tu Perfil de Empresa en Google y tu web para capturar búsquedas en Bogotá, Medellín, Cali y Barranquilla. ¡Haz que te encuentren primero!",
+    },
+    "/servicios/ia-aplicada-al-seo-colombia": {
+        title: "IA para SEO Colombia | Optimización AEO y GEO | Nicolás Cárdenas",
+        description: "No solo busques clics, busca ser la respuesta. Especialista en IA aplicada al SEO en Colombia. Optimización para ChatGPT, Perplexity y Google AI Overviews (SGE).",
     },
     "/portafolio": {
         title: "Portafolio | Casos de Éxito - Nicolas Cardenas",
@@ -23,16 +35,20 @@ export const siteMetadata: Record<string, PageMetadata> = {
         description: "Acreditaciones oficiales en Google Ads, Analytics, SEO y Desarrollo Web. Formación continua para ofrecerte la mejor calidad.",
     },
     "/quien-soy": {
-        title: "Sobre Mí | Nicolas Cardenas - Tu Socio Digital",
-        description: "Conoce mi trayectoria. De la curiosidad técnica a experto en soluciones digitales que impulsan negocios reales.",
+        title: "Quién Soy | Experiencia y Trayectoria - Nicolás Cárdenas",
+        description: "Conoce mi historia: De los inicios en Facebook Ads a liderar estrategias de IA y SEO Técnico. 10 años de experiencia transformando negocios digitales.",
     },
     "/cotizacion": {
         title: "Cotización Online | Presupuesto Instantáneo - Nicolas Cardenas",
         description: "Obtén un estimado inmediato para tu próximo proyecto web. Calculadora de precios transparente para desarrollo y SEO.",
     },
     "/contacto": {
-        title: "Contacto | Hablemos de tu Proyecto - Nicolas Cardenas",
-        description: "Estoy listo para escalar tu negocio. Escríbeme y diseñemos juntos la estrategia digital que necesitas.",
+        title: "Contacto | Nicolás Cárdenas - Especialista SEO y WordPress Colombia",
+        description: "Agencia SEO enfocada en ROI. Agenda tu consulta gratuita y hablemos de estrategias de posicionamiento web en Colombia.",
+    },
+    "/gracias": {
+        title: "¡Gracias por contactar! | Nicolás Cárdenas",
+        description: "Hemos recibido tu mensaje. Pronto nos pondremos en contacto contigo.",
     },
     "/politica-de-privacidad": {
         title: "Política de Privacidad | Nicolas Cardenas",
