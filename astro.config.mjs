@@ -3,15 +3,21 @@ import { defineConfig } from 'astro/config';
 import netlify from '@astrojs/netlify';
 import tailwindcss from '@tailwindcss/vite';
 
+import mdx from '@astrojs/mdx';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://cardenasnicolas.com',
   output: 'server',
   adapter: netlify(),
+
   image: {
     domains: ['cardenasnicolas.com'],
   },
+
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+
+  integrations: [mdx()]
 });

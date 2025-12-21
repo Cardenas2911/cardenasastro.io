@@ -1,17 +1,17 @@
 import rss from '@astrojs/rss';
-import { getPosts } from '../lib/wp';
+import { getCollection } from 'astro:content';
 
 export async function GET(context) {
-    const posts = await getPosts();
+    const posts = await getCollection('blog');
     return rss({
         title: 'Nicolas Cardenas - SEO y Marketing Digital',
         description: 'Estrategias de SEO, Desarrollo Web y Marketing Digital en Medellín.',
         site: context.site,
         items: posts.map((post) => ({
-            title: post.title,
-            pubDate: post.pubDate,
-            description: post.description,
-            link: `/blog/${post.slug}/`,
+            title: post.data.title,
+            pubDate: post.data.pubDate,
+            description: post.data.description,
+            link: `/blog/${post.id}/`,
         })),
         customData: `<language>es-ES</language>`,
     });

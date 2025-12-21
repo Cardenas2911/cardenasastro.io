@@ -1,5 +1,5 @@
 import { defineCollection, z } from 'astro:content';
-import { getPosts, getCertificates, getPortfolios } from '../lib/wp';
+import { getCertificates, getPortfolios } from '../lib/wp';
 
 const blog = defineCollection({
     // Type 'content' is the default for local Markdown/MDX in src/content/blog

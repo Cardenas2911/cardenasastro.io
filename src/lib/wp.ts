@@ -48,32 +48,7 @@ interface WPPost {
 
 const API_URL = 'https://cardenasnicolas.com/wp-json/wp/v2';
 
-export async function getPosts(limit = 100) {
-  const res = await fetch(`${API_URL}/posts?_embed&per_page=${limit}`);
-  const posts: WPPost[] = await res.json();
-
-  return posts.map(post => {
-    const heroImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
-
-    return {
-      id: post.id.toString(),
-      slug: post.slug,
-      title: post.title.rendered,
-      description: post.excerpt.rendered.replace(/<[^>]*>?/gm, ''), // Strip HTML tags
-      pubDate: new Date(post.date),
-      heroImage: heroImage,
-      content: post.content.rendered,
-      tags: [], // WP tags would need another fetch or mapping if available in _embedded
-      category: 'Blog' // Default category or map from _embedded['wp:term']
-    };
-  });
-}
-
-export async function getPost(slug: string) {
-  const posts = await getPosts();
-  const post = posts.find((p) => p.slug === slug);
-  return post;
-}
+// getPosts and getPost removed - Blog is now 100% local MDX
 
 export async function getCertificates() {
   console.log('Fetching certificates from:', `${API_URL}/certificados?_embed&per_page=100`);

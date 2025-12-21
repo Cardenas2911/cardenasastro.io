@@ -1,0 +1,91 @@
+---
+/**
+ * ChartRenderer.astro
+ * A reusable component to render Chart.js charts.
+ */
+const { type, data, options, chartId, height = "300px" } = Astro.props;
+
+// Generate a unique ID if one isn't provided (simple fallback)
+const id = chartId || `chart-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div
+    class="chart-container"
+    style={`height: ${height}; position: relative; width: 100%;`}
+>
+    <canvas id={id}></canvas>
+</div>
+
+{/* Load Chart.js from CDN if not already loaded */}
+<script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script define:vars={{ id, type, data, options }}>
+    // Verify Chart is loaded
+    const initChart = () => {
+        if (typeof Chart === "undefined") {
+            console.warn(
+                "[ChartRenderer] Chart.js not loaded yet, retrying...",
+            );
+            setTimeout(initChart, 100);
+            return;
+        }
+
+        const canvas = document.getElementById(id);
+        if (canvas) {
+            try {
+                // Determine if a chart instance already exists on this canvas and destroy it
+                const existingChart = Chart.getChart(canvas);
+                if (existingChart) existingChart.destroy();
+
+                console.debug(
+                    `[ChartRenderer] Initializing chart (CDN): ${id}`,
+                );
+
+                // Reconstruct the tooltip callback
+                const reconstructedOptions = {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    ...options,
+                };
+
+                if (!reconstructedOptions.plugins)
+                    reconstructedOptions.plugins = {};
+                if (!reconstructedOptions.plugins.tooltip)
+                    reconstructedOptions.plugins.tooltip = {};
+                if (!reconstructedOptions.plugins.tooltip.callbacks)
+                    reconstructedOptions.plugins.tooltip.callbacks = {};
+
+                reconstructedOptions.plugins.tooltip.callbacks.title =
+                    function (tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        return Array.isArray(label) ? label.join(" ") : label;
+                    };
+
+                new Chart(canvas, {
+                    type: type,
+                    data: data,
+                    options: reconstructedOptions,
+                });
+                console.debug(
+                    `[ChartRenderer] Successfully created chart: ${id}`,
+                );
+            } catch (error) {
+                console.error(
+                    `[ChartRenderer] Failed to create chart: ${id}`,
+                    error,
+                );
+            }
+        }
+    };
+
+    // Initialize
+    if (
+        document.readyState === "complete" ||
+        document.readyState === "interactive"
+    ) {
+        initChart();
+    } else {
+        document.addEventListener("DOMContentLoaded", initChart);
+    }
+</script>
