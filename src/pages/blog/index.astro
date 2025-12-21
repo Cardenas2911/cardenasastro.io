@@ -91,7 +91,7 @@ const posts = (await getCollection("blog")).sort(
                                         </div>
                                         <h2 class="text-xl font-bold text-neutral-900 dark:text-white mb-2 line-clamp-2 transition-colors">
                                             <a
-                                                href={`/blog/${post.id}`}
+                                                href={`/blog/${post.slug}`}
                                                 class="hover:text-gold dark:hover:text-gold transition-colors"
                                             >
                                                 {post.data.title}
