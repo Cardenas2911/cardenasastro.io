@@ -12,6 +12,7 @@ const blog = defineCollection({
         heroImage: z.string().optional(),
         tags: z.array(z.string()).optional(),
         category: z.string().optional(),
+        hideTitle: z.boolean().optional(),
         // Content is automatically handled by Astro for local files
     }),
 });
