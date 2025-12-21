@@ -9,15 +9,15 @@ const trafficData = {
     labels: ["2023", "2024", "2025", "2026", "2027"],
     datasets: [
         {
-            label: "Búsqueda Basada en Enlaces (Google)",
-            data: [92, 78, 55, 38, 20],
-            backgroundColor: palette.neutral,
-            borderRadius: 6,
-        },
-        {
             label: "Búsqueda Generativa (GEO)",
             data: [8, 22, 45, 62, 80],
             backgroundColor: palette.gold,
+            borderRadius: 6,
+        },
+        {
+            label: "Búsqueda Basada en Enlaces (Google)",
+            data: [92, 78, 55, 38, 20],
+            backgroundColor: palette.neutral,
             borderRadius: 6,
         },
     ],
@@ -52,9 +52,9 @@ const doughnutData = {
             backgroundColor: [
                 palette.gold, // Autoridad
                 palette.goldLight, // Relevancia
-                palette.white, // Datos
+                "#404040", // Datos (Dark Grey for visibility on white)
                 palette.neutral, // Citas
-                "#262626", // Frescura
+                "#d4d4d4", // Frescura (Light Grey)
             ],
             borderWidth: 0,
             hoverOffset: 10,
@@ -69,7 +69,7 @@ const radarData = {
             label: "SEO Clásico",
             data: [95, 45, 30, 40, 75, 20],
             borderColor: palette.neutral,
-            backgroundColor: "rgba(115, 115, 115, 0.15)",
+            backgroundColor: "rgba(115, 115, 115, 0.1)",
             borderWidth: 2,
             pointRadius: 3,
         },
@@ -102,7 +102,7 @@ const trafficOptions = {
             labels: {
                 boxWidth: 12,
                 font: { size: 10 },
-                color: palette.white,
+                color: palette.dark,
             },
         },
         tooltip: globalTooltipOptions,
@@ -118,7 +118,7 @@ const doughnutOptions = {
             labels: {
                 boxWidth: 15,
                 font: { size: 11 },
-                color: palette.white,
+                color: palette.dark,
             },
         },
         tooltip: globalTooltipOptions,
@@ -128,12 +128,12 @@ const doughnutOptions = {
 const radarOptions = {
     scales: {
         r: {
-            angleLines: { color: "rgba(255,255,255,0.1)" },
-            grid: { color: "rgba(255,255,255,0.1)" },
+            angleLines: { color: "rgba(0,0,0,0.1)" },
+            grid: { color: "rgba(0,0,0,0.1)" },
             ticks: { display: false },
             pointLabels: {
                 font: { size: 10, weight: "bold" },
-                color: palette.white,
+                color: palette.dark,
             },
         },
     },
@@ -143,7 +143,7 @@ const radarOptions = {
             labels: {
                 boxWidth: 12,
                 font: { weight: "bold" },
-                color: palette.white,
+                color: palette.dark,
             },
         },
         tooltip: globalTooltipOptions,
@@ -152,38 +152,38 @@ const radarOptions = {
 ---
 
 <div
-    class="geo-infographic-wrapper bg-neutral-950 text-white font-sans antialiased selection:bg-gold/20"
+    class="geo-infographic-wrapper not-prose bg-white text-black font-sans antialiased selection:bg-gold/20"
 >
     {/* HERO: Título y Estadísticas Rápidas */}
     <header
-        class="relative bg-black text-white pt-24 pb-36 rounded-b-[3rem] overflow-hidden shadow-2xl border-b border-neutral-800"
+        class="relative bg-neutral-50 pt-24 pb-36 rounded-b-[3rem] overflow-hidden shadow-xl border-b border-neutral-200"
     >
         <div
-            class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold/10 via-black to-black z-0"
+            class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold/20 via-white to-white z-0"
         >
         </div>
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
             <div
-                class="inline-block px-4 py-1 mb-8 rounded-full border border-gold/30 bg-gold/5 backdrop-blur-md"
+                class="inline-block px-4 py-1 mb-8 rounded-full border border-gold/30 bg-gold/10 backdrop-blur-md"
             >
                 <span
-                    class="text-gold font-bold tracking-widest text-xs uppercase"
+                    class="text-black font-bold tracking-widest text-xs uppercase"
                     >Evolución Digital 2025</span
                 >
             </div>
             <h1
-                class="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tighter"
+                class="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tighter text-black"
             >
                 GEO: La Guía <br />
                 <span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-200 to-gold"
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-500 to-gold"
                     >Definitiva para Marcas</span
                 >
             </h1>
             <p
-                class="text-xl text-neutral-400 max-w-3xl mx-auto mb-16 font-light leading-relaxed"
+                class="text-xl text-neutral-800 max-w-3xl mx-auto mb-16 font-light leading-relaxed"
             >
-                Domina las respuestas de <strong class="text-white"
+                Domina las respuestas de <strong class="text-black"
                     >ChatGPT, Perplexity y Gemini</strong
                 > de la mano de Nicolás Cárdenas.
             </p>
@@ -192,10 +192,10 @@ const radarOptions = {
                 class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto"
             >
                 <div
-                    class="p-6 bg-neutral-900/50 rounded-3xl border border-neutral-800 hover:border-gold/50 transition-colors group"
+                    class="p-6 bg-white rounded-3xl border border-neutral-200 shadow-sm hover:border-gold/50 transition-colors group"
                 >
                     <div
-                        class="text-3xl font-bold text-white group-hover:text-gold transition-colors"
+                        class="text-3xl font-bold text-neutral-900 group-hover:text-gold transition-colors"
                     >
                         10+
                     </div>
@@ -206,10 +206,10 @@ const radarOptions = {
                     </div>
                 </div>
                 <div
-                    class="p-6 bg-neutral-900/50 rounded-3xl border border-neutral-800 hover:border-gold/50 transition-colors group"
+                    class="p-6 bg-white rounded-3xl border border-neutral-200 shadow-sm hover:border-gold/50 transition-colors group"
                 >
                     <div
-                        class="text-3xl font-bold text-white group-hover:text-gold transition-colors"
+                        class="text-3xl font-bold text-neutral-900 group-hover:text-gold transition-colors"
                     >
                         SEO
                     </div>
@@ -220,10 +220,10 @@ const radarOptions = {
                     </div>
                 </div>
                 <div
-                    class="p-6 bg-neutral-900/50 rounded-3xl border border-neutral-800 hover:border-gold/50 transition-colors group"
+                    class="p-6 bg-white rounded-3xl border border-neutral-200 shadow-sm hover:border-gold/50 transition-colors group"
                 >
                     <div
-                        class="text-3xl font-bold text-white group-hover:text-gold transition-colors"
+                        class="text-3xl font-bold text-neutral-900 group-hover:text-gold transition-colors"
                     >
                         JSON
                     </div>
@@ -234,10 +234,10 @@ const radarOptions = {
                     </div>
                 </div>
                 <div
-                    class="p-6 bg-neutral-900/50 rounded-3xl border border-neutral-800 hover:border-gold/50 transition-colors group"
+                    class="p-6 bg-white rounded-3xl border border-neutral-200 shadow-sm hover:border-gold/50 transition-colors group"
                 >
                     <div
-                        class="text-3xl font-bold text-white group-hover:text-gold transition-colors"
+                        class="text-3xl font-bold text-neutral-900 group-hover:text-gold transition-colors"
                     >
                         GEO
                     </div>
@@ -256,10 +256,10 @@ const radarOptions = {
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div class="order-2 lg:order-1">
                 <div
-                    class="bg-neutral-900 p-8 rounded-[2.5rem] shadow-2xl border border-neutral-800"
+                    class="bg-white p-8 rounded-[2.5rem] shadow-2xl border border-neutral-100"
                 >
                     <h3
-                        class="text-center font-bold text-neutral-400 mb-8 uppercase tracking-widest text-sm"
+                        class="text-center font-bold text-neutral-500 mb-8 uppercase tracking-widest text-sm"
                     >
                         Cambio en el Tráfico de Búsqueda
                     </h3>
@@ -273,12 +273,12 @@ const radarOptions = {
                 </div>
             </div>
             <div class="order-1 lg:order-2">
-                <h2 class="text-4xl font-black text-white mb-8 leading-tight">
-                    De los Enlaces Azules a las <span class="text-gold"
-                        >Respuestas Directas</span
-                    >
+                <h2
+                    class="text-4xl font-black text-neutral-900 mb-8 leading-tight"
+                >
+                    La Evolución <span class="text-gold">de la Búsqueda</span>
                 </h2>
-                <p class="text-lg text-neutral-400 mb-8 leading-relaxed">
+                <p class="text-lg text-neutral-600 mb-8 leading-relaxed">
                     Ya no optimizamos para un buscador de listas, sino para
                     motores de respuesta. GEO es el proceso de estructurar la
                     información para que los LLMs la procesen y citen como
@@ -288,7 +288,7 @@ const radarOptions = {
                     class="flex items-center gap-4 p-5 bg-gold/5 border-l-4 border-gold rounded-r-2xl"
                 >
                     <span class="text-3xl">💡</span>
-                    <p class="text-sm text-gold font-medium">
+                    <p class="text-sm text-neutral-700 font-medium">
                         En Astro, la velocidad de carga es crítica. Un sitio
                         lento es un sitio invisible para los bots de IA.
                     </p>
@@ -298,17 +298,19 @@ const radarOptions = {
     </section>
 
     {/* SECCIÓN 2: El Algoritmo (Doughnut) */}
-    <section class="py-24 bg-neutral-900 relative">
+    <section class="py-24 bg-neutral-50 relative">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <span
                     class="text-gold font-bold tracking-widest text-sm uppercase"
                     >El Cerebro de la IA</span
                 >
-                <h2 class="text-3xl md:text-4xl font-bold text-white mt-2">
+                <h2
+                    class="text-3xl md:text-4xl font-bold text-neutral-900 mt-2"
+                >
                     ¿Por qué citan las IAs?
                 </h2>
-                <p class="text-neutral-400 max-w-2xl mx-auto mt-4">
+                <p class="text-neutral-600 max-w-2xl mx-auto mt-4">
                     A diferencia de Google, que prioriza backlinks, los LLMs
                     priorizan autoridad semántica y estructura de datos.
                 </p>
@@ -317,10 +319,10 @@ const radarOptions = {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <!-- Doughnut Chart -->
                 <div
-                    class="bg-black p-8 rounded-2xl shadow-lg border border-neutral-800"
+                    class="bg-white p-8 rounded-2xl shadow-xl border border-neutral-200"
                 >
                     <h3
-                        class="text-lg font-bold text-neutral-200 mb-4 text-center"
+                        class="text-lg font-bold text-neutral-800 mb-4 text-center"
                     >
                         Factores de Citación en GEO
                     </h3>
@@ -331,7 +333,7 @@ const radarOptions = {
                         chartId="citationFactorsChart"
                         height="300px"
                     />
-                    <div class="mt-6 text-center text-xs text-neutral-500">
+                    <div class="mt-6 text-center text-xs text-neutral-400">
                         *Estimación basada en análisis de Perplexity y
                         SearchGPT.
                     </div>
@@ -346,10 +348,10 @@ const radarOptions = {
                             1
                         </div>
                         <div class="ml-4">
-                            <h4 class="text-lg font-bold text-white">
+                            <h4 class="text-lg font-bold text-neutral-900">
                                 Autoridad de Entidad
                             </h4>
-                            <p class="text-neutral-400 text-sm">
+                            <p class="text-neutral-600 text-sm">
                                 La IA debe reconocer tu marca como una entidad
                                 experta. Consistencia en toda la web.
                             </p>
@@ -362,10 +364,10 @@ const radarOptions = {
                             2
                         </div>
                         <div class="ml-4">
-                            <h4 class="text-lg font-bold text-white">
+                            <h4 class="text-lg font-bold text-neutral-900">
                                 Datos Estructurados
                             </h4>
-                            <p class="text-neutral-400 text-sm">
+                            <p class="text-neutral-600 text-sm">
                                 El código que traduce tu contenido. Sin JSON-LD,
                                 la IA adivina. Con Schema, sabe.
                             </p>
@@ -378,10 +380,10 @@ const radarOptions = {
                             3
                         </div>
                         <div class="ml-4">
-                            <h4 class="text-lg font-bold text-white">
+                            <h4 class="text-lg font-bold text-neutral-900">
                                 Claridad Semántica
                             </h4>
-                            <p class="text-neutral-400 text-sm">
+                            <p class="text-neutral-600 text-sm">
                                 Textos concisos, listas y tablas. Las IAs
                                 prefieren contenido fácil de procesar.
                             </p>
@@ -393,10 +395,10 @@ const radarOptions = {
     </section>
 
     {/* SECCIÓN 3: Factores de Ranking (Radar) */}
-    <section class="py-24 bg-neutral-900">
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-black text-white">
+                <h2 class="text-4xl font-black text-neutral-900">
                     Estrategia SEO vs GEO
                 </h2>
                 <p class="text-neutral-500 mt-4">
@@ -406,7 +408,7 @@ const radarOptions = {
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div
-                    class="bg-black p-8 rounded-[2.5rem] shadow-xl border border-neutral-800"
+                    class="bg-neutral-50 p-8 rounded-[2.5rem] shadow-lg border border-neutral-200"
                 >
                     <ChartRenderer
                         type="radar"
@@ -418,28 +420,28 @@ const radarOptions = {
                 </div>
                 <div class="grid grid-cols-1 gap-6">
                     <div
-                        class="p-8 bg-black rounded-3xl shadow-sm border border-neutral-800 hover:border-gold/30 transition-colors"
+                        class="p-8 bg-white rounded-3xl shadow-sm border border-neutral-200 hover:border-gold/30 transition-colors"
                     >
                         <h4
-                            class="font-bold text-white mb-3 text-lg flex items-center"
+                            class="font-bold text-neutral-900 mb-3 text-lg flex items-center"
                         >
                             <span class="mr-3 text-gold">📍</span> Autoridad de Entidad
                         </h4>
-                        <p class="text-sm text-neutral-400 leading-relaxed">
+                        <p class="text-sm text-neutral-600 leading-relaxed">
                             Las IAs no rankean páginas, rankean entidades.
                             Posicionamos tu marca como una autoridad reconocida
                             semánticamente.
                         </p>
                     </div>
                     <div
-                        class="p-8 bg-black rounded-3xl shadow-sm border border-neutral-800 hover:border-gold/30 transition-colors"
+                        class="p-8 bg-white rounded-3xl shadow-sm border border-neutral-200 hover:border-gold/30 transition-colors"
                     >
                         <h4
-                            class="font-bold text-white mb-3 text-lg flex items-center"
+                            class="font-bold text-neutral-900 mb-3 text-lg flex items-center"
                         >
                             <span class="mr-3 text-gold">🧩</span> Estructura de Datos
                         </h4>
-                        <p class="text-sm text-neutral-400 leading-relaxed">
+                        <p class="text-sm text-neutral-600 leading-relaxed">
                             Sin Schema markup (JSON-LD), la IA debe "alucinar"
                             tus datos. La implementación técnica es el puente.
                         </p>
@@ -450,93 +452,99 @@ const radarOptions = {
     </section>
 
     {/* SECCIÓN 3: Proceso (Flow) */}
-    <section class="py-24 bg-neutral-950">
+    <section class="py-24 bg-neutral-50">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-black text-center text-white mb-20">
+            <h2 class="text-4xl font-black text-center text-neutral-900 mb-20">
                 Ruta Crítica hacia la Citación
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 {/* Paso 1 */}
                 <div
-                    class="relative p-10 bg-neutral-900 rounded-3xl border border-neutral-800 text-center group hover:border-gold/30 transition-all"
+                    class="relative p-10 bg-white rounded-3xl border border-neutral-200 text-center group hover:border-gold/30 transition-all shadow-sm"
                 >
                     <div
-                        class="text-5xl font-black text-neutral-800 mb-6 group-hover:text-gold/20 transition-colors"
+                        class="text-5xl font-black text-neutral-100 mb-6 group-hover:text-gold/20 transition-colors"
                     >
                         01
                     </div>
                     <h4
-                        class="font-bold text-white mb-3 text-lg underline decoration-gold decoration-4 underline-offset-8"
+                        class="font-bold text-neutral-900 mb-3 text-lg underline decoration-gold decoration-4 underline-offset-8"
                     >
-                        Audit
+                        Auditoría SEO
                     </h4>
                     <p class="text-xs text-neutral-500 leading-loose">
-                        Análisis de presencia en Perplexity y SearchGPT.
+                        Evaluamos si las IAs ya reconocen tu marca. Preguntamos
+                        a ChatGPT y Perplexity para analizar vacíos o errores.
                     </p>
                     <div
-                        class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-neutral-800 font-black text-2xl"
+                        class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-neutral-300 font-black text-2xl"
                     >
                         ❯
                     </div>
                 </div>
                 {/* Paso 2 */}
                 <div
-                    class="relative p-10 bg-neutral-900 rounded-3xl border border-neutral-800 text-center group hover:border-gold/30 transition-all"
+                    class="relative p-10 bg-white rounded-3xl border border-neutral-200 text-center group hover:border-gold/30 transition-all shadow-sm"
                 >
                     <div
-                        class="text-5xl font-black text-neutral-800 mb-6 group-hover:text-gold/20 transition-colors"
+                        class="text-5xl font-black text-neutral-100 mb-6 group-hover:text-gold/20 transition-colors"
                     >
                         02
                     </div>
                     <h4
-                        class="font-bold text-white mb-3 text-lg underline decoration-gold decoration-4 underline-offset-8"
+                        class="font-bold text-neutral-900 mb-3 text-lg underline decoration-gold decoration-4 underline-offset-8"
                     >
-                        Schema
+                        Estructura
                     </h4>
                     <p class="text-xs text-neutral-500 leading-loose">
-                        Inyección masiva de metadatos estructurados.
+                        Inyección masiva de Schema. Definimos "Organización",
+                        "Servicios" y "FAQ" para alimentar al modelo con hechos.
                     </p>
                     <div
-                        class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-neutral-800 font-black text-2xl"
+                        class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-neutral-300 font-black text-2xl"
                     >
                         ❯
                     </div>
                 </div>
                 {/* Paso 3 */}
                 <div
-                    class="relative p-10 bg-neutral-900 rounded-3xl border border-neutral-800 text-center group hover:border-gold/30 transition-all"
+                    class="relative p-10 bg-white rounded-3xl border border-neutral-200 text-center group hover:border-gold/30 transition-all shadow-sm"
                 >
                     <div
-                        class="text-5xl font-black text-neutral-800 mb-6 group-hover:text-gold/20 transition-colors"
+                        class="text-5xl font-black text-neutral-100 mb-6 group-hover:text-gold/20 transition-colors"
                     >
                         03
                     </div>
                     <h4
-                        class="font-bold text-white mb-3 text-lg underline decoration-gold decoration-4 underline-offset-8"
+                        class="font-bold text-neutral-900 mb-3 text-lg underline decoration-gold decoration-4 underline-offset-8"
                     >
-                        Content
+                        Contenido
                     </h4>
                     <p class="text-xs text-neutral-500 leading-loose">
-                        Tablas y respuestas sintetizadas para IA.
+                        Creación de contenido sintético para IA: Tablas, listas
+                        claras y respuestas directas (Método BLUF: la conclusión
+                        primero).
                     </p>
                     <div
-                        class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-neutral-800 font-black text-2xl"
+                        class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-neutral-300 font-black text-2xl"
                     >
                         ❯
                     </div>
                 </div>
                 {/* Paso 4 */}
                 <div
-                    class="p-10 bg-gradient-to-br from-gold to-yellow-600 rounded-3xl text-white shadow-2xl shadow-gold/10 text-center"
+                    class="p-10 bg-gradient-to-br from-gold to-yellow-600 rounded-3xl text-white shadow-xl shadow-gold/20 text-center"
                 >
-                    <div class="text-5xl font-black text-black/10 mb-6">04</div>
+                    <div class="text-5xl font-black text-white/20 mb-6">04</div>
                     <h4
                         class="font-bold text-white mb-3 text-lg underline decoration-white/30 decoration-4 underline-offset-8"
                     >
-                        Cite
+                        Citación
                     </h4>
                     <p class="text-xs text-white/90 leading-loose">
-                        Validación de citación y autoridad.
+                        Estrategia de co-citación. Conseguimos que otras fuentes
+                        de autoridad te mencionen para validar tu estatus de
+                        experto.
                     </p>
                 </div>
             </div>
