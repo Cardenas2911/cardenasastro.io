@@ -2,13 +2,8 @@ import { defineCollection, z } from 'astro:content';
 import { getPosts, getCertificates, getPortfolios } from '../lib/wp';
 
 const blog = defineCollection({
-    loader: async () => {
-        const posts = await getPosts();
-        return posts.map(post => ({
-            ...post,
-            id: post.slug, // Use slug as ID for cleaner URLs
-        }));
-    },
+    // Type 'content' is the default for local Markdown/MDX in src/content/blog
+    type: 'content',
     schema: z.object({
         title: z.string(),
         description: z.string(),
@@ -17,7 +12,7 @@ const blog = defineCollection({
         heroImage: z.string().optional(),
         tags: z.array(z.string()).optional(),
         category: z.string().optional(),
-        content: z.string().optional(),
+        // Content is automatically handled by Astro for local files
     }),
 });
 

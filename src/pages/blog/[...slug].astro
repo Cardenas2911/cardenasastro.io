@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
-const htmlContent = post.data.content;
+const { Content } = await post.render();
 
 const schema = {
     "@context": "https://schema.org",
@@ -135,8 +135,9 @@ const schema = {
                     <div class="max-w-3xl mx-auto">
                         <div
                             class="prose prose-neutral dark:prose-invert prose-lg max-w-none prose-headings:text-neutral-900 dark:prose-headings:text-white prose-a:text-gold hover:prose-a:text-gold/80 prose-strong:text-neutral-900 dark:prose-strong:text-white prose-code:text-gold prose-blockquote:border-l-gold transition-colors"
-                            set:html={htmlContent}
-                        />
+                        >
+                            <Content />
+                        </div>
 
                         <!-- Tags -->
                         {
