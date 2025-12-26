@@ -596,12 +596,12 @@ import ProfileCard from "../components/ProfileCard.astro";
                         >Descargar</span
                     >
                 </button>
-                <a
-                    href="/contacto"
+                <button
+                    id="continue-to-contact"
                     class="px-6 py-2 rounded-xl bg-gold hover:bg-gold-400 text-black font-bold transition-colors flex items-center shadow-lg shadow-gold/20 text-sm md:text-base"
                 >
                     Continuar
-                </a>
+                </button>
             </div>
         </div>
     </div>
@@ -614,6 +614,37 @@ import ProfileCard from "../components/ProfileCard.astro";
     document.addEventListener("DOMContentLoaded", initCalculator);
 
     function initCalculator() {
+        // ... (existing code) ...
+
+        // Add listener for Continue button
+        const continueBtn = document.getElementById("continue-to-contact");
+        if (continueBtn) {
+            continueBtn.addEventListener("click", () => {
+                // Gather data
+                const selectedService = document.querySelector(
+                    'input[name="serviceType"]:checked',
+                ) as HTMLInputElement;
+                const totalDisplay = document.getElementById("totalDisplay");
+
+                const quoteData = {
+                    servicio: selectedService
+                        ? selectedService.dataset.label
+                        : "Desconocido",
+                    totalEstimado: totalDisplay ? totalDisplay.innerText : "0",
+                    fecha: new Date().toISOString(),
+                };
+
+                // Save to storage
+                sessionStorage.setItem(
+                    "pendingQuote",
+                    JSON.stringify(quoteData),
+                );
+
+                // Go to contact
+                window.location.href = "/contacto";
+            });
+        }
+
         console.log("--- initCalculator START ---");
         const form = document.getElementById("quote-form");
         if (!form) return;

@@ -330,6 +330,8 @@ import ProfileCard from "../../components/ProfileCard.astro";
 </Layout>
 
 <script>
+    import { submitForm } from "../../lib/submitForm";
+
     // --- Configuration ---
     const QUESTIONS = [
         // Category A: Technical (40 pts total)
@@ -486,32 +488,46 @@ import ProfileCard from "../../components/ProfileCard.astro";
         showScreen(screenLead);
     }
 
-    function handleLeadSubmit(e) {
+    async function handleLeadSubmit(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData);
 
-        // Here you would send 'data' and 'answers' and 'score' to your backend/email service
-        console.log(
-            "Lead Captured:",
-            data,
-            "Score:",
-            score,
-            "Answers:",
-            answers,
-        );
-
-        // Simulate sending
         const submitBtn = e.target.querySelector("button[type='submit']");
         const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = "Enviando...";
+        submitBtn.innerHTML = "Guardando...";
         submitBtn.disabled = true;
 
-        setTimeout(() => {
+        const data = {
+            origen: "test-salud-seo",
+            nombre: formData.get("name"),
+            email: formData.get("email"),
+            sitio_web: formData.get("website"),
+            servicio: "Auditoría SEO (Test)",
+            detalles: {
+                score: score,
+                respuestas: answers,
+            },
+        };
+
+        try {
+            // const { submitForm } = await import("../../lib/submitForm"); // Removed in favor of static import
+
+            const result = await submitForm(data);
+
+            if (result.success) {
+                showResults();
+            } else {
+                alert(
+                    "Hubo un error al guardar tus resultados. Por favor intenta de nuevo.",
+                );
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Error de conexión.");
+        } finally {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
-            showResults();
-        }, 1500);
+        }
     }
 
     function showResults() {

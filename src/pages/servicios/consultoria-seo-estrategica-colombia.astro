@@ -588,8 +588,9 @@ const industries = [
                             O déjame tu sitio web para llegar a la reunión con
                             un pre-diagnóstico:
                         </p>
-                        <form class="flex gap-2">
+                        <form id="quick-audit-form" class="flex gap-2">
                             <input
+                                name="website"
                                 type="url"
                                 placeholder="https://tu-empresa.com"
                                 class="flex-1 bg-black/20 border border-white/10 rounded px-3 py-2 text-white text-sm focus:border-gold outline-none"
@@ -597,7 +598,7 @@ const industries = [
                             />
                             <button
                                 type="submit"
-                                class="bg-neutral-800 hover:bg-neutral-700 text-white text-xs px-4 py-2 rounded font-medium transition-colors border border-white/10"
+                                class="bg-neutral-800 hover:bg-neutral-700 text-white text-xs px-4 py-2 rounded font-medium transition-colors border border-white/10 whitespace-nowrap"
                                 >Enviar</button
                             >
                         </form>
@@ -607,3 +608,49 @@ const industries = [
         </div>
     </div>
 </Layout>
+
+<script>
+    import { submitForm } from "../../lib/submitForm";
+
+    const quickForm = document.getElementById(
+        "quick-audit-form",
+    ) as HTMLFormElement;
+    if (quickForm) {
+        quickForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const btn = quickForm.querySelector("button");
+            const originalText = btn ? btn.innerText : "Enviar";
+
+            if (btn) {
+                btn.innerText = "...";
+                btn.disabled = true;
+            }
+
+            const formData = new FormData(quickForm);
+            const website = formData.get("website") as string;
+
+            // We don't have name/email, so we send what we have.
+            // submitForm requires name/email.
+            // We can send "Anónimo" or ask for it?
+            // Strategy: Send to /herramientas/test-salud-seo?website=... to complete the flow?
+            // OR just send it as a "Quick Lead" with placeholders?
+
+            // Better UX: Redirect to Test Salud SEO with website pre-filled!
+            // This encourages the user to complete the audit and give us the lead.
+            window.location.href = `/herramientas/test-salud-seo?website=${encodeURIComponent(website)}`;
+
+            // If we wanted to submit directly:
+            /*
+            const data = {
+                origen: "quick-audit-service-page",
+                nombre: "Quick Lead",
+                email: "no-email@captured.com",
+                sitio_web: website,
+                servicio: "Auditoría Rápida"
+            };
+            await submitForm(data);
+            alert("¡Recibido! Te contactaremos pronto.");
+            */
+        });
+    }
+</script>

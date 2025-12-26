@@ -1,0 +1,627 @@
+{
+  "id": 27347844,
+  "date": "2025-08-24T22:30:57",
+  "date_gmt": "2025-08-25T03:30:57",
+  "guid": {
+    "rendered": "https://cardenasnicolas.com/glosario/etica-periodistica/"
+  },
+  "modified": "2025-08-24T22:30:57",
+  "modified_gmt": "2025-08-25T03:30:57",
+  "slug": "etica-periodistica",
+  "status": "publish",
+  "type": "glosario",
+  "link": "https://cardenasnicolas.com/glosario/etica-periodistica/",
+  "title": {
+    "rendered": "Ética periodística"
+  },
+  "template": "",
+  "categoria-del-glosario": [
+    768
+  ],
+  "class_list": [
+    "post-27347844",
+    "glosario",
+    "type-glosario",
+    "status-publish",
+    "hentry",
+    "categoria-del-glosario-comunicacion-periodismo"
+  ],
+  "acf": {
+    "definicion": "Ética periodística son principios que guían a los comunicadores hacia la verdad, imparcialidad y responsabilidad social.",
+    "acronimo": "",
+    "sinonimos": "Principios periodísticos, deontología",
+    "relacionados": [
+      27347839
+    ]
+  },
+  "yoast_head": "<!-- This site is optimized with the Yoast SEO Premium plugin v25.7.1 (Yoast SEO v26.6) - https://yoast.com/wordpress/plugins/seo/ -->\n<title>Ética periodística: principios clave en comunicación</title>\n<meta name=\"description\" content=\"Descubre qué es la ética periodística y cómo asegura responsabilidad, imparcialidad y veracidad en los medios.\" />\n<meta name=\"robots\" content=\"index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\" />\n<link rel=\"canonical\" href=\"https://cardenasnicolas.com/glosario/etica-periodistica/\" />\n<meta property=\"og:locale\" content=\"es_ES\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"og:title\" content=\"Ética periodística: principios clave en comunicación\" />\n<meta property=\"og:description\" content=\"Descubre qué es la ética periodística y cómo asegura responsabilidad, imparcialidad y veracidad en los medios.\" />\n<meta property=\"og:url\" content=\"https://cardenasnicolas.com/glosario/etica-periodistica/\" />\n<meta property=\"og:site_name\" content=\"Consultor SEO y WordPress | Nicolás Cárdenas\" />\n<meta property=\"og:image\" content=\"https://cardenasnicolas.com/wp-content/uploads/2025/07/Inicio-Portada.webp\" />\n\t<meta property=\"og:image:width\" content=\"600\" />\n\t<meta property=\"og:image:height\" content=\"315\" />\n\t<meta property=\"og:image:type\" content=\"image/webp\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<meta name=\"twitter:title\" content=\"Ética periodística: principios clave en comunicación\" />\n<meta name=\"twitter:description\" content=\"Descubre qué es la ética periodística y cómo asegura responsabilidad, imparcialidad y veracidad en los medios.\" />\n<script type=\"application/ld+json\" class=\"yoast-schema-graph\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://cardenasnicolas.com/glosario/etica-periodistica/\",\"url\":\"https://cardenasnicolas.com/glosario/etica-periodistica/\",\"name\":\"Ética periodística: principios clave en comunicación\",\"isPartOf\":{\"@id\":\"https://cardenasnicolas.com/#website\"},\"datePublished\":\"2025-08-25T03:30:57+00:00\",\"description\":\"Descubre qué es la ética periodística y cómo asegura responsabilidad, imparcialidad y veracidad en los medios.\",\"breadcrumb\":{\"@id\":\"https://cardenasnicolas.com/glosario/etica-periodistica/#breadcrumb\"},\"inLanguage\":\"es\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https://cardenasnicolas.com/glosario/etica-periodistica/\"]}]},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://cardenasnicolas.com/glosario/etica-periodistica/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Portada\",\"item\":\"https://cardenasnicolas.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Glosarios\",\"item\":\"https://cardenasnicolas.com/glosario/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Ética periodística\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://cardenasnicolas.com/#website\",\"url\":\"https://cardenasnicolas.com/\",\"name\":\"Consultor SEO y WordPress | Nicolás Cárdenas\",\"description\":\"Consultor digital experto en WordPress y SEO que ayuda a negocios a crecer en internet desde 2015.\",\"publisher\":{\"@id\":\"https://cardenasnicolas.com/#/schema/person/796e64b1a49082efa43a372e9e5aae8c\"},\"alternateName\":\"Nicolás Cárdenas consultor en SEO y WordPress.\",\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://cardenasnicolas.com/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"es\"},{\"@type\":[\"Person\",\"Organization\"],\"@id\":\"https://cardenasnicolas.com/#/schema/person/796e64b1a49082efa43a372e9e5aae8c\",\"name\":\"Nicolás Cárdenas\",\"image\":{\"@type\":\"ImageObject\",\"inLanguage\":\"es\",\"@id\":\"https://cardenasnicolas.com/#/schema/person/image/\",\"url\":\"https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp\",\"contentUrl\":\"https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp\",\"width\":512,\"height\":512,\"caption\":\"Nicolás Cárdenas\"},\"logo\":{\"@id\":\"https://cardenasnicolas.com/#/schema/person/image/\"},\"description\":\"Soy un consultor digital independiente con más de 8 años de experiencia ayudando a emprendedores, marcas y empresas a crecer en internet. Mi enfoque se centra en el desarrollo web con WordPress, el posicionamiento SEO y la consultoría estratégica. No ofrezco servicios genéricos: escucho, analizo y diseño soluciones que realmente conectan con tus objetivos. Trabajo contigo, no solo para ti. Mi meta es que tengas una presencia digital sólida, efectiva y alineada con lo que necesitas.\",\"sameAs\":[\"https://cardenasnicolas.com\",\"https://www.linkedin.com/in/nicols-crdenas-904526289/\"],\"honorificPrefix\":\"Sr\",\"birthDate\":\"1996-11-29\",\"gender\":\"hombre\",\"knowsAbout\":[\"WordPress\",\"SEO\",\"Estrategia Digita\"],\"knowsLanguage\":[\"español\"],\"jobTitle\":\"Experto en desarrollo WordPress y SEO\",\"publishingPrinciples\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"ownershipFundingInfo\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"actionableFeedbackPolicy\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"correctionsPolicy\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"ethicsPolicy\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"diversityPolicy\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"diversityStaffingReport\":\"https://cardenasnicolas.com/politica-de-privacidad/\"}]}</script>\n<!-- / Yoast SEO Premium plugin. -->",
+  "yoast_head_json": {
+    "title": "Ética periodística: principios clave en comunicación",
+    "description": "Descubre qué es la ética periodística y cómo asegura responsabilidad, imparcialidad y veracidad en los medios.",
+    "robots": {
+      "index": "index",
+      "follow": "follow",
+      "max-snippet": "max-snippet:-1",
+      "max-image-preview": "max-image-preview:large",
+      "max-video-preview": "max-video-preview:-1"
+    },
+    "canonical": "https://cardenasnicolas.com/glosario/etica-periodistica/",
+    "og_locale": "es_ES",
+    "og_type": "article",
+    "og_title": "Ética periodística: principios clave en comunicación",
+    "og_description": "Descubre qué es la ética periodística y cómo asegura responsabilidad, imparcialidad y veracidad en los medios.",
+    "og_url": "https://cardenasnicolas.com/glosario/etica-periodistica/",
+    "og_site_name": "Consultor SEO y WordPress | Nicolás Cárdenas",
+    "og_image": [
+      {
+        "width": 600,
+        "height": 315,
+        "url": "https://cardenasnicolas.com/wp-content/uploads/2025/07/Inicio-Portada.webp",
+        "type": "image/webp"
+      }
+    ],
+    "twitter_card": "summary_large_image",
+    "twitter_title": "Ética periodística: principios clave en comunicación",
+    "twitter_description": "Descubre qué es la ética periodística y cómo asegura responsabilidad, imparcialidad y veracidad en los medios.",
+    "schema": {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://cardenasnicolas.com/glosario/etica-periodistica/",
+          "url": "https://cardenasnicolas.com/glosario/etica-periodistica/",
+          "name": "Ética periodística: principios clave en comunicación",
+          "isPartOf": {
+            "@id": "https://cardenasnicolas.com/#website"
+          },
+          "datePublished": "2025-08-25T03:30:57+00:00",
+          "description": "Descubre qué es la ética periodística y cómo asegura responsabilidad, imparcialidad y veracidad en los medios.",
+          "breadcrumb": {
+            "@id": "https://cardenasnicolas.com/glosario/etica-periodistica/#breadcrumb"
+          },
+          "inLanguage": "es",
+          "potentialAction": [
+            {
+              "@type": "ReadAction",
+              "target": [
+                "https://cardenasnicolas.com/glosario/etica-periodistica/"
+              ]
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://cardenasnicolas.com/glosario/etica-periodistica/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Portada",
+              "item": "https://cardenasnicolas.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Glosarios",
+              "item": "https://cardenasnicolas.com/glosario/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Ética periodística"
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://cardenasnicolas.com/#website",
+          "url": "https://cardenasnicolas.com/",
+          "name": "Consultor SEO y WordPress | Nicolás Cárdenas",
+          "description": "Consultor digital experto en WordPress y SEO que ayuda a negocios a crecer en internet desde 2015.",
+          "publisher": {
+            "@id": "https://cardenasnicolas.com/#/schema/person/796e64b1a49082efa43a372e9e5aae8c"
+          },
+          "alternateName": "Nicolás Cárdenas consultor en SEO y WordPress.",
+          "potentialAction": [
+            {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://cardenasnicolas.com/?s={search_term_string}"
+              },
+              "query-input": {
+                "@type": "PropertyValueSpecification",
+                "valueRequired": true,
+                "valueName": "search_term_string"
+              }
+            }
+          ],
+          "inLanguage": "es"
+        },
+        {
+          "@type": [
+            "Person",
+            "Organization"
+          ],
+          "@id": "https://cardenasnicolas.com/#/schema/person/796e64b1a49082efa43a372e9e5aae8c",
+          "name": "Nicolás Cárdenas",
+          "image": {
+            "@type": "ImageObject",
+            "inLanguage": "es",
+            "@id": "https://cardenasnicolas.com/#/schema/person/image/",
+            "url": "https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp",
+            "contentUrl": "https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp",
+            "width": 512,
+            "height": 512,
+            "caption": "Nicolás Cárdenas"
+          },
+          "logo": {
+            "@id": "https://cardenasnicolas.com/#/schema/person/image/"
+          },
+          "description": "Soy un consultor digital independiente con más de 8 años de experiencia ayudando a emprendedores, marcas y empresas a crecer en internet. Mi enfoque se centra en el desarrollo web con WordPress, el posicionamiento SEO y la consultoría estratégica. No ofrezco servicios genéricos: escucho, analizo y diseño soluciones que realmente conectan con tus objetivos. Trabajo contigo, no solo para ti. Mi meta es que tengas una presencia digital sólida, efectiva y alineada con lo que necesitas.",
+          "sameAs": [
+            "https://cardenasnicolas.com",
+            "https://www.linkedin.com/in/nicols-crdenas-904526289/"
+          ],
+          "honorificPrefix": "Sr",
+          "birthDate": "1996-11-29",
+          "gender": "hombre",
+          "knowsAbout": [
+            "WordPress",
+            "SEO",
+            "Estrategia Digita"
+          ],
+          "knowsLanguage": [
+            "español"
+          ],
+          "jobTitle": "Experto en desarrollo WordPress y SEO",
+          "publishingPrinciples": "https://cardenasnicolas.com/politica-de-privacidad/",
+          "ownershipFundingInfo": "https://cardenasnicolas.com/politica-de-privacidad/",
+          "actionableFeedbackPolicy": "https://cardenasnicolas.com/politica-de-privacidad/",
+          "correctionsPolicy": "https://cardenasnicolas.com/politica-de-privacidad/",
+          "ethicsPolicy": "https://cardenasnicolas.com/politica-de-privacidad/",
+          "diversityPolicy": "https://cardenasnicolas.com/politica-de-privacidad/",
+          "diversityStaffingReport": "https://cardenasnicolas.com/politica-de-privacidad/"
+        }
+      ]
+    }
+  },
+  "_links": {
+    "self": [
+      {
+        "href": "https://cardenasnicolas.com/wp-json/wp/v2/glosario/27347844",
+        "targetHints": {
+          "allow": [
+            "GET"
+          ]
+        }
+      }
+    ],
+    "collection": [
+      {
+        "href": "https://cardenasnicolas.com/wp-json/wp/v2/glosario"
+      }
+    ],
+    "about": [
+      {
+        "href": "https://cardenasnicolas.com/wp-json/wp/v2/types/glosario"
+      }
+    ],
+    "acf:post": [
+      {
+        "embeddable": true,
+        "href": "https://cardenasnicolas.com/wp-json/wp/v2/glosario/27347839"
+      }
+    ],
+    "wp:attachment": [
+      {
+        "href": "https://cardenasnicolas.com/wp-json/wp/v2/media?parent=27347844"
+      }
+    ],
+    "wp:term": [
+      {
+        "taxonomy": "categoria-del-glosario",
+        "embeddable": true,
+        "href": "https://cardenasnicolas.com/wp-json/wp/v2/categoria-del-glosario?post=27347844"
+      }
+    ],
+    "curies": [
+      {
+        "name": "wp",
+        "href": "https://api.w.org/{rel}",
+        "templated": true
+      }
+    ]
+  },
+  "_embedded": {
+    "acf:post": [
+      {
+        "id": 27347839,
+        "date": "2025-08-24T22:30:57",
+        "slug": "verificacion-de-hecho",
+        "type": "glosario",
+        "link": "https://cardenasnicolas.com/glosario/verificacion-de-hecho/",
+        "title": {
+          "rendered": "Verificación de hecho"
+        },
+        "acf": {
+          "definicion": "Verificación de hecho es comprobar la veracidad de una información antes de difundirla. Ejemplo: validar estadísticas en un artículo.",
+          "acronimo": "",
+          "sinonimos": "Fact-checking",
+          "relacionados": ""
+        },
+        "yoast_head": "<!-- This site is optimized with the Yoast SEO Premium plugin v25.7.1 (Yoast SEO v26.6) - https://yoast.com/wordpress/plugins/seo/ -->\n<title>Verificación de hecho: confirma la veracidad de datos</title>\n<meta name=\"description\" content=\"Aprende qué es la verificación de hecho y cómo aplicarla en periodismo y marketing digital responsable.\" />\n<meta name=\"robots\" content=\"index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\" />\n<link rel=\"canonical\" href=\"https://cardenasnicolas.com/glosario/verificacion-de-hecho/\" />\n<meta property=\"og:locale\" content=\"es_ES\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"og:title\" content=\"Verificación de hecho: confirma la veracidad de datos\" />\n<meta property=\"og:description\" content=\"Aprende qué es la verificación de hecho y cómo aplicarla en periodismo y marketing digital responsable.\" />\n<meta property=\"og:url\" content=\"https://cardenasnicolas.com/glosario/verificacion-de-hecho/\" />\n<meta property=\"og:site_name\" content=\"Consultor SEO y WordPress | Nicolás Cárdenas\" />\n<meta property=\"og:image\" content=\"https://cardenasnicolas.com/wp-content/uploads/2025/07/Inicio-Portada.webp\" />\n\t<meta property=\"og:image:width\" content=\"600\" />\n\t<meta property=\"og:image:height\" content=\"315\" />\n\t<meta property=\"og:image:type\" content=\"image/webp\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<meta name=\"twitter:title\" content=\"Verificación de hecho: confirma la veracidad de datos\" />\n<meta name=\"twitter:description\" content=\"Aprende qué es la verificación de hecho y cómo aplicarla en periodismo y marketing digital responsable.\" />\n<script type=\"application/ld+json\" class=\"yoast-schema-graph\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://cardenasnicolas.com/glosario/verificacion-de-hecho/\",\"url\":\"https://cardenasnicolas.com/glosario/verificacion-de-hecho/\",\"name\":\"Verificación de hecho: confirma la veracidad de datos\",\"isPartOf\":{\"@id\":\"https://cardenasnicolas.com/#website\"},\"datePublished\":\"2025-08-25T03:30:57+00:00\",\"description\":\"Aprende qué es la verificación de hecho y cómo aplicarla en periodismo y marketing digital responsable.\",\"breadcrumb\":{\"@id\":\"https://cardenasnicolas.com/glosario/verificacion-de-hecho/#breadcrumb\"},\"inLanguage\":\"es\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https://cardenasnicolas.com/glosario/verificacion-de-hecho/\"]}]},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://cardenasnicolas.com/glosario/verificacion-de-hecho/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Portada\",\"item\":\"https://cardenasnicolas.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Glosarios\",\"item\":\"https://cardenasnicolas.com/glosario/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Verificación de hecho\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://cardenasnicolas.com/#website\",\"url\":\"https://cardenasnicolas.com/\",\"name\":\"Consultor SEO y WordPress | Nicolás Cárdenas\",\"description\":\"Consultor digital experto en WordPress y SEO que ayuda a negocios a crecer en internet desde 2015.\",\"publisher\":{\"@id\":\"https://cardenasnicolas.com/#/schema/person/796e64b1a49082efa43a372e9e5aae8c\"},\"alternateName\":\"Nicolás Cárdenas consultor en SEO y WordPress.\",\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://cardenasnicolas.com/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"es\"},{\"@type\":[\"Person\",\"Organization\"],\"@id\":\"https://cardenasnicolas.com/#/schema/person/796e64b1a49082efa43a372e9e5aae8c\",\"name\":\"Nicolás Cárdenas\",\"image\":{\"@type\":\"ImageObject\",\"inLanguage\":\"es\",\"@id\":\"https://cardenasnicolas.com/#/schema/person/image/\",\"url\":\"https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp\",\"contentUrl\":\"https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp\",\"width\":512,\"height\":512,\"caption\":\"Nicolás Cárdenas\"},\"logo\":{\"@id\":\"https://cardenasnicolas.com/#/schema/person/image/\"},\"description\":\"Soy un consultor digital independiente con más de 8 años de experiencia ayudando a emprendedores, marcas y empresas a crecer en internet. Mi enfoque se centra en el desarrollo web con WordPress, el posicionamiento SEO y la consultoría estratégica. No ofrezco servicios genéricos: escucho, analizo y diseño soluciones que realmente conectan con tus objetivos. Trabajo contigo, no solo para ti. Mi meta es que tengas una presencia digital sólida, efectiva y alineada con lo que necesitas.\",\"sameAs\":[\"https://cardenasnicolas.com\",\"https://www.linkedin.com/in/nicols-crdenas-904526289/\"],\"honorificPrefix\":\"Sr\",\"birthDate\":\"1996-11-29\",\"gender\":\"hombre\",\"knowsAbout\":[\"WordPress\",\"SEO\",\"Estrategia Digita\"],\"knowsLanguage\":[\"español\"],\"jobTitle\":\"Experto en desarrollo WordPress y SEO\",\"publishingPrinciples\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"ownershipFundingInfo\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"actionableFeedbackPolicy\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"correctionsPolicy\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"ethicsPolicy\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"diversityPolicy\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"diversityStaffingReport\":\"https://cardenasnicolas.com/politica-de-privacidad/\"}]}</script>\n<!-- / Yoast SEO Premium plugin. -->",
+        "yoast_head_json": {
+          "title": "Verificación de hecho: confirma la veracidad de datos",
+          "description": "Aprende qué es la verificación de hecho y cómo aplicarla en periodismo y marketing digital responsable.",
+          "robots": {
+            "index": "index",
+            "follow": "follow",
+            "max-snippet": "max-snippet:-1",
+            "max-image-preview": "max-image-preview:large",
+            "max-video-preview": "max-video-preview:-1"
+          },
+          "canonical": "https://cardenasnicolas.com/glosario/verificacion-de-hecho/",
+          "og_locale": "es_ES",
+          "og_type": "article",
+          "og_title": "Verificación de hecho: confirma la veracidad de datos",
+          "og_description": "Aprende qué es la verificación de hecho y cómo aplicarla en periodismo y marketing digital responsable.",
+          "og_url": "https://cardenasnicolas.com/glosario/verificacion-de-hecho/",
+          "og_site_name": "Consultor SEO y WordPress | Nicolás Cárdenas",
+          "og_image": [
+            {
+              "width": 600,
+              "height": 315,
+              "url": "https://cardenasnicolas.com/wp-content/uploads/2025/07/Inicio-Portada.webp",
+              "type": "image/webp"
+            }
+          ],
+          "twitter_card": "summary_large_image",
+          "twitter_title": "Verificación de hecho: confirma la veracidad de datos",
+          "twitter_description": "Aprende qué es la verificación de hecho y cómo aplicarla en periodismo y marketing digital responsable.",
+          "schema": {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebPage",
+                "@id": "https://cardenasnicolas.com/glosario/verificacion-de-hecho/",
+                "url": "https://cardenasnicolas.com/glosario/verificacion-de-hecho/",
+                "name": "Verificación de hecho: confirma la veracidad de datos",
+                "isPartOf": {
+                  "@id": "https://cardenasnicolas.com/#website"
+                },
+                "datePublished": "2025-08-25T03:30:57+00:00",
+                "description": "Aprende qué es la verificación de hecho y cómo aplicarla en periodismo y marketing digital responsable.",
+                "breadcrumb": {
+                  "@id": "https://cardenasnicolas.com/glosario/verificacion-de-hecho/#breadcrumb"
+                },
+                "inLanguage": "es",
+                "potentialAction": [
+                  {
+                    "@type": "ReadAction",
+                    "target": [
+                      "https://cardenasnicolas.com/glosario/verificacion-de-hecho/"
+                    ]
+                  }
+                ]
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": "https://cardenasnicolas.com/glosario/verificacion-de-hecho/#breadcrumb",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Portada",
+                    "item": "https://cardenasnicolas.com/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Glosarios",
+                    "item": "https://cardenasnicolas.com/glosario/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Verificación de hecho"
+                  }
+                ]
+              },
+              {
+                "@type": "WebSite",
+                "@id": "https://cardenasnicolas.com/#website",
+                "url": "https://cardenasnicolas.com/",
+                "name": "Consultor SEO y WordPress | Nicolás Cárdenas",
+                "description": "Consultor digital experto en WordPress y SEO que ayuda a negocios a crecer en internet desde 2015.",
+                "publisher": {
+                  "@id": "https://cardenasnicolas.com/#/schema/person/796e64b1a49082efa43a372e9e5aae8c"
+                },
+                "alternateName": "Nicolás Cárdenas consultor en SEO y WordPress.",
+                "potentialAction": [
+                  {
+                    "@type": "SearchAction",
+                    "target": {
+                      "@type": "EntryPoint",
+                      "urlTemplate": "https://cardenasnicolas.com/?s={search_term_string}"
+                    },
+                    "query-input": {
+                      "@type": "PropertyValueSpecification",
+                      "valueRequired": true,
+                      "valueName": "search_term_string"
+                    }
+                  }
+                ],
+                "inLanguage": "es"
+              },
+              {
+                "@type": [
+                  "Person",
+                  "Organization"
+                ],
+                "@id": "https://cardenasnicolas.com/#/schema/person/796e64b1a49082efa43a372e9e5aae8c",
+                "name": "Nicolás Cárdenas",
+                "image": {
+                  "@type": "ImageObject",
+                  "inLanguage": "es",
+                  "@id": "https://cardenasnicolas.com/#/schema/person/image/",
+                  "url": "https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp",
+                  "contentUrl": "https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp",
+                  "width": 512,
+                  "height": 512,
+                  "caption": "Nicolás Cárdenas"
+                },
+                "logo": {
+                  "@id": "https://cardenasnicolas.com/#/schema/person/image/"
+                },
+                "description": "Soy un consultor digital independiente con más de 8 años de experiencia ayudando a emprendedores, marcas y empresas a crecer en internet. Mi enfoque se centra en el desarrollo web con WordPress, el posicionamiento SEO y la consultoría estratégica. No ofrezco servicios genéricos: escucho, analizo y diseño soluciones que realmente conectan con tus objetivos. Trabajo contigo, no solo para ti. Mi meta es que tengas una presencia digital sólida, efectiva y alineada con lo que necesitas.",
+                "sameAs": [
+                  "https://cardenasnicolas.com",
+                  "https://www.linkedin.com/in/nicols-crdenas-904526289/"
+                ],
+                "honorificPrefix": "Sr",
+                "birthDate": "1996-11-29",
+                "gender": "hombre",
+                "knowsAbout": [
+                  "WordPress",
+                  "SEO",
+                  "Estrategia Digita"
+                ],
+                "knowsLanguage": [
+                  "español"
+                ],
+                "jobTitle": "Experto en desarrollo WordPress y SEO",
+                "publishingPrinciples": "https://cardenasnicolas.com/politica-de-privacidad/",
+                "ownershipFundingInfo": "https://cardenasnicolas.com/politica-de-privacidad/",
+                "actionableFeedbackPolicy": "https://cardenasnicolas.com/politica-de-privacidad/",
+                "correctionsPolicy": "https://cardenasnicolas.com/politica-de-privacidad/",
+                "ethicsPolicy": "https://cardenasnicolas.com/politica-de-privacidad/",
+                "diversityPolicy": "https://cardenasnicolas.com/politica-de-privacidad/",
+                "diversityStaffingReport": "https://cardenasnicolas.com/politica-de-privacidad/"
+              }
+            ]
+          }
+        },
+        "_links": {
+          "self": [
+            {
+              "href": "https://cardenasnicolas.com/wp-json/wp/v2/glosario/27347839",
+              "targetHints": {
+                "allow": [
+                  "GET"
+                ]
+              }
+            }
+          ],
+          "collection": [
+            {
+              "href": "https://cardenasnicolas.com/wp-json/wp/v2/glosario"
+            }
+          ],
+          "about": [
+            {
+              "href": "https://cardenasnicolas.com/wp-json/wp/v2/types/glosario"
+            }
+          ],
+          "wp:attachment": [
+            {
+              "href": "https://cardenasnicolas.com/wp-json/wp/v2/media?parent=27347839"
+            }
+          ],
+          "wp:term": [
+            {
+              "taxonomy": "categoria-del-glosario",
+              "embeddable": true,
+              "href": "https://cardenasnicolas.com/wp-json/wp/v2/categoria-del-glosario?post=27347839"
+            }
+          ],
+          "curies": [
+            {
+              "name": "wp",
+              "href": "https://api.w.org/{rel}",
+              "templated": true
+            }
+          ]
+        }
+      }
+    ],
+    "wp:term": [
+      [
+        {
+          "id": 768,
+          "link": "https://cardenasnicolas.com/categoria-del-glosario/comunicacion-periodismo/",
+          "name": "Comunicación/Periodismo",
+          "slug": "comunicacion-periodismo",
+          "taxonomy": "categoria-del-glosario",
+          "yoast_head": "<!-- This site is optimized with the Yoast SEO Premium plugin v25.7.1 (Yoast SEO v26.6) - https://yoast.com/wordpress/plugins/seo/ -->\n<title>Comunicación/Periodismo archivos | Consultor SEO y WordPress | Nicolás Cárdenas</title>\n<meta name=\"robots\" content=\"index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\" />\n<link rel=\"canonical\" href=\"https://cardenasnicolas.com/categoria-del-glosario/comunicacion-periodismo/\" />\n<meta property=\"og:locale\" content=\"es_ES\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"og:title\" content=\"Comunicación/Periodismo archivos\" />\n<meta property=\"og:url\" content=\"https://cardenasnicolas.com/categoria-del-glosario/comunicacion-periodismo/\" />\n<meta property=\"og:site_name\" content=\"Consultor SEO y WordPress | Nicolás Cárdenas\" />\n<meta property=\"og:image\" content=\"https://cardenasnicolas.com/wp-content/uploads/2025/07/Inicio-Portada.webp\" />\n\t<meta property=\"og:image:width\" content=\"600\" />\n\t<meta property=\"og:image:height\" content=\"315\" />\n\t<meta property=\"og:image:type\" content=\"image/webp\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<script type=\"application/ld+json\" class=\"yoast-schema-graph\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"CollectionPage\",\"@id\":\"https://cardenasnicolas.com/categoria-del-glosario/comunicacion-periodismo/\",\"url\":\"https://cardenasnicolas.com/categoria-del-glosario/comunicacion-periodismo/\",\"name\":\"Comunicación/Periodismo archivos | Consultor SEO y WordPress | Nicolás Cárdenas\",\"isPartOf\":{\"@id\":\"https://cardenasnicolas.com/#website\"},\"breadcrumb\":{\"@id\":\"https://cardenasnicolas.com/categoria-del-glosario/comunicacion-periodismo/#breadcrumb\"},\"inLanguage\":\"es\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://cardenasnicolas.com/categoria-del-glosario/comunicacion-periodismo/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Portada\",\"item\":\"https://cardenasnicolas.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Comunicación/Periodismo\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://cardenasnicolas.com/#website\",\"url\":\"https://cardenasnicolas.com/\",\"name\":\"Consultor SEO y WordPress | Nicolás Cárdenas\",\"description\":\"Consultor digital experto en WordPress y SEO que ayuda a negocios a crecer en internet desde 2015.\",\"publisher\":{\"@id\":\"https://cardenasnicolas.com/#/schema/person/796e64b1a49082efa43a372e9e5aae8c\"},\"alternateName\":\"Nicolás Cárdenas consultor en SEO y WordPress.\",\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://cardenasnicolas.com/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"es\"},{\"@type\":[\"Person\",\"Organization\"],\"@id\":\"https://cardenasnicolas.com/#/schema/person/796e64b1a49082efa43a372e9e5aae8c\",\"name\":\"Nicolás Cárdenas\",\"image\":{\"@type\":\"ImageObject\",\"inLanguage\":\"es\",\"@id\":\"https://cardenasnicolas.com/#/schema/person/image/\",\"url\":\"https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp\",\"contentUrl\":\"https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp\",\"width\":512,\"height\":512,\"caption\":\"Nicolás Cárdenas\"},\"logo\":{\"@id\":\"https://cardenasnicolas.com/#/schema/person/image/\"},\"description\":\"Soy un consultor digital independiente con más de 8 años de experiencia ayudando a emprendedores, marcas y empresas a crecer en internet. Mi enfoque se centra en el desarrollo web con WordPress, el posicionamiento SEO y la consultoría estratégica. No ofrezco servicios genéricos: escucho, analizo y diseño soluciones que realmente conectan con tus objetivos. Trabajo contigo, no solo para ti. Mi meta es que tengas una presencia digital sólida, efectiva y alineada con lo que necesitas.\",\"sameAs\":[\"https://cardenasnicolas.com\",\"https://www.linkedin.com/in/nicols-crdenas-904526289/\"],\"honorificPrefix\":\"Sr\",\"birthDate\":\"1996-11-29\",\"gender\":\"hombre\",\"knowsAbout\":[\"WordPress\",\"SEO\",\"Estrategia Digita\"],\"knowsLanguage\":[\"español\"],\"jobTitle\":\"Experto en desarrollo WordPress y SEO\",\"publishingPrinciples\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"ownershipFundingInfo\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"actionableFeedbackPolicy\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"correctionsPolicy\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"ethicsPolicy\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"diversityPolicy\":\"https://cardenasnicolas.com/politica-de-privacidad/\",\"diversityStaffingReport\":\"https://cardenasnicolas.com/politica-de-privacidad/\"}]}</script>\n<!-- / Yoast SEO Premium plugin. -->",
+          "yoast_head_json": {
+            "title": "Comunicación/Periodismo archivos | Consultor SEO y WordPress | Nicolás Cárdenas",
+            "robots": {
+              "index": "index",
+              "follow": "follow",
+              "max-snippet": "max-snippet:-1",
+              "max-image-preview": "max-image-preview:large",
+              "max-video-preview": "max-video-preview:-1"
+            },
+            "canonical": "https://cardenasnicolas.com/categoria-del-glosario/comunicacion-periodismo/",
+            "og_locale": "es_ES",
+            "og_type": "article",
+            "og_title": "Comunicación/Periodismo archivos",
+            "og_url": "https://cardenasnicolas.com/categoria-del-glosario/comunicacion-periodismo/",
+            "og_site_name": "Consultor SEO y WordPress | Nicolás Cárdenas",
+            "og_image": [
+              {
+                "width": 600,
+                "height": 315,
+                "url": "https://cardenasnicolas.com/wp-content/uploads/2025/07/Inicio-Portada.webp",
+                "type": "image/webp"
+              }
+            ],
+            "twitter_card": "summary_large_image",
+            "schema": {
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "CollectionPage",
+                  "@id": "https://cardenasnicolas.com/categoria-del-glosario/comunicacion-periodismo/",
+                  "url": "https://cardenasnicolas.com/categoria-del-glosario/comunicacion-periodismo/",
+                  "name": "Comunicación/Periodismo archivos | Consultor SEO y WordPress | Nicolás Cárdenas",
+                  "isPartOf": {
+                    "@id": "https://cardenasnicolas.com/#website"
+                  },
+                  "breadcrumb": {
+                    "@id": "https://cardenasnicolas.com/categoria-del-glosario/comunicacion-periodismo/#breadcrumb"
+                  },
+                  "inLanguage": "es"
+                },
+                {
+                  "@type": "BreadcrumbList",
+                  "@id": "https://cardenasnicolas.com/categoria-del-glosario/comunicacion-periodismo/#breadcrumb",
+                  "itemListElement": [
+                    {
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Portada",
+                      "item": "https://cardenasnicolas.com/"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 2,
+                      "name": "Comunicación/Periodismo"
+                    }
+                  ]
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://cardenasnicolas.com/#website",
+                  "url": "https://cardenasnicolas.com/",
+                  "name": "Consultor SEO y WordPress | Nicolás Cárdenas",
+                  "description": "Consultor digital experto en WordPress y SEO que ayuda a negocios a crecer en internet desde 2015.",
+                  "publisher": {
+                    "@id": "https://cardenasnicolas.com/#/schema/person/796e64b1a49082efa43a372e9e5aae8c"
+                  },
+                  "alternateName": "Nicolás Cárdenas consultor en SEO y WordPress.",
+                  "potentialAction": [
+                    {
+                      "@type": "SearchAction",
+                      "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://cardenasnicolas.com/?s={search_term_string}"
+                      },
+                      "query-input": {
+                        "@type": "PropertyValueSpecification",
+                        "valueRequired": true,
+                        "valueName": "search_term_string"
+                      }
+                    }
+                  ],
+                  "inLanguage": "es"
+                },
+                {
+                  "@type": [
+                    "Person",
+                    "Organization"
+                  ],
+                  "@id": "https://cardenasnicolas.com/#/schema/person/796e64b1a49082efa43a372e9e5aae8c",
+                  "name": "Nicolás Cárdenas",
+                  "image": {
+                    "@type": "ImageObject",
+                    "inLanguage": "es",
+                    "@id": "https://cardenasnicolas.com/#/schema/person/image/",
+                    "url": "https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp",
+                    "contentUrl": "https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp",
+                    "width": 512,
+                    "height": 512,
+                    "caption": "Nicolás Cárdenas"
+                  },
+                  "logo": {
+                    "@id": "https://cardenasnicolas.com/#/schema/person/image/"
+                  },
+                  "description": "Soy un consultor digital independiente con más de 8 años de experiencia ayudando a emprendedores, marcas y empresas a crecer en internet. Mi enfoque se centra en el desarrollo web con WordPress, el posicionamiento SEO y la consultoría estratégica. No ofrezco servicios genéricos: escucho, analizo y diseño soluciones que realmente conectan con tus objetivos. Trabajo contigo, no solo para ti. Mi meta es que tengas una presencia digital sólida, efectiva y alineada con lo que necesitas.",
+                  "sameAs": [
+                    "https://cardenasnicolas.com",
+                    "https://www.linkedin.com/in/nicols-crdenas-904526289/"
+                  ],
+                  "honorificPrefix": "Sr",
+                  "birthDate": "1996-11-29",
+                  "gender": "hombre",
+                  "knowsAbout": [
+                    "WordPress",
+                    "SEO",
+                    "Estrategia Digita"
+                  ],
+                  "knowsLanguage": [
+                    "español"
+                  ],
+                  "jobTitle": "Experto en desarrollo WordPress y SEO",
+                  "publishingPrinciples": "https://cardenasnicolas.com/politica-de-privacidad/",
+                  "ownershipFundingInfo": "https://cardenasnicolas.com/politica-de-privacidad/",
+                  "actionableFeedbackPolicy": "https://cardenasnicolas.com/politica-de-privacidad/",
+                  "correctionsPolicy": "https://cardenasnicolas.com/politica-de-privacidad/",
+                  "ethicsPolicy": "https://cardenasnicolas.com/politica-de-privacidad/",
+                  "diversityPolicy": "https://cardenasnicolas.com/politica-de-privacidad/",
+                  "diversityStaffingReport": "https://cardenasnicolas.com/politica-de-privacidad/"
+                }
+              ]
+            }
+          },
+          "acf": [],
+          "_links": {
+            "self": [
+              {
+                "href": "https://cardenasnicolas.com/wp-json/wp/v2/categoria-del-glosario/768",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://cardenasnicolas.com/wp-json/wp/v2/categoria-del-glosario"
+              }
+            ],
+            "about": [
+              {
+                "href": "https://cardenasnicolas.com/wp-json/wp/v2/taxonomies/categoria-del-glosario"
+              }
+            ],
+            "wp:post_type": [
+              {
+                "href": "https://cardenasnicolas.com/wp-json/wp/v2/glosario?categoria-del-glosario=768"
+              }
+            ],
+            "curies": [
+              {
+                "name": "wp",
+                "href": "https://api.w.org/{rel}",
+                "templated": true
+              }
+            ]
+          }
+        }
+      ]
+    ]
+  }
+}
