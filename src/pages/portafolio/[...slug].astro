@@ -498,7 +498,7 @@ const ChartIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24
                             {relatedPortfolios.map((related) => (
                                 <article class="bg-white dark:bg-neutral-900 rounded-3xl overflow-hidden shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-gold/10 border border-neutral-200 dark:border-neutral-800 transition-all duration-300 group flex flex-col h-full hover:translate-y-[-4px]">
                                     <a
-                                        href={`/portafolio/${related.id}`}
+                                        href={`/portafolio/${related.slug}`}
                                         class="block aspect-[16/10] bg-neutral-100 dark:bg-neutral-800 overflow-hidden relative"
                                     >
                                         {related.data.heroImage ? (
@@ -526,7 +526,7 @@ const ChartIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24
                                         </div>
                                         <h3 class="text-lg font-bold text-neutral-900 dark:text-white mb-2 line-clamp-2 leading-snug group-hover:text-gold transition-colors">
                                             <a
-                                                href={`/portafolio/${related.id}`}
+                                                href={`/portafolio/${related.slug}`}
                                             >
                                                 {related.data.title}
                                             </a>

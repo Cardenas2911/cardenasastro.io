@@ -241,11 +241,6 @@ const isActive = (href: string) => {
                 if (item.label.includes("Certificados")) iconPath = "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z";
                 if (item.label.includes("Marketing")) iconPath = "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253";
 
-                // Badge Logic
-                let badgeCount = 0;
-                if (item.label.includes("Herramientas")) badgeCount = 4;
-                if (item.label.includes("Servicios")) badgeCount = 5;
-
                 return (
                     <div class="flex flex-col">
                         <div class:list={[
@@ -265,24 +260,15 @@ const isActive = (href: string) => {
                                 </svg>
                                 <span class="text-base font-medium">{item.label}</span>
                             </a>
-                            
-                            <!-- Actions: Badge OR Accordion Toggle -->
-                            {hasChildren ? (
+
+                            <!-- Action: Accordion Toggle ONLY -->
+                            {hasChildren && (
                                 <button
                                     class="p-3 pr-4 text-neutral-500 hover:text-white transition-colors accordion-btn"
                                     aria-label={`Expandir ${item.label}`}
                                 >
-                                     {badgeCount > 0 && <span class="mr-2 bg-[#0A66C2] text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-lg shadow-blue-900/50">{badgeCount}</span>}
                                     <svg class="h-4 w-4 transform transition-transform duration-300 chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                                 </button>
-                            ) : (
-                                badgeCount > 0 && (
-                                    <div class="p-3 pr-4">
-                                        <span class="bg-[#0A66C2] text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-lg shadow-blue-900/50">
-                                            {badgeCount}
-                                        </span>
-                                    </div>
-                                )
                             )}
                         </div>
 

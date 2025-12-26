@@ -51,13 +51,12 @@ async function downloadImage(url) {
 
 // Helper: Escape string for YAML frontmatter
 function escapeYaml(str) {
-    if (!str) return '';
-    // If it contains newlines or special chars, wrap in quotes
-    if (str.includes('\n') || str.includes(':') || str.includes('#')) {
-        return `"${str.replace(/"/g, '\\"')}"`;
-    }
-    return str;
+    // If str is null/undefined, return valid empty string representation
+    if (str === null || str === undefined) return '""';
+    // JSON.stringify adds quotes and escapes special chars correctly
+    return JSON.stringify(String(str));
 }
+
 
 function normalizeDate(dateStr) {
     const d = new Date(dateStr);
@@ -106,18 +105,18 @@ async function processCertificates() {
             `title: ${escapeYaml(cert.title?.rendered)}`,
             `description: ${escapeYaml(cert.excerpt?.rendered?.replace(/<[^>]+>/g, '') || '')}`,
             `pubDate: ${normalizeDate(cert.date)}`,
-            heroLocal ? `heroImage: "${heroLocal}"` : '',
-            `certificateUrl: "${getUrl(acf.enlace_al_certificado_online)}"`,
+            heroLocal ? `heroImage: ${JSON.stringify(heroLocal)}` : '',
+            `certificateUrl: ${JSON.stringify(getUrl(acf.enlace_al_certificado_online))}`,
             `customH1: ${escapeYaml(getString(acf.h1_del_certificado))}`,
             `shortDescription: ${escapeYaml(getString(acf.descripcion_corta_del_certificado))}`,
-            `durationHours: "${getString(acf.cantidad_de_horas)}"`,
-            `issuedBy: "${getString(acf.emitido_por)}"`,
-            `issueDate: "${getString(acf.fecha_de_emision)}"`,
+            `durationHours: ${JSON.stringify(getString(acf.cantidad_de_horas))}`,
+            `issuedBy: ${JSON.stringify(getString(acf.emitido_por))}`,
+            `issueDate: ${JSON.stringify(getString(acf.fecha_de_emision))}`,
             `practiceSummary: ${escapeYaml(getString(acf.como_puse_en_practica_lo_aprendido))}`,
             bulletsPrac.length ? `practiceBullets:\n${bulletsPrac.map(b => `  - ${escapeYaml(b)}`).join('\n')}` : '',
             bulletsKey.length ? `keyTakeaways:\n${bulletsKey.map(b => `  - ${escapeYaml(b)}`).join('\n')}` : '',
-            categories.length ? `certificateCategories:\n${categories.map(c => `  - "${c}"`).join('\n')}` : '',
-            tags.length ? `certificateTags:\n${tags.map(t => `  - "${t}"`).join('\n')}` : '',
+            categories.length ? `certificateCategories:\n${categories.map(c => `  - ${JSON.stringify(c)}`).join('\n')}` : '',
+            tags.length ? `certificateTags:\n${tags.map(t => `  - ${JSON.stringify(t)}`).join('\n')}` : '',
             `---`
         ].filter(l => l !== '').join('\n');
 
@@ -165,10 +164,10 @@ async function processPortfolios() {
             `title: ${escapeYaml(item.title?.rendered)}`,
             `description: ${escapeYaml(item.excerpt?.rendered?.replace(/<[^>]+>/g, '') || '')}`,
             `pubDate: ${normalizeDate(item.date)}`,
-            heroLocal ? `heroImage: "${heroLocal}"` : '',
-            `projectLink: "${getString(acf.link_del_proyecto)}"`,
-            `projectDate: "${getString(acf.fecha_del_trabajo)}"`,
-            projectLogo ? `projectLogo: "${projectLogo}"` : '',
+            heroLocal ? `heroImage: ${JSON.stringify(heroLocal)}` : '',
+            `projectLink: ${JSON.stringify(getString(acf.link_del_proyecto))}`,
+            `projectDate: ${JSON.stringify(getString(acf.fecha_del_trabajo))}`,
+            projectLogo ? `projectLogo: ${JSON.stringify(projectLogo)}` : '',
             `customH1: ${escapeYaml(getString(acf.titulo_h1))}`,
             `projectDescription: ${escapeYaml(getString(acf.descripcion_del_proyecto))}`,
             `challengeHeading: ${escapeYaml(getString(acf.h3_de_desafio))}`,
@@ -177,9 +176,9 @@ async function processPortfolios() {
             `solutionText: ${escapeYaml(getString(acf.la_solucion))}`,
             `resultsHeading: ${escapeYaml(getString(acf.h3_de_los_resultados))}`,
             `resultsText: ${escapeYaml(getString(acf.los_resultados))}`,
-            gallery.length ? `galleryImages:\n${gallery.map(g => `  - "${g}"`).join('\n')}` : '',
-            categories.length ? `portfolioCategories:\n${categories.map(c => `  - "${c}"`).join('\n')}` : '',
-            tags.length ? `portfolioTags:\n${tags.map(t => `  - "${t}"`).join('\n')}` : '',
+            gallery.length ? `galleryImages:\n${gallery.map(g => `  - ${JSON.stringify(g)}`).join('\n')}` : '',
+            categories.length ? `portfolioCategories:\n${categories.map(c => `  - ${JSON.stringify(c)}`).join('\n')}` : '',
+            tags.length ? `portfolioTags:\n${tags.map(t => `  - ${JSON.stringify(t)}`).join('\n')}` : '',
             `---`
         ].filter(l => l !== '').join('\n');
 

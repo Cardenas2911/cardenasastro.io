@@ -69,4 +69,4 @@ const portafolio = defineCollection({
     }),
 });
 
-export const collections = { blog, certificados, portafolio };
+export const collections = { blog, certificados }; // , portafolio };

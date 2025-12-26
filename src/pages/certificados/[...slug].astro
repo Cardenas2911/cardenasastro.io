@@ -346,7 +346,7 @@ console.log("---------------------------");
                                 relatedCertificates.map((related) => (
                                     <article class="bg-white dark:bg-[#2C2C2C] rounded-xl overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-800 group hover:border-gold dark:hover:border-neutral-600 transition-all flex flex-col h-full">
                                         <a
-                                            href={`/certificados/${related.id}`}
+                                            href={`/certificados/${related.slug}`}
                                             class="block aspect-video bg-neutral-100 dark:bg-neutral-900 relative overflow-hidden"
                                         >
                                             {related.data.heroImage ? (
@@ -369,7 +369,7 @@ console.log("---------------------------");
                                         <div class="p-5 flex flex-col flex-grow">
                                             <h3 class="text-neutral-900 dark:text-white font-bold text-lg mb-2 line-clamp-2 min-h-[3.5rem] transition-colors">
                                                 <a
-                                                    href={`/certificados/${related.id}`}
+                                                    href={`/certificados/${related.slug}`}
                                                     class="hover:text-gold transition-colors"
                                                 >
                                                     {related.data.title}
@@ -377,7 +377,7 @@ console.log("---------------------------");
                                             </h3>
                                             <div class="mt-auto pt-4">
                                                 <a
-                                                    href={`/certificados/${related.id}`}
+                                                    href={`/certificados/${related.slug}`}
                                                     class="block w-full text-center py-2 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-gold hover:text-neutral-900 transition-colors text-sm font-medium"
                                                 >
                                                     Ver certificado
