@@ -1,0 +1,170 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+    const terms = await getCollection("glosario");
+    return terms.map((term) => ({
+        params: { slug: term.slug },
+        props: { term },
+    }));
+}
+
+const { term } = Astro.props;
+const { Content } = await term.render();
+
+// JSON-LD Schema for DefinedTerm
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    termCode: term.slug,
+    name: term.data.title,
+    description: term.data.description,
+    inDefinedTermSet: {
+        "@type": "DefinedTermSet",
+        name: "Glosario de Marketing Digital Nicolás Cárdenas",
+        url: "https://cardenasnicolas.com/glosario",
+    },
+};
+// Fetch related terms logic (commented out for now as we focus on synonyms/acronyms)
+/*
+const allTerms = await getCollection("glosario");
+const relatedTerms = term.data.relacionados
+    ? allTerms.filter((t) => term.data.relacionados?.includes(t.data.yoast_head_json?.id || -1))
+    : [];
+*/
+---
+
+<Layout
+    title={`${term.data.title} - Qué es y Definición | Glosario`}
+    description={term.data.description}
+>
+    <!-- Background Decor -->
+    <div
+        class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-30 dark:opacity-20"
+    >
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"
+        >
+        </div>
+    </div>
+
+    <main class="max-w-4xl mx-auto px-4 md:px-8 py-12 lg:py-24">
+        <!-- Breadcrumb -->
+        <nav
+            class="flex items-center text-sm text-neutral-500 dark:text-neutral-400 mb-8 overflow-x-auto whitespace-nowrap pb-2"
+        >
+            <a href="/" class="hover:text-gold transition-colors">Inicio</a>
+            <span class="mx-2">/</span>
+            <a href="/glosario" class="hover:text-gold transition-colors"
+                >Glosario</a
+            >
+            <span class="mx-2">/</span>
+            <span class="text-neutral-900 dark:text-white font-medium"
+                >{term.data.title}</span
+            >
+        </nav>
+
+        <article>
+            <header class="mb-12 text-center md:text-left">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-bold uppercase tracking-wider mb-6 border border-gold/20"
+                >
+                    Definición
+                </div>
+                <h1
+                    class="text-4xl md:text-5xl lg:text-6xl font-black text-neutral-900 dark:text-white mb-6 leading-tight tracking-tight"
+                >
+                    {term.data.title}
+                </h1>
+                <p
+                    class="text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 leading-relaxed font-medium"
+                >
+                    {term.data.description}
+                </p>
+
+                {/* Metadata Grid */}
+                {
+                    (term.data.sinonimos || term.data.acronimo) && (
+                        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
+                            {term.data.acronimo && (
+                                <div class="bg-neutral-50 dark:bg-neutral-800/50 p-4 rounded-2xl border border-neutral-100 dark:border-neutral-800">
+                                    <span class="block text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                                        Acrónimo
+                                    </span>
+                                    <span class="font-bold text-neutral-900 dark:text-white">
+                                        {term.data.acronimo}
+                                    </span>
+                                </div>
+                            )}
+                            {term.data.sinonimos && (
+                                <div class="bg-neutral-50 dark:bg-neutral-800/50 p-4 rounded-2xl border border-neutral-100 dark:border-neutral-800">
+                                    <span class="block text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                                        Sinónimos
+                                    </span>
+                                    <span class="font-bold text-neutral-900 dark:text-white">
+                                        {term.data.sinonimos}
+                                    </span>
+                                </div>
+                            )}
+                        </div>
+                    )
+                }
+            </header>
+
+            <div
+                class="w-full h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-800 to-transparent mb-12"
+            >
+            </div>
+
+            <div
+                class="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-neutral-900 dark:prose-headings:text-white prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-img:rounded-2xl prose-strong:text-neutral-900 dark:prose-strong:text-white bg-white dark:bg-neutral-900/50 p-6 md:p-10 rounded-3xl border border-neutral-100 dark:border-neutral-800/50 shadow-sm"
+            >
+                <Content />
+            </div>
+
+            <!-- Metadata Footer -->
+            <footer
+                class="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800 flex flex-col sm:flex-row justify-between gap-4 text-sm text-neutral-500 dark:text-neutral-400"
+            >
+                <div>
+                    Última actualización: <time
+                        datetime={term.data.updatedDate?.toISOString() ||
+                            term.data.pubDate.toISOString()}
+                    >
+                        {
+                            new Date(
+                                term.data.updatedDate || term.data.pubDate,
+                            ).toLocaleDateString("es-CO", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            })
+                        }
+                    </time>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span>Comparte:</span>
+                    <a
+                        href={`https://twitter.com/intent/tweet?text=${term.data.title}&url=https://cardenasnicolas.com/glosario/${term.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hover:text-gold transition-colors">X</a
+                    >
+                    <span class="mx-1">•</span>
+                    <a
+                        href={`https://www.linkedin.com/sharing/share-offsite/?url=https://cardenasnicolas.com/glosario/${term.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hover:text-gold transition-colors">LinkedIn</a
+                    >
+                </div>
+            </footer>
+        </article>
+    </main>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</Layout>

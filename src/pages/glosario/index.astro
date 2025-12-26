@@ -1,0 +1,367 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const allTerms = await getCollection("glosario");
+const sortedTerms = allTerms.sort((a, b) =>
+    a.data.title.localeCompare(b.data.title, "es", { sensitivity: "base" }),
+);
+
+// Group by letter
+const groupedTerms = sortedTerms.reduce(
+    (acc: Record<string, typeof sortedTerms>, term) => {
+        const letter = term.data.title.charAt(0).toUpperCase();
+        // Handle non-letters if necessary (simpler for now: just letter)
+        const key = /[A-Z]/.test(letter) ? letter : "#";
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(term);
+        return acc;
+    },
+    {} as Record<string, typeof sortedTerms>,
+);
+
+const letters = Object.keys(groupedTerms).sort();
+---
+
+<Layout
+    title="Glosario de Marketing Digital y SEO | Nicolás Cárdenas"
+    description="Diccionario completo de términos sobre Marketing Digital, SEO, Desarrollo Web y WordPress. Aprende el vocabulario esencial para tu negocio online."
+>
+    <!-- Background Dercoration -->
+    <div
+        class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-30 dark:opacity-20"
+    >
+        <div
+            class="absolute top-0 left-0 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/2"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-neutral-800/20 rounded-full blur-[100px] translate-y-1/2 translate-x-1/2"
+        >
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-12 lg:py-20 lg:min-h-screen">
+        <!-- Header -->
+        <header class="text-center mb-16 max-w-3xl mx-auto">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-gold/10 text-gold text-sm font-bold uppercase tracking-wider mb-4 border border-gold/20"
+            >
+                Diccionario
+            </span>
+            <h1
+                class="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-white mb-6 leading-tight"
+            >
+                Glosario de Marketing Digital
+            </h1>
+            <p
+                class="text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed"
+            >
+                Domina el lenguaje del mundo digital. Explora definiciones
+                claras y concisas sobre SEO, WordPress, Programación y
+                Estrategia.
+            </p>
+        </header>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar Filters -->
+            <aside class="w-full lg:w-1/4 space-y-8">
+                <div
+                    class="bg-neutral-50 dark:bg-neutral-900/50 p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 sticky top-24 transition-colors"
+                >
+                    <div class="flex justify-between items-center mb-6">
+                        <h2
+                            class="text-xl font-bold text-neutral-900 dark:text-white transition-colors"
+                        >
+                            Filtros
+                        </h2>
+                        <button
+                            id="reset-filters"
+                            class="text-xs text-gold hover:underline hidden"
+                        >
+                            Limpiar todo
+                        </button>
+                    </div>
+
+                    <!-- Search -->
+                    <div class="mb-8">
+                        <label
+                            for="search-input"
+                            class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2"
+                            >Buscar término</label
+                        >
+                        <div class="relative">
+                            <input
+                                type="text"
+                                id="search-input"
+                                placeholder="Ej: SEO, WordPress..."
+                                class="w-full pl-10 pr-4 py-2 rounded-lg bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-white placeholder-neutral-500 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
+                            />
+                            <svg
+                                class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                ></path></svg
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Alphabet Filter -->
+                    <div>
+                        <h3
+                            class="text-neutral-900 dark:text-white font-medium mb-4 transition-colors flex justify-between"
+                        >
+                            Por Letra
+                            <button
+                                id="show-all-letters"
+                                class="text-xs text-gold hover:underline"
+                                >Ver todas</button
+                            >
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            {
+                                letters.map((letter) => (
+                                    <button
+                                        data-letter={letter}
+                                        class="letter-filter w-8 h-8 flex items-center justify-center rounded-lg bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 text-sm font-bold border border-neutral-200 dark:border-neutral-700 hover:border-gold hover:text-gold transition-all"
+                                    >
+                                        {letter}
+                                    </button>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Terms List -->
+            <div class="w-full lg:w-3/4">
+                <div id="terms-container" class="space-y-12">
+                    <!-- Empty State -->
+                    <div id="empty-state" class="hidden text-center py-20">
+                        <p
+                            class="text-neutral-600 dark:text-neutral-400 text-lg"
+                        >
+                            No se encontraron términos que coincidan con tu
+                            búsqueda.
+                        </p>
+                        <button
+                            id="clear-search-btn"
+                            class="mt-4 text-gold hover:underline"
+                            >Limpiar búsqueda</button
+                        >
+                    </div>
+
+                    {
+                        letters.map((letter) => (
+                            <section
+                                id={`group-${letter}`}
+                                class="term-group scroll-mt-32"
+                            >
+                                <div class="flex items-center gap-6 mb-6">
+                                    <h2 class="text-4xl md:text-5xl font-black text-neutral-200 dark:text-neutral-800 select-none">
+                                        {letter}
+                                    </h2>
+                                    <div class="h-px bg-neutral-200 dark:bg-neutral-800 flex-grow" />
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {groupedTerms[letter].map((term) => (
+                                        <a
+                                            href={`/glosario/${term.slug}`}
+                                            class="term-card group p-5 bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:border-gold dark:hover:border-gold transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-gold/5 block h-full"
+                                            data-title={term.data.title.toLowerCase()}
+                                            data-description={(
+                                                term.data.description || ""
+                                            ).toLowerCase()}
+                                        >
+                                            <h3 class="text-lg font-bold text-neutral-900 dark:text-white mb-2 group-hover:text-gold transition-colors">
+                                                {term.data.title}
+                                            </h3>
+                                            <p class="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed">
+                                                {term.data.description}
+                                            </p>
+                                        </a>
+                                    ))}
+                                </div>
+                            </section>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    document.addEventListener("astro:page-load", initGlossaryFilters);
+    document.addEventListener("DOMContentLoaded", initGlossaryFilters);
+
+    function initGlossaryFilters() {
+        const searchInput = document.getElementById(
+            "search-input",
+        ) as HTMLInputElement;
+        const letterButtons = document.querySelectorAll(".letter-filter");
+        const termGroups = document.querySelectorAll(".term-group");
+        const termCards = document.querySelectorAll(".term-card");
+        const emptyState = document.getElementById("empty-state");
+        const resetBtn = document.getElementById("reset-filters");
+        const showAllLettersBtn = document.getElementById("show-all-letters");
+        const clearSearchBtn = document.getElementById("clear-search-btn");
+
+        let activeLetter: string | null = null;
+        let searchQuery = "";
+
+        if (!searchInput) return;
+
+        function filterTerms() {
+            let hasVisibleTerms = false;
+
+            // 1. Filter Individual Cards
+            termCards.forEach((card) => {
+                const title = card.getAttribute("data-title") || "";
+                const description = card.getAttribute("data-description") || "";
+                const matchesSearch =
+                    title.includes(searchQuery) ||
+                    description.includes(searchQuery);
+
+                // If filtering by letter, we might want to HIDE groups that are not the letter
+                // BUT, searching overrides letter filter usually?
+                // Let's say:
+                // If Search is active -> Ignore activeLetter (Show results from all letters) OR refine strictly?
+                // User expectation: Search usually searches EVERYTHING.
+                // Letter filter usually just scrolls/shows that section.
+                // Let's implementing: AND logic. Matches Search AND matches Letter (if selected).
+
+                // Find parent group letter
+                const parentGroup = card.closest(".term-group");
+                const groupLetter = parentGroup?.id.replace("group-", "") || "";
+
+                const matchesLetter = activeLetter
+                    ? groupLetter === activeLetter
+                    : true;
+
+                if (matchesSearch && matchesLetter) {
+                    card.classList.remove("hidden");
+                } else {
+                    card.classList.add("hidden");
+                }
+            });
+
+            // 2. Handle Group Visibility (Hide empty groups)
+            termGroups.forEach((group) => {
+                const visibleCards = group.querySelectorAll(
+                    ".term-card:not(.hidden)",
+                );
+                if (visibleCards.length > 0) {
+                    group.classList.remove("hidden");
+                    hasVisibleTerms = true;
+                } else {
+                    group.classList.add("hidden");
+                }
+            });
+
+            // 3. Empty State
+            if (emptyState) {
+                if (hasVisibleTerms) {
+                    emptyState.classList.add("hidden");
+                } else {
+                    emptyState.classList.remove("hidden");
+                }
+            }
+
+            // 4. Reset Button Visibility
+            if (resetBtn) {
+                if (searchQuery || activeLetter) {
+                    resetBtn.classList.remove("hidden");
+                } else {
+                    resetBtn.classList.add("hidden");
+                }
+            }
+        }
+
+        // Search Input Listener
+        searchInput.addEventListener("input", (e) => {
+            searchQuery = (e.target as HTMLInputElement).value.toLowerCase();
+            filterTerms();
+        });
+
+        // Letter Filter Listeners
+        letterButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const letter = btn.getAttribute("data-letter");
+
+                if (activeLetter === letter) {
+                    // Toggle Off
+                    activeLetter = null;
+                    btn.classList.remove(
+                        "bg-gold",
+                        "text-black",
+                        "border-gold",
+                    );
+                    btn.classList.add(
+                        "bg-white",
+                        "dark:bg-neutral-800",
+                        "text-neutral-600",
+                        "dark:text-neutral-400",
+                    );
+                } else {
+                    // Activate
+                    activeLetter = letter;
+                    // Reset others
+                    letterButtons.forEach((b) => {
+                        b.classList.remove(
+                            "bg-gold",
+                            "text-black",
+                            "border-gold",
+                        );
+                        b.classList.add(
+                            "bg-white",
+                            "dark:bg-neutral-800",
+                            "text-neutral-600",
+                            "dark:text-neutral-400",
+                        );
+                    });
+                    // Highlight current
+                    btn.classList.remove(
+                        "bg-white",
+                        "dark:bg-neutral-800",
+                        "text-neutral-600",
+                        "dark:text-neutral-400",
+                    );
+                    btn.classList.add("bg-gold", "text-black", "border-gold");
+                }
+                filterTerms();
+            });
+        });
+
+        function resetAll() {
+            activeLetter = null;
+            searchQuery = "";
+            searchInput.value = "";
+
+            letterButtons.forEach((b) => {
+                b.classList.remove("bg-gold", "text-black", "border-gold");
+                b.classList.add(
+                    "bg-white",
+                    "dark:bg-neutral-800",
+                    "text-neutral-600",
+                    "dark:text-neutral-400",
+                );
+            });
+
+            filterTerms();
+        }
+
+        if (resetBtn) resetBtn.addEventListener("click", resetAll);
+        if (showAllLettersBtn)
+            showAllLettersBtn.addEventListener("click", resetAll);
+        if (clearSearchBtn) clearSearchBtn.addEventListener("click", resetAll);
+    }
+</script>

@@ -69,4 +69,19 @@ const portafolio = defineCollection({
     }),
 });
 
-export const collections = { blog, certificados }; // , portafolio };
+const glosario = defineCollection({
+    type: 'content',
+    schema: z.object({
+        title: z.string(),
+        description: z.string().optional(),
+        pubDate: z.coerce.date(),
+        updatedDate: z.coerce.date().optional(),
+        // ACF Fields
+        definicion: z.string().optional(),
+        acronimo: z.string().optional(),
+        sinonimos: z.string().optional(),
+        relacionados: z.array(z.number()).optional(), // Store IDs for now
+    }),
+});
+
+export const collections = { blog, certificados, portafolio, glosario };
