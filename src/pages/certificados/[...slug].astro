@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import ProfileCard from "../../components/ProfileCard.astro";
 
+export const prerender = true;
+
 export async function getStaticPaths() {
     const certificates = await getCollection("certificados");
     return certificates.map((cert) => ({
@@ -12,6 +14,14 @@ export async function getStaticPaths() {
 }
 
 const { cert, allCertificates } = Astro.props;
+
+console.log("--- START RENDER CERT ---");
+try {
+    console.log("Cert ID:", cert?.id);
+    console.log("Data keys:", cert?.data ? Object.keys(cert.data) : "NO DATA");
+} catch (e) {
+    console.error("Error logging cert data:", e);
+}
 
 // Get related certificates (exclude current, take 3 random or first 3)
 const relatedCertificates = allCertificates
@@ -24,6 +34,11 @@ const hasEnhancedContent =
     (cert.data.keyTakeaways && cert.data.keyTakeaways.length > 0) ||
     cert.data.practiceSummary ||
     (cert.data.practiceBullets && cert.data.practiceBullets.length > 0);
+
+console.log("--- Rendering Certificate ---");
+console.log("ID:", cert.id);
+console.log("Title:", cert.data.title);
+console.log("---------------------------");
 ---
 
 <Layout title={`${cert.data.title} - Certificado`}>
