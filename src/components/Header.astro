@@ -1,7 +1,7 @@
 ---
 import ThemeToggle from "./ThemeToggle.tsx";
 import { Image } from "astro:assets";
-import logoImage from "../assets/images/brand/logo-nicolas-cardenas.png";
+import logoImage from "../assets/images/brand/logo-nicolas-cardenas.webp";
 
 const navItems = [
   { label: "Inicio", href: "/" },
@@ -85,7 +85,8 @@ const isActive = (href: string) => {
       <a href="/" class="lg:hidden">
         <Image
           src={logoImage}
-          alt="Nicolas Cardenas Logo"
+          alt="Nicolás Cárdenas - Consultor SEO y Desarrollador Web"
+          title="Ir al inicio - Nicolás Cárdenas"
           class="h-8 w-auto object-contain"
           loading="eager"
         />
