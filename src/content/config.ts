@@ -1,5 +1,5 @@
 import { defineCollection, z } from 'astro:content';
-import { getCertificates, getPortfolios } from '../lib/wp';
+
 
 const blog = defineCollection({
     // Type 'content' is the default for local Markdown/MDX in src/content/blog
@@ -13,24 +13,19 @@ const blog = defineCollection({
         tags: z.array(z.string()).optional(),
         category: z.string().optional(),
         hideTitle: z.boolean().optional(),
+        fullWidth: z.boolean().optional(),
         // Content is automatically handled by Astro for local files
     }),
 });
 
 const certificados = defineCollection({
-    loader: async () => {
-        const certificates = await getCertificates();
-        return certificates.map(cert => ({
-            ...cert,
-            id: cert.slug,
-        }));
-    },
+    type: 'content',
     schema: z.object({
         title: z.string(),
         description: z.string(),
         pubDate: z.coerce.date(),
         heroImage: z.string().optional(),
-        content: z.string().optional(),
+        content: z.string().optional().default(''), // Ensure content is optional/default empty if missing
         // New fields
         certificateUrl: z.string().optional(),
         customH1: z.string().optional(),
@@ -48,19 +43,13 @@ const certificados = defineCollection({
 });
 
 const portafolio = defineCollection({
-    loader: async () => {
-        const portfolios = await getPortfolios();
-        return portfolios.map(item => ({
-            ...item,
-            id: item.slug,
-        }));
-    },
+    type: 'content',
     schema: z.object({
         title: z.string(),
         description: z.string(),
         pubDate: z.coerce.date(),
         heroImage: z.string().optional(),
-        content: z.string().optional(),
+        content: z.string().optional().default(''),
         // Custom Fields
         projectLink: z.string().optional(),
         projectDate: z.string().optional(),

@@ -2,12 +2,13 @@
 title: "GEO: La Guía Definitiva"
 description: "Domina las respuestas de ChatGPT, Perplexity y Gemini."
 pubDate: 2025-12-21
-heroImage: ""
 tags: ["GEO", "IA", "Marketing"]
 category: "Estrategia"
 hideTitle: true
+fullWidth: true
+heroImage: "/images/geo-guia-portada.jpg"
 ---
 
-import GeoInfographic from '../../components/geo/GeoInfographic.astro';
+import GeoInfographic from '../../components/geo/GeoInfographic.tsx';
 
-<GeoInfographic />
+<GeoInfographic client:only="react" />

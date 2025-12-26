@@ -8,16 +8,17 @@ export const prerender = true;
 export async function getStaticPaths() {
     const certificates = await getCollection("certificados");
     return certificates.map((cert) => ({
-        params: { slug: cert.id },
+        params: { slug: cert.slug },
         props: { cert, allCertificates: certificates },
     }));
 }
 
 const { cert, allCertificates } = Astro.props;
+const { Content } = await cert.render();
 
 console.log("--- START RENDER CERT ---");
 try {
-    console.log("Cert ID:", cert?.id);
+    console.log("Cert Slug:", cert?.slug);
     console.log("Data keys:", cert?.data ? Object.keys(cert.data) : "NO DATA");
 } catch (e) {
     console.error("Error logging cert data:", e);
@@ -25,9 +26,10 @@ try {
 
 // Get related certificates (exclude current, take 3 random or first 3)
 const relatedCertificates = allCertificates
-    .filter((c) => c.id !== cert.id)
+    .filter((c) => c.slug !== cert.slug)
     .sort(() => 0.5 - Math.random())
     .slice(0, 3);
+// ... existing code ...
 
 // Helper to determine if we have enhanced content
 const hasEnhancedContent =
@@ -392,7 +394,7 @@ console.log("---------------------------");
                     {
                         !hasEnhancedContent && (
                             <div class="prose prose-neutral dark:prose-invert max-w-none mt-12 bg-white dark:bg-[#2C2C2C] p-8 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xl transition-colors">
-                                <Fragment set:html={cert.data.content} />
+                                <Content />
                             </div>
                         )
                     }

@@ -60,9 +60,15 @@ const schema = {
         </nav>
 
         <!-- Main Content -->
-        <div class="max-w-6xl mx-auto space-y-12">
+        <div
+            class={`mx-auto ${post.data.fullWidth ? "max-w-none" : "max-w-6xl space-y-12"}`}
+        >
             <section
-                class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 md:p-12 relative overflow-hidden transition-colors duration-300 shadow-xl shadow-gold/5"
+                class={`${
+                    post.data.fullWidth
+                        ? ""
+                        : "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 md:p-12 shadow-xl shadow-gold/5"
+                } relative overflow-hidden transition-colors duration-300`}
             >
                 <!-- Background decoration -->
                 <div
@@ -121,7 +127,7 @@ const schema = {
                     <!-- Content -->
                     <div class="max-w-none mx-auto">
                         <div
-                            class="prose prose-xl prose-neutral dark:prose-invert max-w-none
+                            class={`prose prose-xl prose-neutral dark:prose-invert max-w-none
                             prose-headings:text-neutral-900 dark:prose-headings:text-white
                             prose-headings:font-bold
                             prose-p:text-neutral-600 dark:prose-p:text-neutral-300 prose-p:leading-relaxed
@@ -131,14 +137,14 @@ const schema = {
                             prose-blockquote:border-l-gold prose-blockquote:bg-neutral-50 dark:prose-blockquote:bg-neutral-900/50 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:text-neutral-700 dark:prose-blockquote:text-neutral-300
                             prose-img:rounded-2xl prose-img:shadow-xl
                             prose-hr:border-neutral-200 dark:prose-hr:border-white/10
-                            transition-colors"
+                            transition-colors ${post.data.fullWidth ? "container-fluid p-0" : ""}`}
                         >
                             <Content />
                         </div>
 
                         <!-- Tags -->
                         {
-                            post.data.tags && (
+                            post.data.tags && !post.data.fullWidth && (
                                 <div class="mt-16 pt-8 border-t border-neutral-200 dark:border-white/10 transition-colors">
                                     <div class="flex items-center gap-4">
                                         <h3 class="text-sm font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider transition-colors">

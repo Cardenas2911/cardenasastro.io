@@ -10,11 +10,17 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
+    "@astrojs/react": "^4.4.2",
     "@astrojs/rss": "^4.0.13",
     "@tailwindcss/vite": "^4.1.17",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "astro": "^5.15.9",
     "chart.js": "^4.5.1",
+    "framer-motion": "^12.23.26",
     "jspdf": "^3.0.4",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {

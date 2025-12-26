@@ -7,18 +7,20 @@ export const prerender = true;
 export async function getStaticPaths() {
     const portfolios = await getCollection("portafolio");
     return portfolios.map((item) => ({
-        params: { slug: item.id },
+        params: { slug: item.slug },
         props: { item, allPortfolios: portfolios },
     }));
 }
 
 const { item, allPortfolios } = Astro.props;
+const { Content } = await item.render();
 
 // Get related portfolios
 const relatedPortfolios = allPortfolios
-    .filter((p) => p.id !== item.id)
+    .filter((p) => p.slug !== item.slug)
     .sort(() => 0.5 - Math.random())
     .slice(0, 3);
+// ... existing code ...
 
 // Helper to determine if we have enhanced content
 const hasEnhancedContent =
@@ -465,7 +467,7 @@ const ChartIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24
                 {
                     !hasEnhancedContent && (
                         <div class="prose prose-neutral dark:prose-invert max-w-none mt-12 bg-white dark:bg-neutral-900 p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 shadow-sm">
-                            <Fragment set:html={item.data.content} />
+                            <Content />
                         </div>
                     )
                 }

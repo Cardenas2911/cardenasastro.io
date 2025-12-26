@@ -48,7 +48,7 @@ const posts = (await getCollection("blog")).sort(
                             posts.map((post) => (
                                 <article class="bg-neutral-50 dark:bg-black rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 hover:border-gold dark:hover:border-gold transition-all duration-300 flex flex-col h-full group ml-0">
                                     <a
-                                        href={`/blog/${post.slug}`}
+                                        href={`/blog/${post.slug.replace(/\.[^/.]+$/, "")}`}
                                         class="block aspect-video overflow-hidden relative"
                                     >
                                         {post.data.heroImage ? (
@@ -91,7 +91,7 @@ const posts = (await getCollection("blog")).sort(
                                         </div>
                                         <h2 class="text-xl font-bold text-neutral-900 dark:text-white mb-2 line-clamp-2 transition-colors">
                                             <a
-                                                href={`/blog/${post.slug}`}
+                                                href={`/blog/${post.slug.replace(/\.[^/.]+$/, "")}`}
                                                 class="hover:text-gold dark:hover:text-gold transition-colors"
                                             >
                                                 {post.data.title}

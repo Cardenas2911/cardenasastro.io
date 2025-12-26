@@ -1,0 +1,82 @@
+.theme-toggle {
+  --size: 2rem;
+  --icon-fill: currentColor;
+  --icon-fill-hover: currentColor;
+  cursor: pointer;
+}
+
+.sun-and-moon > :is(.moon, .sun, .sun-beams) {
+  transform-origin: center center;
+}
+
+.sun-and-moon > :is(.moon, .sun) {
+  fill: var(--icon-fill);
+}
+
+.theme-toggle:is(:hover, :focus-visible) > .sun-and-moon > :is(.moon, .sun) {
+  fill: var(--icon-fill-hover);
+}
+
+.sun-and-moon > .sun-beams {
+  stroke: var(--icon-fill);
+  stroke-width: 2px;
+}
+
+.theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
+  stroke: var(--icon-fill-hover);
+}
+
+/* Transition setup */
+.sun-and-moon > :is(.moon, .sun, .sun-beams) {
+  transition: all 0.5s cubic-bezier(0.5, 1.5, 0.75, 1); /* Elastic-like */
+}
+
+.sun-and-moon .sun-beams {
+  transition-duration: 0.25s; /* Hide rays faster */
+}
+
+/* Light Mode (Start) - Default state in CSS assuming light mode start, 
+   but we will control classes via parent .dark usually. 
+   Wait, the original CSS used :global(.dark) selector. 
+   In React, we rely on the global 'dark' class on html element. */
+
+/* Light Mode Default Styles */
+.sun-and-moon .moon circle {
+  transform: translateX(10px); /* Start further out */
+  opacity: 0;
+}
+.sun-and-moon .sun {
+  transform: scale(1);
+}
+.sun-and-moon .sun-beams {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* Dark Mode Overrides - targeted via :global(.dark) 
+   since the toggle is inside the html which has the class.
+   In standard CSS import, we can just use .dark ancestor selector 
+   if we are not using scoped/modules. */
+
+:global(.dark) .theme-toggle .sun-and-moon > .sun {
+  transform: scale(1.75);
+  transition-timing-function: cubic-bezier(0.25, 0, 0.3, 1);
+  transition-duration: 0.5s;
+}
+
+:global(.dark) .theme-toggle .sun-and-moon > .sun-beams {
+  opacity: 0;
+  transform: rotate(-25deg);
+  transition-duration: 0.15s;
+}
+
+:global(.dark) .theme-toggle .sun-and-moon > .moon > circle {
+  transform: translateX(-7px);
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+
+:global(.dark) .theme-toggle .sun-and-moon {
+  transform: rotate(-10deg);
+  transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
