@@ -23,7 +23,7 @@ const trafficData = {
     ],
 };
 
-trafficData.datasets.forEach((ds) => {
+trafficData.datasets.forEach((ds: any) => {
     ds.label = wrapLabel(ds.label);
 });
 

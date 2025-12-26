@@ -1,6 +1,8 @@
 ---
 const currentYear = new Date().getFullYear();
 import SocialLinks from "./SocialLinks.astro";
+import { Image } from "astro:assets";
+import logoImage from "../assets/images/brand/logo-nicolas-cardenas.png";
 ---
 
 <footer
@@ -12,8 +14,8 @@ import SocialLinks from "./SocialLinks.astro";
         >
             <!-- Brand -->
             <div class="space-y-6">
-                <img
-                    src="https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp"
+                <Image
+                    src={logoImage}
                     alt="Nicolas Cardenas Logo"
                     class="h-12 w-auto dark:invert-0"
                 />

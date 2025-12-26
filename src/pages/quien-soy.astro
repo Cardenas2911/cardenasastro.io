@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ProfileCard from "../components/ProfileCard.astro";
+import { Image } from "astro:assets";
+import profileImage from "../assets/images/brand/nicolas-cardenas-profile.png";
 
 const timeline = [
     {
@@ -121,8 +123,8 @@ const playlists = [
                         <div
                             class="relative aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500"
                         >
-                            <img
-                                src="https://cardenasnicolas.com/wp-content/uploads/2025/05/nicolas-cardenas-seo-y-desarrollador-web-imagen.png.webp"
+                            <Image
+                                src={profileImage}
                                 alt="Nicolás Cárdenas"
                                 class="w-full h-full object-cover object-top"
                             />

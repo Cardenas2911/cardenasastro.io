@@ -1,5 +1,7 @@
 ---
 import SocialLinks from "./SocialLinks.astro";
+import { Image } from "astro:assets";
+import logoImage from "../assets/images/brand/logo-nicolas-cardenas.png";
 ---
 
 <aside
@@ -12,8 +14,8 @@ import SocialLinks from "./SocialLinks.astro";
         <div
             class="w-full h-full bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center p-4 transition-colors"
         >
-            <img
-                src="https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp"
+            <Image
+                src={logoImage}
                 alt="Nicolas Cardenas Logo"
                 class="w-full h-auto object-contain"
             />

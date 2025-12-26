@@ -1,5 +1,6 @@
 ---
-
+import { Image } from "astro:assets";
+import logoImage from "../assets/images/brand/logo-nicolas-cardenas.png";
 ---
 
 <div
@@ -14,8 +15,8 @@
         <!-- Header -->
         <div class="bg-[#00a884] p-4 flex items-center gap-3 text-white">
             <div class="relative">
-                <img
-                    src="https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp"
+                <Image
+                    src={logoImage}
                     alt="Nicolas Cardenas"
                     class="w-10 h-10 rounded-full border-2 border-white/20 bg-white object-contain p-1"
                 />

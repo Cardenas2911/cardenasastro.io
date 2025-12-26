@@ -1,5 +1,7 @@
 ---
 import ThemeToggle from "./ThemeToggle.tsx";
+import { Image } from "astro:assets";
+import logoImage from "../assets/images/brand/logo-nicolas-cardenas.png";
 
 const navItems = [
   { label: "Inicio", href: "/" },
@@ -81,8 +83,8 @@ const isActive = (href: string) => {
     >
       <!-- Mobile Logo/Brand (Optional, keeps layout balanced on mobile) -->
       <a href="/" class="lg:hidden">
-        <img
-          src="https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp"
+        <Image
+          src={logoImage}
           alt="Nicolas Cardenas Logo"
           class="h-8 w-auto object-contain"
           loading="eager"
@@ -212,8 +214,8 @@ const isActive = (href: string) => {
         <div class="px-6 pt-12 pb-6 flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="relative w-14 h-14 rounded-full p-0.5 border border-gold/30">
-                     <img 
-                        src="https://cardenasnicolas.com/wp-content/uploads/2025/05/logo-Nicolas-Cardenas.webp" 
+                     <Image 
+                        src={logoImage} 
                         alt="Perfil"
                         class="w-full h-full object-cover rounded-full bg-black"
                     />
